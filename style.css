@@ -11,10 +11,12 @@ body {
 
 :root {
     --main-color: #C9AD7B;
+    --blue-color: #2B3C75;
     --light-color: #FFF;
     --light-gray-color: #9F9F9F;
     --dark-gray-color: #51514D;
-    --main-font-family: Arial, Helvetica, sans-serif
+    --main-font-family: Arial, Helvetica, sans-serif;
+    --secondary-font-family: Georgia, 'Times New Roman', Times, serif
 }
 
 .main-button {
@@ -83,7 +85,7 @@ body {
 }
 
 #header-logo {
-    width: 150px;
+    width: 140px;
     margin-left: -10px;
 }
 
@@ -136,6 +138,8 @@ body {
 
 #main-slider .carousel-caption h2 {
     font-size: 50px;
+    font-family: var(--secondary-font-family);
+    font-weight: 600;
     margin-bottom: 30px;
     color: var(--light-color);
 }
@@ -153,7 +157,107 @@ body {
 
 /* SERVICES */
 
-#resume-services {
+#services-resume {
     width: 100%;
-    height: 50vh;
+    height: 500px;
+    background-color: var(--light-color);
+    display: flex;
+    padding: 25px 0;
+}
+
+#services-container {
+    width: 90%;
+    padding: 50px 70px;
+    color: var(--light-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#services-container .card {
+    padding: 50px 0;
+}
+
+#services-container .card .card-body {
+    gap: 20px;
+}
+
+#services-container .card .service-icon {
+    font-size: 50px;
+    color: var(--blue-color);
+}
+
+#services-container .card .card-body .card-title {
+    margin-top: 10px;
+}
+
+#services-container .card .card-body .card-text {
+    color: var(--light-gray-color) !important;
+    margin-top: 20px;
+}
+
+#services-container .card, #services-container .card .service-icon {
+    transition: 0.7s;
+}
+
+#services-container .card-divisor {
+    width: 10%;
+    height: 3px;
+    background-color: var(--blue-color);
+    margin: 20px auto;
+    transition: 1s;
+    border: none;
+    opacity: 1;
+}
+
+#services-container .card:hover {
+    border-color: var(--main-color);
+}
+
+#services-container .card:hover .service-icon {
+    color: var(--main-color) !important;
+}
+
+#services-container .card:hover .card-divisor {
+    background-color: var(--main-color);
+    width: 50%;
+}
+
+/* ABOUT */
+
+#about-section {
+    width: 100%;
+    height: 100%;
+    background-color: var(--light-color);
+    padding: 25px 0;
+}
+
+#about-container {
+    width: 80%;
+    padding: 50px 70px;
+    background-color: var(--blue-color);
+    color: var(--light-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#about-container h1 {
+    font-family: var(--secondary-font-family);
+    font-weight: 700;
+}
+
+#about-container p {
+    font-family: var(--main-font-family);
+    margin-bottom: 2rem;
+}
+
+#about-cta {
+    margin-top: 50px;
+}
+
+#about-image {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
 }

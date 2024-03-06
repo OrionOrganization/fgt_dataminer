@@ -28,15 +28,15 @@
         </div>
     </header>
     <header id="main-header">
-        <a href="">
+        <a href="#">
             <img src="/images/logo.svg" alt="Logo FGT (Fóros Gestão Tributária)" id="header-logo">
         </a>
 
         <nav>
-            <a href="" class="header-nav-link">Início</a>
-            <a href="#honesty-figure" class="header-nav-link">Sobre</a>
-            <a href="" class="header-nav-link">Serviços</a>
-            <a href="" class="header-nav-link">Contato</a>
+            <a href="#" class="header-nav-link">Início</a>
+            <a href="#about-section" class="header-nav-link">Sobre</a>
+            <a href="#services-section" class="header-nav-link">Serviços</a>
+            <a href="#contact-section" class="header-nav-link">Contato</a>
 
             <a href="" class="header-nav-button main-button">Conhecer</a>
         </nav>
@@ -88,7 +88,7 @@
         </section>
 
         <!-- Services Resume -->
-        <section id="services-resume">
+        <!-- <section id="services-resume">
             <div id="services-container" class="container">
                 <div class="card text-center" style="width: 18rem;">
                     <div class="card-body">
@@ -115,7 +115,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- Honesty -->
         <figure class="text-center" id="honesty-figure">
@@ -149,6 +149,7 @@
                           Marco Desiato, <cite title="Source Title">CEO da FGT</cite>
                         </figcaption>
                     </figure>
+                    <a href="" class="main-button">Solicitar Orçamento</a>
                 </div>
 
                 <img src="/images/about-pic.jpeg" alt="Foto de Marco Desiato, CEO da FGT" id="about-image">
@@ -159,10 +160,11 @@
         <section id="history-section" class="container">
                 <img src="/images/history-pic.jpg" alt="Foto da equipe da FGT">
                 <div>
-                    <h1>Nossa História</h1>
-                    <hr class="divisor">
+                    <small style="color: var(--main-color);">Venha conhecer</small>
+                    <h1 style="margin: 0;">Nossa História</h1>
+                    <br>
                     <p>
-                        A FÓROS - Gestão Tributária nasceu da visão empreendedora <br>
+                        A Fóros nasceu da visão empreendedora <br>
                         dos fundadores, que almejavam estabelecer um escritório <br>
                         especializado em fornecer <strong>soluções tributárias personalizadas <br>
                         e seguras para seus clientes.</strong><br>
@@ -181,37 +183,197 @@
                 </div>
         </section>
 
+        <!-- Team -->
+        <section id="team-section">
+            <div id="team-container">
+                <div class="team-member-card">
+                    <img src="/images/lawyer-1.jpg" alt="Advogado">
+                    <div class="overlay">
+                        <span><i class="las la-phone header-contact-icon"></i> (35) 98455-8944</span>
+                        <span>marcodesiato@forosgt.com.br</span>
+                    </div>
+                    <div class="bottom-div">
+                        <h5>Marco Desiato</h5>
+                        <hr class="divisor">
+                        <small>CEO</small>
+                    </div>
+                </div>
+                <div class="team-member-card">
+                    <img src="/images/lawyer-2.jpg" alt="Advogado">
+                    <div class="overlay">
+                        <span><i class="las la-phone header-contact-icon"></i> (35) 98455-8944</span>
+                        <span>evertonalves@forosgt.com.br</span>
+                    </div>
+                    <div class="bottom-div">
+                        <h5>Everton Alves</h5>
+                        <hr class="divisor">
+                        <small>CRO</small>
+                    </div>
+                </div>
+                <div class="team-member-card">
+                    <img src="/images/lawyer-4.jpg" alt="Advogado">
+                    <div class="overlay">
+                        <span><i class="las la-phone header-contact-icon"></i> (35) 98455-8944</span>
+                        <span>fernandaguidotti@forosgt.com.br</span>
+                    </div>
+                    <div class="bottom-div">
+                        <h5>Fernanda Guidotti</h5>
+                        <hr class="divisor">
+                        <small>CTO</small>
+                    </div>
+                </div>
+                <div class="team-member-card">
+                    <img src="/images/lawyer-3.jpg" alt="Advogado">
+                    <div class="overlay">
+                        <span><i class="las la-phone header-contact-icon"></i> (35) 98455-8944</span>
+                        <span>victordallacosta@forosgt.com.br</span>
+                    </div>
+                    <div class="bottom-div">
+                        <h5>Victor Dallacosta</h5>
+                        <hr class="divisor">
+                        <small>CLO</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Values -->
         <section id="values-section">
-            <div class="values-item" style="text-align: center;">
-                <i class="las la-balance-scale values-icon"></i>
-                <h3 class="values-name">Honestidade & <br>Transparência</h3>
+            <div id="values-text-content">
+                <small>Descubra</small>
+                <h2>Nossos Valores</h2>
+
+                <div class="value-content">
+                    <i class="las la-balance-scale values-icon"></i>
+                    <div class="values-text">
+                        <h3 class="values-name">Honestidade e Transparência</h3>
+                        <p>
+                            Atuamos com integridade em todas as interações, <br>
+                            sendo transparentes em nossas práticas e decisões.
+                        </p>
+                    </div>
+                </div>
+                <div class="value-content">
+                    <i class="las la-handshake values-icon"></i>
+                    <div class="values-text">
+                        <h3 class="values-name">Empatia e Comprometimento</h3>
+                        <p>
+                            Compreendemos as necessidades individuais de cada cliente, <br>
+                            comprometendo-nos a superar obstáculos e oferecer suporte personalizado.
+                        </p>
+                    </div>
+                </div>
+                <div class="value-content">
+                    <i class="las la-medal values-icon"></i>
+                    <div class="values-text">
+                        <h3 class="values-name">Excelência Profissional</h3>
+                        <p>
+                            Buscamos continuamente aprimorar nossas  <br>
+                            habilidades e conhecimentos, proporcionando serviços <br>
+                            de alta qualidade e soluções inovadoras.
+                        </p>
+                    </div>
+                </div>
+                <div class="value-content">
+                    <i class="las la-globe values-icon"></i>
+                    <div class="values-text">
+                        <h3 class="values-name">Impacto Positivo</h3>
+                        <p>
+                            Contribuímos para a sociedade, ajudando as pessoas e as <br>
+                            empresas a recuperarem créditos, superarem desafios tributários <br>
+                            e alcançarem seus objetivos financeiros.
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="values-item" style="text-align: center;">
-                <i class="las la-handshake values-icon"></i>
-                <h3 class="values-name">Empatia & <br>Comprometimento</h3>
-            </div>
-            <div class="values-item" style="text-align: center;">
-                <i class="las la-medal values-icon"></i>
-                <h3 class="values-name">Excelência <br>Profissional</h3>
-            </div>
-            <div class="values-item" style="text-align: center;">
-                <i class="las la-globe values-icon"></i>
-                <h3 class="values-name">Impacto <br>Positivo</h3>
+            <div id="values-image-content">
+                <img src="images/values-pic.png" alt="Descrição da Imagem">
             </div>
         </section>
 
         <!-- Services -->
-        <section id="services-section" style="text-align: center;">
-            <small>Conheça</small>
-            <h1 style="font-family: var(--secondary-font-family);">Nossos Serviços</h1>
-            <div class="service-container">
+        <section id="services-section">
+            <small>Nossos Serviços</small>
+            <h1>
+                Os melhores serviços tributários <br>
+                Para sua empresa
+            </h1>
+
+            <div id="services-container">
+                <div class="card text-center" style="width: 18rem;">
+                    <div class="card-body">
+                        <i class="service-icon las la-comments-dollar"></i>
+                        <h5 class="card-title">Consultoria Tributária</h5>
+                        <hr class="card-divisor">
+                        <p class="card-text">Análise detalhada da situação tributária para identificar oportunidades de otimização.</p>
+                        <a href="/services.html" class="main-button">Saiba Mais</a>
+                    </div>
+                </div>
+                <div class="card text-center" style="width: 18rem;">
+                    <div class="card-body">
+                        <i class="service-icon las la-donate"></i>
+                        <h5 class="card-title">Recuperação de Créditos</h5>
+                        <hr class="card-divisor">
+                        <p class="card-text">Avaliação minuciosa de registros e transações para identificar oportunidades de recuperação.</p>
+                        <a href="/services.html" class="main-button">Saiba Mais</a>
+                    </div>
+                </div>
+                <div class="card text-center" style="width: 18rem;">
+                    <div class="card-body">
+                        <i class="service-icon las la-balance-scale-right"></i>
+                        <h5 class="card-title">Dívida Ativa</h5>
+                        <hr class="card-divisor">
+                        <p class="card-text">Ferramenta exclusiva que permite verificar ativamente suas dívidas tributárias.</p>
+                        <a href="/services.html" class="main-button">Saiba Mais</a>
+                    </div>
+                </div>
+                <div class="card text-center" style="width: 18rem;">
+                    <div class="card-body">
+                        <i class="service-icon las la-file-invoice-dollar"></i>
+                        <h5 class="card-title">Regularização Fiscal</h5>
+                        <hr class="card-divisor">
+                        <p class="card-text">Orientação técnica e profissional para empresas em processo de regularização fiscal.</p>
+                        <a href="/services.html" class="main-button">Saiba Mais</a>
+                    </div>
+                </div>
             </div>
-            <div class="service-container"></div>
-            <div class="service-container"></div>
-            <div class="service-container"></div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact-section">
+            <div class="contact-container">
+                <small>Contato</small>
+                <h1>Fale Conosco</h1>
+                <p>
+                    Caso tenha alguma dúvida, entre em contato <br>
+                    através de um dos nossos telefones ou email. <br>
+                    Se tiver preferência, venha visitar nosso escritório!
+                </p>
+    
+                <p class="contact-content"><strong>Fixo:</strong> 3622-8985</p>
+                <p class="contact-content"><strong>Whatsapp:</strong> (35) 98455-8944</p>
+                <p class="contact-content"><strong>Email:</strong> forosgt@gmail.com</p>
+                <p class="contact-content"><strong>Endereço:</strong> Av. Brasil, 510 - Campinas, SP</p>
+
+                <a href="" class="main-button">Entrar em Contato</a>
+            </div>
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d470464.1371439109!2d-47.36069152620545!3d-22.894882111583403!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8c8f6a2552649%3A0x7475001c58043536!2sCampinas%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1709683391445!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </section>
     </main>
+
+    <!-- Footer -->
+    <!-- <footer id="footer-section">
+        <div class="footer-content-1">
+            <img src="/images/logo.svg" alt="" style="width: 10%;color: white; fill: white;">
+            <p>
+                Comprometemo-nos a ajudar pessoas e empresas, <br>
+                recuperando créditos, proporcionando soluções tributárias <br>
+                personalizadas e contribuindo para o crescimento sustentável.
+            </p>
+            <a href="" class="main-button">Entrar em Contato</a>
+        </div>
+    </footer> -->
 
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

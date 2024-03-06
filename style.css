@@ -88,6 +88,9 @@
     justify-content: space-between;
     padding: 0 70px;
     background-color: var(--light-color);
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 #header-logo {
@@ -165,72 +168,10 @@
     background-color: var(--main-color) !important;
 }
 
-/* SERVICES */
+/* HONESTY */
 
-#services-resume {
-    width: 100%;
-    height: 500px;
-    background-color: var(--light-color);
-    display: flex;
-    padding: 25px 0;
-}
-
-#services-container {
-    width: 90%;
-    padding: 50px 70px;
-    color: var(--light-color);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-#services-container .card {
-    padding: 50px 0;
-}
-
-#services-container .card .card-body {
-    gap: 20px;
-}
-
-#services-container .card .service-icon {
-    font-size: 50px;
-    color: var(--blue-color);
-}
-
-#services-container .card .card-body .card-title {
-    margin-top: 10px;
-}
-
-#services-container .card .card-body .card-text {
-    color: var(--light-gray-color) !important;
-    margin-top: 20px;
-}
-
-#services-container .card, #services-container .card .service-icon {
-    transition: 0.7s;
-}
-
-#services-container .card-divisor {
-    width: 10%;
-    height: 3px;
-    background-color: var(--blue-color);
-    margin: 20px auto;
-    transition: 1s;
-    border: none;
-    opacity: 1;
-}
-
-#services-container .card:hover {
-    border-color: var(--main-color);
-}
-
-#services-container .card:hover .service-icon {
-    color: var(--main-color) !important;
-}
-
-#services-container .card:hover .card-divisor {
-    background-color: var(--main-color);
-    width: 50%;
+#honesty-figure {
+    margin-top: 50px;
 }
 
 /* ABOUT */
@@ -300,45 +241,265 @@
     width: 50%;
 }
 
+/* TEAM */
+
+#team-section #team-container {
+    width: 100%;
+    height: auto;
+    padding: 30px 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#team-section #team-container .team-member-card {
+    background-color: var(--blue-color);
+    position: relative;
+    cursor: default;
+    width: 22%;
+}
+
+#team-section #team-container .team-member-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#team-section #team-container .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-color: var(--blue-color);
+    color: var(--light-color);
+    opacity: 0;
+    transition: opacity 0.8s ease, height 0.8s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: default;
+    font-size: 15px;
+}
+
+#team-section #team-container .team-member-card:hover .overlay {
+    opacity: 0.8;
+    height: 100%;
+    transition-delay: 0.1s;
+}
+
+#team-section #team-container .team-member-card .bottom-div {
+    position: absolute;
+    bottom: -30px;
+    width: 90%;
+    height: 100px;
+    background-color: var(--main-color);
+    color: var(--light-color);
+    z-index: 1;
+    margin: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+}
+
+#team-section #team-container .team-member-card .bottom-div h5 {
+    font-family: var(--secondary-font-family);
+    font-size: 22px;
+}
+
+#team-section #team-container .team-member-card .bottom-div .divisor {
+    width: 50%;
+    height: 2px;
+    background-color: #b49465;
+    margin-bottom: 10px;
+}
+
 /* VALUES */
 
 #values-section {
-    position: relative;
     width: 100%;
-    margin: 30px 0;
-    padding: 50px 70px;
-    background-image: url(/images/values-bg.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position-y: -400px;
+    height: 100%;
+    margin-top: 30px;
+    padding: 30px 70px 0 70px;
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    background-color: #efefef;
+}
+
+#values-section #values-text-content {
+    flex: 1;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+#values-section #values-text-content small {
+    color: var(--main-color);
+}
+
+#values-section #values-text-content h2 {
+    font-family: var(--secondary-font-family);
+    margin-bottom: 30px;
+    margin-top: -20px;
+}
+
+#values-section #values-image-content {
+    flex-shrink: 0;
+    position: relative;
+}
+
+#values-section #values-image-content img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 38rem;
+}
+
+#values-section #values-text-content .value-content {
+    display: flex;
+}
+
+#values-section #values-text-content .value-content .values-icon {
+    font-size: 40px;
+    color: var(--main-color);
+    margin-right: 5px;
+}
+
+#values-section #values-text-content .value-content .values-text h3 {
+    font-family: var(--secondary-font-family);
+    font-size: 25px;
+    cursor: pointer;
+    transition: 0.7s;
+}
+
+#values-section #values-text-content .value-content .values-text h3:hover {
+    color: var(--main-color);
+}
+
+#values-section #values-text-content .value-content .values-text p {
+    font-size: 15px;
+    color: #5f5f5f;
+    font-family: var(--main-font-family);
+}
+
+/* SERVICES */
+
+#services-section {
+    text-align: left;
+    background-color: var(--light-color);
+    padding: 80px 0;
+    overflow-x: scroll;
+}
+
+#services-section small {
+    margin-left: 70px;
+    color: var(--main-color);
+    font-weight: 600;
+}
+
+#services-section h1 {
+    font-family: var(--secondary-font-family);
+    margin-bottom: 50px;
+    margin-left: 70px;
+}
+
+#services-section #services-container {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: space-around;
+    padding: 0 70px;
+    gap: 30px;
+    height: auto;
+    transition: height 1s ease;
+}
+
+#services-container .card {
+    padding: 50px 0;
+}
+
+#services-container .card .card-body {
+    gap: 20px;
+}
+
+#services-container .card .service-icon {
+    font-size: 50px;
+    color: var(--blue-color);
+}
+
+#services-container .card .card-body .card-title {
+    margin-top: 10px;
+}
+
+#services-container .card .card-body .card-text {
+    color: var(--light-gray-color) !important;
+    margin: 30px 0;
+}
+
+#services-container .card, #services-container .card .service-icon {
+    transition: 0.7s;
+}
+
+#services-container .card-divisor {
+    width: 10%;
+    height: 3px;
+    background-color: var(--blue-color);
+    margin: 20px auto;
+    transition: 1s;
+    border: none;
+    opacity: 1;
+}
+
+#services-container .card:hover {
+    border: var(--main-color) 1px solid;
+    transform: scale(1.1);
+}
+
+#services-container .card:hover .service-icon {
+    color: var(--main-color) !important;
+}
+
+#services-container .card:hover .card-divisor {
+    background-color: var(--main-color);
+    width: 50%;
+}
+
+/* CONTACT */
+
+#contact-section {
+    width: 100%;
+    height: 100%;
+    padding: 15px 70px;
+    display: flex;
+    align-items: flex-start;
     justify-content: space-between;
 }
 
-#values-section::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--blue-color);
-    opacity: 0.8;
-    z-index: 0;
-}
-
-.values-icon {
-    font-size: 80px;
+#contact-section .contact-container small {
     color: var(--main-color);
-    position: relative;
-    z-index: 1;
 }
 
-.values-name {
-    font-family: var(--main-font-family);
-    font-weight: 900;
-    color: var(--light-color);
-    position: relative;
-    z-index: 1;
+#contact-section .contact-container h1 {
+    font-family: var(--secondary-font-family);
+}
+
+#contact-section .contact-container p {
+    font-size: 15px;
+    color: #51514D;
+}
+
+#contact-section .contact-container a {
+    position: absolute;
+    margin-top: 20px;
 }

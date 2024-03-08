@@ -39,6 +39,19 @@
     margin: 0;
 }
 
+.hidden {
+    opacity: 0;
+    filter: blur(15px);
+    transition: all 1.30s;
+    transform: translateX(-100%);
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0px);
+    transition: all 1.30s;
+}
+
 /* HEADER */
 
 #sub-header {
@@ -321,6 +334,18 @@
     margin-bottom: 10px;
 }
 
+#team-section #team-container :nth-child(2) {
+    transition-delay: 300ms;
+}
+
+#team-section #team-container :nth-child(3) {
+    transition-delay: 600ms;
+}
+
+#team-section #team-container :nth-child(4) {
+    transition-delay: 900ms;
+}
+
 /* VALUES */
 
 #values-section {
@@ -362,6 +387,8 @@
 #values-section #values-image-content img {
     width: 38rem;
     height: 100%;
+    object-fit: cover;
+    object-position: right;
 }
 
 #values-section #values-text-content .value-content {
@@ -375,7 +402,7 @@
 }
 
 #values-section #values-text-content .value-content .values-text h3 {
-    font-family: var(--secondary-font-family);
+    font-family: var(--main-font-family);
     font-size: 25px;
     cursor: pointer;
     transition: 0.7s;
@@ -501,3 +528,138 @@
     position: absolute;
     margin-top: 20px;
 }
+
+/* FOOTER */
+
+.footer {
+    background-color: var(--blue-color);
+    color: var(--light-color);
+    margin-top: 120px;
+}
+  
+.footer-main {
+    padding: 80px 0 60px;
+}
+  
+.footer .widget-title {
+    font-size: 16px;
+    font-weight: 700;
+    position: relative;
+    margin: 0 0 30px;
+    padding-left: 15px;
+    text-transform: uppercase;
+    color: #fff;
+    border-left: 3px solid var(--main-color);
+}
+  
+/* FOOTER ABOUT US */
+
+.footer-logo {
+    margin-bottom: 25px;
+}
+  
+/* FOOTER SOCIAL */
+
+.footer-social {
+    margin-top: 15px;
+}
+  
+.footer-social .widget-title {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+  
+.footer-social ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-left: -13px;
+}
+
+.footer-social ul li {
+    display: inline-block;
+}
+
+.footer-social ul li a {
+    text-decoration: none;
+}
+
+.footer-social ul li a i {
+    display: block;
+    font-size: 22px;
+    color: #999;
+    transition: 400ms;
+    padding: 10px 13px;
+}
+
+.footer-social ul li a i:hover {
+    color: var(--main-color);
+}
+  
+/* LINKS */
+
+.footer-widget ul.list-arrow {
+    padding: 0 12px;
+}
+
+.footer-widget ul.list-arrow li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    padding: 8px 0;
+}
+  
+.footer-widget ul.list-arrow li:last-child {
+    border-bottom: 0;
+}
+
+.footer-widget ul.list-arrow li a {
+    text-decoration: none;
+}
+  
+.footer-widget ul.list-arrow li a,
+.footer-widget ul.list-arrow li:before {
+    color: var(--light-gray-color);
+}
+  
+.footer-widget ul.list-arrow li:hover a,
+.footer-widget ul.list-arrow li:hover {
+    color: var(--main-color);
+}
+  
+.footer-contacts {
+    padding-right: 10px;
+}
+  
+.footer-contacts .text-right {
+    float: right;
+}
+  
+/* COPYRIGHT */
+
+.copyright {
+    background: var(--main-color);
+    color: #111;
+    padding: 25px 0;
+    position: relative;
+    z-index: 1;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.footer-menu ul li {
+    display: inline-block;
+    line-height: 12px;
+    padding-left: 15px;
+}
+
+.copyright-link {
+    background: none;
+    color: #111;
+    text-decoration: none;
+    padding: 0;
+    transition: 0.8s;
+}
+
+.footer-menu ul li a:hover {
+    color: #fff;
+}
+  

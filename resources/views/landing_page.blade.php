@@ -55,7 +55,7 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="{{ asset('img/carousel-pic-1.jpg') }}" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
+                        <div class="carousel-caption d-none d-md-block hidden">
                             <h2>Gestão Tributária</h2>
                             <p>Gerenciamento, planejamento, análise, controle e acompanhamento</p>
                             <a href="" class="main-button">Quero Conhecer a FGT</a>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="carousel-item">
                         <img src="{{ asset('img/carousel-pic-2.jpg') }}" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
+                        <div class="carousel-caption d-none d-md-block hidden">
                             <h2>Recuperação de Créditos</h2>
                             <p>Visa reaver valores devidos e não pagos pelo inadimplente.</p>
                             <a href="" class="main-button">Quero Conhecer a FGT</a>
@@ -71,7 +71,7 @@
                     </div>
                     <div class="carousel-item">
                         <img src="{{ asset('img/carousel-pic-3.jpg') }}" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
+                        <div class="carousel-caption d-none d-md-block hidden">
                             <h2>Busca de Dívida Tributária Ativa</h2>
                             <p>Encontre e solucione suas dívidas empresariais ativas.</p>
                             <a href="" class="main-button">Quero Conhecer a FGT</a>
@@ -129,8 +129,8 @@
 
             <!-- History -->
             <section id="history-section" class="container">
-                    <img src="{{ asset('img/history-pic.jpg') }}" alt="Foto da equipe da FGT">
-                    <div>
+                    <img class="hidden" src="{{ asset('img/history-pic.jpg') }}" alt="Foto da equipe da FGT">
+                    <div class="hidden">
                         <small style="color: var(--main-color);">Venha conhecer</small>
                         <h1 style="margin: 0;">Nossa História</h1>
                         <br>
@@ -158,7 +158,7 @@
             <section id="team-section">
                 <div id="team-container">
                     {{-- Marco --}}
-                    <div class="team-member-card">
+                    <div class="team-member-card hidden">
                         <img src="{{ asset('img/lawyer-1.png') }}" alt="Foto do CEO da FGT, Marco Desiato">
                         <div class="overlay">
                             <span>
@@ -175,7 +175,7 @@
                     </div>
 
                     {{-- Everton --}}
-                    <div class="team-member-card">
+                    <div class="team-member-card hidden">
                         <img src="{{ asset('img/lawyer-3.png') }}" alt="Foto do CRO da FGT, Everton Alves">
                         <div class="overlay">
                             <span>
@@ -191,7 +191,7 @@
                     </div>
 
                     {{-- Fernanda --}}
-                    <div class="team-member-card">
+                    <div class="team-member-card hidden">
                         <img src="{{ asset('img/lawyer-4.png') }}" alt="Foto da CTO da FGT, Fernanda Guidotti">
                         <div class="overlay">
                             <span>
@@ -208,7 +208,7 @@
                     </div>
 
                     {{-- Victor --}}
-                    <div class="team-member-card">
+                    <div class="team-member-card hidden">
                         <img src="{{ asset('img/lawyer-2.png') }}" alt="Foto do CLO da FGT, Victor Dallacosta">
                         <div class="overlay">
                             <span>
@@ -232,7 +232,7 @@
                     <small>Descubra</small>
                     <h2>Nossos Valores</h2>
 
-                    <div class="value-content">
+                    <div class="value-content hidden">
                         <i class="las la-balance-scale values-icon"></i>
                         <div class="values-text">
                             <h3 class="values-name">Honestidade e Transparência</h3>
@@ -242,7 +242,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="value-content">
+                    <div class="value-content hidden">
                         <i class="las la-handshake values-icon"></i>
                         <div class="values-text">
                             <h3 class="values-name">Empatia e Comprometimento</h3>
@@ -252,7 +252,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="value-content">
+                    <div class="value-content hidden">
                         <i class="las la-medal values-icon"></i>
                         <div class="values-text">
                             <h3 class="values-name">Excelência Profissional</h3>
@@ -263,7 +263,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="value-content">
+                    <div class="value-content hidden">
                         <i class="las la-globe values-icon"></i>
                         <div class="values-text">
                             <h3 class="values-name">Impacto Positivo</h3>
@@ -349,11 +349,104 @@
                     <p><a href="" class="main-button">Entrar em Contato</a></p>
                 </div>
 
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d470464.1371439109!2d-47.36069152620545!3d-22.894882111583403!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8c8f6a2552649%3A0x7475001c58043536!2sCampinas%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1709683391445!5m2!1spt-BR!2sbr" width="50%" height="450" style="border: var(--main-color) 2px solid;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d470464.1371439109!2d-47.36069152620545!3d-22.894882111583403!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8c8f6a2552649%3A0x7475001c58043536!2sCampinas%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1709683391445!5m2!1spt-BR!2sbr" width="50%" height="470" style="border: var(--main-color) 2px solid;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </section>
         </main>
 
+        <!-- Footer -->
+        <footer id="footer" class="footer bg-overlay">
+            <!-- Footer Main -->
+            <div class="footer-main">
+              <div class="container">
+                <div class="row justify-content-between">
+                  <div class="col-lg-4 col-md-6 footer-widget footer-about">
+                    <h3 class="widget-title">Sobre Nós</h3>
+                    <img loading="lazy" width="200px" class="footer-logo" src="{{ asset('img/logo.svg') }}" alt="Constra">
+                    <p> 
+                        A essência da Fóros - Gestão Tributária
+                        reside em oferecer segurança financeira
+                        e excelência na gestão tributária, pautadas
+                        pela honestidade, transparência e empatia.
+                    </p>
+                    <div class="footer-social">
+                      <ul>
+                        <li>
+                            <a href="" aria-label="Facebook">
+                                <i class="lab la-facebook-square"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" aria-label="Instagram">
+                                <i class="lab la-instagram"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" aria-label="Email">
+                                <i class="lab la-google-plus"></i>
+                            </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+        
+                  <div class="col-lg-4 col-md-6 footer-widget mt-5 mt-md-0">
+                    <h3 class="widget-title">Contatos</h3>
+                    <div class="footer-contacts">
+                        <p class="contact-content"><strong><i class="las la-phone header-contact-icon"></i> Telefone:</strong> (19) xxxx-xxxx</p>
+                        <p class="contact-content"><strong><i class="las la-thumbtack header-contact-icon"></i> Endereço:</strong> Av. Brasil, 510 - Campinas, SP</p>
+                        <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Comercial:</strong> comercial@forosgt.com.br</p>
+                        <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Suporte:</strong> suporte@forosgt.com.br</p>
+                        <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Financeiro:</strong> financeiro@forosgt.com.br</p>
+                        <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Jurídico:</strong> juridico@forosgt.com.br</p>
+                        <br>
+                        <a href="" class="main-button">Entrar em Contato</a>
+                    </div>
+                  </div>
+        
+                  <div class="col-lg-3 col-md-6 mt-5 mt-lg-0 footer-widget">
+                    <h3 class="widget-title">Serviços</h3>
+                    <ul class="list-arrow">
+                      <li><a href="/servicos">Consultoria Tributária</a></li>
+                      <li><a href="/servicos">Recuperação de Créditos</a></li>
+                      <li><a href="/servicos">Busca por Dívida Ativa</a></li>
+                      <li><a href="/servicos">Regularização Fiscal</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="copyright">
+                <div class="container">
+                    <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="copyright-info">
+                        <span>Copyright &copy; <script>
+                            document.write(new Date().getFullYear())
+                            </script>, Desenhado &amp; Desenvolvido por <a href="">Orion</a></span>
+                        </div>
+                    </div>
+            
+                    <div class="col-md-6">
+                        <div class="footer-menu text-center text-md-right">
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="copyright-link">Início</a></li>
+                            <li><a href="#about-section" class="copyright-link">Sobre</a></li>
+                            <li><a href="#services-section" class="copyright-link">Serviços</a></li>
+                            <li><a href="#contact-section" class="copyright-link">Contato</a></li>
+                        </ul>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
         <!-- Bootstrap -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+        <!-- Script -->
+        <script src="{{ asset('scripts/script.js') }}"></script>
     </body>
 </html>

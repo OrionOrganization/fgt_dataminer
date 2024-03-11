@@ -1,3 +1,8 @@
+@php
+    $whatsappUrl = 'https://api.whatsapp.com/send?phone=5535984558944&text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20a%20respeito%20da%20F%C3%B3ros.';    
+    $instagramUrl = 'https://www.instagram.com/forosgt/';
+@endphp
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -17,30 +22,32 @@
     </head>
     <body>
          <!-- Header -->
-        <header id="sub-header" class="display-flex-around">
+        <nav id="sub-header" class="display-flex-around">
             <div id="sub-header-contact">
-                <i class="las la-phone header-contact-icon"></i> <span>+55 (35) 98455-8944</span>
-                <i class="las la-envelope header-contact-icon"></i> <span>fgtgestao@gmail.com</span>
+                <div><i class="las la-phone header-contact-icon"></i> <span><a href="{{$whatsappUrl}}" target="_blank">(35) 98455-8944</a></span></div>
+                <div><i class="las la-envelope header-contact-icon"></i> <span>fgtgestao@gmail.com</span></div>
             </div>
             <div id="sub-header-socials">
-                <a href="" class="header-social-link"><i class="lab la-facebook-square header-social-icon"></i></a>
-                <a href="" class="header-social-link"><i class="lab la-instagram header-social-icon"></i></a>
-                <a href="" class="header-social-link"><i class="lab la-google-plus header-social-icon"></i></a>
+                <a href="{{$instagramUrl}}" target="_blank" class="header-social-link"><i class="lab la-instagram header-social-icon" style="color: #DD2A7B"></i></a>
+                <a href="" ><i class="lab la-linkedin header-social-icon" style="color: #3b5998"></i></a>
             </div>
-        </header>
+        </nav>
         <header id="main-header">
             <a href="#">
                 <img src="{{ asset('img/logo.svg') }}" alt="Logo FGT (Fóros Gestão Tributária)" id="header-logo">
             </a>
 
-            <nav>
+            <nav id="main-navigation">
                 <a href="#" class="header-nav-link">Início</a>
                 <a href="#about-section" class="header-nav-link">Sobre</a>
-                <a href="#services-section" class="header-nav-link">Serviços</a>
+                <a href="/servicos" class="header-nav-link">Serviços</a>
                 <a href="#contact-section" class="header-nav-link">Contato</a>
+                <a href="#news-section" class="header-nav-link">Blog</a>
 
-                <a href="" class="header-nav-button main-button">Conhecer</a>
+                <a href="{{$whatsappUrl}}" target="_blank" class="header-nav-button main-button">Conhecer</a>
             </nav>
+
+            <button class="hamburger-menu"></button>
         </header>
 
         <!-- Main -->
@@ -58,7 +65,7 @@
                         <div class="carousel-caption d-none d-md-block hidden">
                             <h2>Gestão Tributária</h2>
                             <p>Gerenciamento, planejamento, análise, controle e acompanhamento</p>
-                            <a href="" class="main-button">Quero Conhecer a FGT</a>
+                            <a href="{{$whatsappUrl}}" target="_blank" class="main-button">Quero Conhecer a FGT</a>
                         </div>
                     </div>
                     <div class="carousel-item">
@@ -66,7 +73,7 @@
                         <div class="carousel-caption d-none d-md-block hidden">
                             <h2>Recuperação de Créditos</h2>
                             <p>Visa reaver valores devidos e não pagos pelo inadimplente.</p>
-                            <a href="" class="main-button">Quero Conhecer a FGT</a>
+                            <a href="{{$whatsappUrl}}" target="_blank" class="main-button">Quero Conhecer a FGT</a>
                         </div>
                     </div>
                     <div class="carousel-item">
@@ -74,7 +81,7 @@
                         <div class="carousel-caption d-none d-md-block hidden">
                             <h2>Busca de Dívida Tributária Ativa</h2>
                             <p>Encontre e solucione suas dívidas empresariais ativas.</p>
-                            <a href="" class="main-button">Quero Conhecer a FGT</a>
+                            <a href="{{$whatsappUrl}}" target="_blank" class="main-button">Quero Conhecer a FGT</a>
                         </div>
                     </div>
                 </div>
@@ -98,22 +105,22 @@
                     </p>
                 </blockquote>
                 <figcaption class="blockquote-footer">
-                Fóros Gestão Tributária
+                    Fóros Gestão Tributária
                 </figcaption>
             </figure>
 
             <!-- About -->
             <section id="about-section" style="background-image: url({{ asset('img/about-bg.png') }});">
                 <div id="about-container" class="container">
-                    <div>
+                    <div id="text-content">
                         <h1>Sobre Nós</h1>
                         <figure>
                             <blockquote class="blockquote">
                                 <p>
-                                    A essência da Fóros - Gestão Tributária <br>
-                                    reside em oferecer segurança financeira <br>
-                                    e excelência na gestão tributária, pautadas<br>
-                                    pela honestidade, transparência e empatia. 
+                                    <em>
+                                    "A escolha da FÓROS é optar pela segurança, agilidade e eficiencia em sua gestão Fiscal. 
+                                    Possuimos uma equipe especializada e antenada com as regulamentações mais recentes garantido que sua empresa estará sempre atualizada, sendo pionera comparado com seus concorrentes. Confie na FÓROS, sua melhor parceria de gestão tributária."
+                                    </em>
                                 </p>
                             </blockquote>
                             <figcaption class="blockquote-footer" style="color: var(--main-color);">
@@ -170,7 +177,7 @@
                         <div class="bottom-div">
                             <h5>Marco Desiato</h5>
                             <hr class="divisor">
-                            <small>CEO</small>
+                            <small>Presidente - CEO</small>
                         </div>
                     </div>
 
@@ -186,7 +193,7 @@
                         <div class="bottom-div">
                             <h5>Everton Alves</h5>
                             <hr class="divisor">
-                            <small>CRO</small>
+                            <small>Diretor de Receita - CRO</small>
                         </div>
                     </div>
 
@@ -203,7 +210,7 @@
                         <div class="bottom-div">
                             <h5>Fernanda Guidotti</h5>
                             <hr class="divisor">
-                            <small>CTO</small>
+                            <small>Diretora de Tecnologia - CTO</small>
                         </div>
                     </div>
 
@@ -220,7 +227,7 @@
                         <div class="bottom-div">
                             <h5>Victor Dallacosta</h5>
                             <hr class="divisor">
-                            <small>CLO</small>
+                            <small>Diretor Jurídico - CLO</small>
                         </div>
                     </div>
                 </div>
@@ -338,19 +345,119 @@
                         através de um dos nossos telefones ou email. <br>
                         Se tiver preferência, venha visitar nosso escritório!
                     </p>
-        
-                    <p class="contact-content"><strong><i class="las la-phone header-contact-icon"></i> Telefone:</strong> (19) xxxx-xxxx</p>
-                    <p class="contact-content"><strong><i class="las la-thumbtack header-contact-icon"></i> Endereço:</strong> Av. Brasil, 510 - Campinas, SP</p>
-                    <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Comercial:</strong> comercial@forosgt.com.br</p>
-                    <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Suporte:</strong> suporte@forosgt.com.br</p>
-                    <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Financeiro:</strong> financeiro@forosgt.com.br</p>
-                    <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Jurídico:</strong> juridico@forosgt.com.br</p>
-
-                    <p><a href="" class="main-button">Entrar em Contato</a></p>
+                    <div><i class="las la-phone header-contact-icon"></i> <span>(35) 98455-8944</span></div>
                 </div>
-
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d470464.1371439109!2d-47.36069152620545!3d-22.894882111583403!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8c8f6a2552649%3A0x7475001c58043536!2sCampinas%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1709683391445!5m2!1spt-BR!2sbr" width="50%" height="470" style="border: var(--main-color) 2px solid;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="row">
+                    <div class="col-md-12">
+                      <form id="contact-form" action="#" method="post" role="form">
+                        <div class="error-container"></div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label>Nome</label>
+                              <input class="form-control form-control-name" name="name" id="name" placeholder="" type="text" required>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label>Telefone</label>
+                              <input class="form-control form-control-phone" name="phone" id="phone" placeholder="" required>
+                            </div>
+                          </div>
+                          <div class="col-md-12 mt-3">
+                            <div class="form-group">
+                              <label>Email</label>
+                              <input class="form-control form-control-email" name="email" id="email" placeholder="" type="email"
+                                required>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label>Mensagem</label>
+                            <textarea class="form-control form-control-message" name="message" id="message" placeholder="" rows="10"
+                            required></textarea>
+                        </div>
+                        <div>
+                            <br>
+                            <button class="secondary-button" type="submit">Enviar Mensagem</button>
+                        </div>
+                      </form>
+                    </div>
+              
+                  </div><!-- Content row -->
             </section>
+
+            <!-- Blog/News -->
+            <section id="news-section">
+                  <div class="row">
+                      <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="latest-post">
+                            <div class="latest-post-media">
+                              <a target="_blank" href="https://testeoriontecnologia.blogspot.com/2024/03/5-estrategias-eficientes-para-otimizar.html" class="latest-post-img">
+                                  <img loading="lazy" class="img-fluid" src="{{ asset('img/blog/blog-post-1.jpg') }}" alt="img">
+                              </a>
+                            </div>
+                            <div class="post-body">
+                              <h4 class="post-title">
+                                  <a target="_blank" href="https://testeoriontecnologia.blogspot.com/2024/03/5-estrategias-eficientes-para-otimizar.html" class="d-inline-block">5 Estratégias Eficientes para Otimizar a Gestão Tributária da sua Empresa</a>
+                              </h4>
+                              <div class="latest-post-meta">
+                                  <span class="post-item-date">
+                                    <i class="fa fa-clock-o"></i> Março, 2024
+                                  </span>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+              
+                      <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="latest-post">
+                            <div class="latest-post-media">
+                              <a href="https://testeoriontecnologia.blogspot.com/2024/03/user-os-impactos-da-legislacao.html" target="_blank" class="latest-post-img">
+                                  <img loading="lazy" class="img-fluid" src="{{ asset('img/blog/blog-post-2.jpg') }}" alt="img">
+                              </a>
+                            </div>
+                            <div class="post-body">
+                              <h4 class="post-title">
+                                  <a href="https://testeoriontecnologia.blogspot.com/2024/03/user-os-impactos-da-legislacao.html" target="_blank" class="d-inline-block">Os Impactos da Legislação Tributária Atual no Setor Agro</a>
+                              </h4>
+                              <div class="latest-post-meta">
+                                  <span class="post-item-date">
+                                    <i class="fa fa-clock-o"></i> Março, 2024
+                                  </span>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+              
+                      <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="latest-post">
+                            <div class="latest-post-media">
+                              <a href="https://testeoriontecnologia.blogspot.com/2024/03/entendendo-os-principais-tributos.html" target="_blank" class="latest-post-img">
+                                  <img loading="lazy" class="img-fluid" src="{{ asset('img/blog/blog-post-3.jpg') }}" alt="img">
+                              </a>
+                            </div>
+                            <div class="post-body">
+                              <h4 class="post-title">
+                                  <a href="https://testeoriontecnologia.blogspot.com/2024/03/entendendo-os-principais-tributos.html" target="_blank" class="d-inline-block">Entendendo os Principais Tributos Brasileiros: ICMS, IPI, ISS e Outros</a>
+                              </h4>
+                              <div class="latest-post-meta">
+                                  <span class="post-item-date">
+                                    <i class="fa fa-clock-o"></i> Março, 2024
+                                  </span>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="text-center mt-4">
+                      <a class="main-button" href="https://testeoriontecnologia.blogspot.com/" target="_blank">Ver Todos</a>
+                  </div>
+            </section>
+
+            <!-- Instagram Widget -->
+            <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+            <iframe src="//lightwidget.com/widgets/2e8231a982315607b8f903f594db7876.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;padding-inline: 5%;margin-top: 50px"></iframe>
         </main>
 
         <!-- Footer -->
@@ -361,7 +468,7 @@
                 <div class="row justify-content-between">
                   <div class="col-lg-4 col-md-6 footer-widget footer-about">
                     <h3 class="widget-title">Sobre Nós</h3>
-                    <img loading="lazy" width="200px" class="footer-logo" src="{{ asset('img/logo.svg') }}" alt="Constra">
+                    <img loading="lazy" width="200px" class="footer-logo" src="{{ asset('img/logo-white.png') }}" alt="Constra">
                     <p> 
                         A essência da Fóros - Gestão Tributária
                         reside em oferecer segurança financeira
@@ -372,17 +479,17 @@
                       <ul>
                         <li>
                             <a href="" aria-label="Facebook">
-                                <i class="lab la-facebook-square"></i>
+                                <i class="lab la-facebook-square" style="color: #fff"></i>
                             </a>
                         </li>
                         <li>
                             <a href="" aria-label="Instagram">
-                                <i class="lab la-instagram"></i>
+                                <i class="lab la-instagram" style="color: #fff"></i>
                             </a>
                         </li>
                         <li>
                             <a href="" aria-label="Email">
-                                <i class="lab la-google-plus"></i>
+                                <i class="lab la-linkedin" style="color: #fff"></i>
                             </a>
                         </li>
                       </ul>
@@ -398,8 +505,6 @@
                         <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Suporte:</strong> suporte@forosgt.com.br</p>
                         <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Financeiro:</strong> financeiro@forosgt.com.br</p>
                         <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Jurídico:</strong> juridico@forosgt.com.br</p>
-                        <br>
-                        <a href="" class="main-button">Entrar em Contato</a>
                     </div>
                   </div>
         
@@ -418,30 +523,17 @@
             
             <!-- Copyright -->
             <div class="copyright">
-                <div class="container">
-                    <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <div class="copyright-info">
-                        <span>Copyright &copy; <script>
-                            document.write(new Date().getFullYear())
-                            </script>, Desenhado &amp; Desenvolvido por <a href="">Orion</a></span>
-                        </div>
-                    </div>
-            
-                    <div class="col-md-6">
-                        <div class="footer-menu text-center text-md-right">
-                        <ul class="list-unstyled">
-                            <li><a href="#" class="copyright-link">Início</a></li>
-                            <li><a href="#about-section" class="copyright-link">Sobre</a></li>
-                            <li><a href="#services-section" class="copyright-link">Serviços</a></li>
-                            <li><a href="#contact-section" class="copyright-link">Contato</a></li>
-                        </ul>
-                        </div>
-                    </div>
-                    </div>
+                <span>Copyright &copy; <script>
+                    document.write(new Date().getFullYear())
+                    </script>, Desenhado &amp; Desenvolvido pela <em>Orion</em></span>
                 </div>
             </div>
         </footer>
+
+        <!-- Whatsapp Button -->
+        <a href="{{$whatsappUrl}}" class="whatsapp-button" target="_blank">
+            <img src="https://i.ibb.co/VgSspjY/whatsapp-button.png" alt="Botão Whatsapp">
+        </a>
 
         <!-- Bootstrap -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

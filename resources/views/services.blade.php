@@ -9,6 +9,9 @@
     <!-- Style -->
     <link rel="stylesheet" href="{{ asset('css/services.css') }}">
 
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
     <!-- Line Awesome Icons -->
     <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" >
 </head>
@@ -186,5 +189,83 @@
             </div>
         </div>
     </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="footer bg-overlay">
+        <!-- Footer Main -->
+        <div class="footer-main">
+            <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-lg-4 col-md-6 footer-widget footer-about">
+                <h3 class="widget-title">Sobre Nós</h3>
+                <img loading="lazy" width="200px" class="footer-logo" src="{{ asset('img/logo.svg') }}" alt="Constra">
+                <p> 
+                    A essência da Fóros - Gestão Tributária
+                    reside em oferecer segurança financeira
+                    e excelência na gestão tributária, pautadas
+                    pela honestidade, transparência e empatia.
+                </p>
+                <div class="footer-social">
+                    <ul>
+                    <li>
+                        <a href="" aria-label="Facebook">
+                            <i class="lab la-facebook-square"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" aria-label="Instagram">
+                            <i class="lab la-instagram"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" aria-label="Email">
+                            <i class="lab la-google-plus"></i>
+                        </a>
+                    </li>
+                    </ul>
+                </div>
+                </div>
+    
+                <div class="col-lg-4 col-md-6 footer-widget mt-5 mt-md-0">
+                <h3 class="widget-title">Contatos</h3>
+                <div class="footer-contacts">
+                    <p class="contact-content"><strong><i class="las la-phone header-contact-icon"></i> Telefone:</strong> (19) xxxx-xxxx</p>
+                    <p class="contact-content"><strong><i class="las la-thumbtack header-contact-icon"></i> Endereço:</strong> Av. Brasil, 510 - Campinas, SP</p>
+                    <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Comercial:</strong> comercial@forosgt.com.br</p>
+                    <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Suporte:</strong> suporte@forosgt.com.br</p>
+                    <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Financeiro:</strong> financeiro@forosgt.com.br</p>
+                    <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Jurídico:</strong> juridico@forosgt.com.br</p>
+                </div>
+                </div>
+    
+                <div class="col-lg-3 col-md-6 mt-5 mt-lg-0 footer-widget">
+                <h3 class="widget-title">Serviços</h3>
+                <ul class="list-arrow">
+                    <li><a href="/servicos">Consultoria Tributária</a></li>
+                    <li><a href="/servicos">Recuperação de Créditos</a></li>
+                    <li><a href="/servicos">Busca por Dívida Ativa</a></li>
+                    <li><a href="/servicos">Regularização Fiscal</a></li>
+                </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+        
+        <!-- Copyright -->
+        <div class="copyright">
+            <span>Copyright &copy; <script>
+                document.write(new Date().getFullYear())
+                </script>, Desenhado &amp; Desenvolvido pela <em>Orion</em></span>
+            </div>
+        </div>
+    </footer>
+
+    {{-- Whatsapp Button --}}
+    <a href="" class="whatsapp-button" target="_blank">
+        <img src="https://i.ibb.co/VgSspjY/whatsapp-button.png" alt="Botão Whatsapp">
+    </a>
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

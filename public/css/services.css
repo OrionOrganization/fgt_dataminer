@@ -100,18 +100,16 @@
 
 .service {
     width: 85%;
-    height: 400px;
+    height: 100%;
     margin: 80px auto;
-    background-color: red;
     display: flex;
 }
 
 .service-left-content {
     width: 50%;
-    height: 100%;
-    max-height: 100%;
+    min-height: 450px;
     background-color: #eeeeee;
-    padding: 25px 0 0 25px;
+    padding: 25px 0 25px 25px;
 }
 
 .service-left-content small {
@@ -134,8 +132,7 @@
 
 .service-right-content {
     width: 50%;
-    height: 100%;
-    max-height: 100%;
+    min-height: 450px;
     background-color: var(--blue-color);
     padding: 25px 25px 0 25px;
     color: var(--light-color);
@@ -153,3 +150,136 @@
     font-size: 20px;
 }
 
+/* FOOTER */
+
+.footer {
+    background-color: var(--blue-color);
+    color: var(--light-color);
+    margin-top: 120px;
+}
+  
+.footer-main {
+    padding: 80px 0 60px;
+}
+  
+.footer .widget-title {
+    font-size: 16px;
+    font-weight: 700;
+    position: relative;
+    margin: 0 0 30px;
+    padding-left: 15px;
+    text-transform: uppercase;
+    color: #fff;
+    border-left: 3px solid var(--main-color);
+}
+  
+/* FOOTER ABOUT US */
+
+.footer-logo {
+    margin-bottom: 25px;
+}
+  
+/* FOOTER SOCIAL */
+
+.footer-social {
+    margin-top: 15px;
+}
+  
+.footer-social .widget-title {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+  
+.footer-social ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-left: -13px;
+}
+
+.footer-social ul li {
+    display: inline-block;
+}
+
+.footer-social ul li a {
+    text-decoration: none;
+}
+
+.footer-social ul li a i {
+    display: block;
+    font-size: 22px;
+    color: #999;
+    transition: 400ms;
+    padding: 10px 13px;
+}
+
+.footer-social ul li a i:hover {
+    color: var(--main-color);
+}
+  
+/* LINKS */
+
+.footer-widget ul.list-arrow {
+    padding: 0 12px;
+}
+
+.footer-widget ul.list-arrow li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    padding: 8px 0;
+}
+  
+.footer-widget ul.list-arrow li:last-child {
+    border-bottom: 0;
+}
+
+.footer-widget ul.list-arrow li a {
+    text-decoration: none;
+}
+  
+.footer-widget ul.list-arrow li a,
+.footer-widget ul.list-arrow li:before {
+    color: var(--light-gray-color);
+}
+  
+.footer-widget ul.list-arrow li:hover a,
+.footer-widget ul.list-arrow li:hover {
+    color: var(--main-color);
+}
+  
+.footer-contacts {
+    padding-right: 10px;
+}
+  
+.footer-contacts .text-right {
+    float: right;
+}
+  
+/* COPYRIGHT */
+
+.copyright {
+    background: var(--blue-color);
+    color: var(--light-color);
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+    font-size: 12px;
+    padding-block: 10px;
+}
+
+.footer-menu ul li {
+    display: inline-block;
+    line-height: 12px;
+    padding-left: 15px;
+}
+
+.footer-menu ul li a:hover {
+    color: #fff;
+}
+
+/* WPP BUTTON */
+
+.whatsapp-button {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+}

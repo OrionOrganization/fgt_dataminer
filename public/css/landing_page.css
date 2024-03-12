@@ -215,7 +215,7 @@
 }
 
 #main-slider .carousel-caption h2 {
-    font-size: 50px;
+    font-size: 4vw;
     font-family: var(--secondary-font-family);
     font-weight: 600;
     margin-bottom: 10px;
@@ -223,10 +223,14 @@
 }
 
 #main-slider .carousel-caption p {
-    font-size: 23px;
+    font-size: 2.5vw;
     font-weight: 300;
     margin-bottom: 50px;
     color: var(--light-color);
+}
+
+#main-slider .carousel-caption a {
+    font-size: 1.5vw;
 }
 
 .carousel-indicators .active {
@@ -237,6 +241,10 @@
 
 #honesty-figure {
     margin-top: 50px;
+}
+
+#honesty-figure .blockquote p {
+    margin-top: 4vw;
 }
 
 /* ABOUT */
@@ -271,6 +279,7 @@
 }
 
 #about-container p {
+    font-size: 15px;
     font-family: var(--main-font-family);
     margin-bottom: 2rem;
 }
@@ -290,6 +299,10 @@
     justify-content: space-between;
     padding-top: 50px;
     padding-bottom: 50px;
+}
+
+#history-section small {
+    color: var(--main-color);
 }
 
 #history-section h1 {
@@ -407,7 +420,7 @@
 #values-section {
     width: 100%;
     height: 100%;
-    margin-top: 30px;
+    margin-top: 80px;
     padding: 0 0 0 70px;
     display: flex;
     justify-content: space-between;
@@ -500,10 +513,11 @@
     flex-wrap: nowrap;
     align-items: flex-start;
     justify-content: space-around;
-    padding: 0 70px;
+    padding: 0 5%;
     gap: 30px;
     height: auto;
     transition: height 1s ease;
+    flex-wrap: wrap;
 }
 
 #services-container .card {
@@ -694,8 +708,8 @@
 
 .footer-social ul li a i {
     display: block;
-    font-size: 22px;
-    color: #999;
+    font-size: 30px;
+    color: var(--light-color);
     transition: 400ms;
     padding: 10px 13px;
 }
@@ -869,10 +883,64 @@ RESPONSIVIDADE
         height: auto;
     }
 
-    #main-slider .carousel-caption h2,
-    #main-slider .carousel-caption p
-    {
-        font-size: 10px;
+    #main-slider .carousel-caption p {
+        margin-bottom: 20px
+    }
+
+    #about-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 30px;
+    }
+
+    #about-container #text-content {
+        width: 100%;
+    }
+
+    #about-image {
+        display: none;
+    }
+
+    #values-section {
+        padding: 0;
+    }
+
+    #values-image-content {
+        display: none;
+    }
+
+    #values-section #values-text-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        text-align: left;
+    }
+
+    #history-section img {
+        width: 90%;
+        margin: auto;
+    }
+
+    #history-section h1 {
+        width: 90%;
+        margin: auto;
+        text-align: left;
+    }
+
+    #history-section small {
+        width: 90%;
+        margin: auto !important;
+        text-align: left;
+    }
+    
+    #history-section p {
+        width: 90%;
+        margin: auto;
+        text-align: left;
     }
 }
   

@@ -1,6 +1,7 @@
 @php
     $whatsappUrl = 'https://api.whatsapp.com/send?phone=5535984558944&text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20a%20respeito%20da%20F%C3%B3ros.';    
     $instagramUrl = 'https://www.instagram.com/forosgt/';
+    $linkedinUrl = 'https://www.linkedin.com/company/forosgestaotributaria';
 @endphp
 
 <!DOCTYPE html>
@@ -28,8 +29,8 @@
                 <div><i class="las la-envelope header-contact-icon"></i> <span>fgtgestao@gmail.com</span></div>
             </div>
             <div id="sub-header-socials">
-                <a href="{{$instagramUrl}}" target="_blank" class="header-social-link"><i class="lab la-instagram header-social-icon" style="color: #DD2A7B"></i></a>
-                <a href="" ><i class="lab la-linkedin header-social-icon" style="color: #3b5998"></i></a>
+                <a href="{{$instagramUrl}}" target="_blank" class="header-social-link"><i class="lab la-instagram header-social-icon"></i></a>
+                <a href="{{$linkedinUrl}}" target="_blank" class="header-social-link"><i class="lab la-linkedin header-social-icon"></i></a>
             </div>
         </nav>
         <header id="main-header">
@@ -62,7 +63,7 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="{{ asset('img/carousel-pic-1.jpg') }}" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block hidden">
+                        <div class="carousel-caption hidden d-md-block">
                             <h2>Gestão Tributária</h2>
                             <p>Gerenciamento, planejamento, análise, controle e acompanhamento</p>
                             <a href="{{$whatsappUrl}}" target="_blank" class="main-button">Quero Conhecer a FGT</a>
@@ -70,7 +71,7 @@
                     </div>
                     <div class="carousel-item">
                         <img src="{{ asset('img/carousel-pic-2.jpg') }}" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block hidden">
+                        <div class="carousel-caption hidden d-md-block">
                             <h2>Recuperação de Créditos</h2>
                             <p>Visa reaver valores devidos e não pagos pelo inadimplente.</p>
                             <a href="{{$whatsappUrl}}" target="_blank" class="main-button">Quero Conhecer a FGT</a>
@@ -78,7 +79,7 @@
                     </div>
                     <div class="carousel-item">
                         <img src="{{ asset('img/carousel-pic-3.jpg') }}" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block hidden">
+                        <div class="carousel-caption hidden d-md-block">
                             <h2>Busca de Dívida Tributária Ativa</h2>
                             <p>Encontre e solucione suas dívidas empresariais ativas.</p>
                             <a href="{{$whatsappUrl}}" target="_blank" class="main-button">Quero Conhecer a FGT</a>
@@ -138,8 +139,8 @@
             <section id="history-section" class="container">
                     <img class="hidden" src="{{ asset('img/history-pic.jpg') }}" alt="Foto da equipe da FGT">
                     <div class="hidden">
-                        <small style="color: var(--main-color);">Venha conhecer</small>
-                        <h1 style="margin: 0;">Nossa História</h1>
+                        <small>Venha conhecer</small>
+                        <h1>Nossa História</h1>
                         <br>
                         <p>
                             A Fóros nasceu da visão empreendedora <br>
@@ -457,7 +458,8 @@
 
             <!-- Instagram Widget -->
             <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
-            <iframe src="//lightwidget.com/widgets/2e8231a982315607b8f903f594db7876.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;padding-inline: 5%;margin-top: 50px"></iframe>
+
+            <iframe src="//lightwidget.com/widgets/8d9bd1a28e585e9b9aee813cf01f37ea.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;padding-inline:5%;margin-top:50px"></iframe>
         </main>
 
         <!-- Footer -->
@@ -477,21 +479,8 @@
                     </p>
                     <div class="footer-social">
                       <ul>
-                        <li>
-                            <a href="" aria-label="Facebook">
-                                <i class="lab la-facebook-square" style="color: #fff"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" aria-label="Instagram">
-                                <i class="lab la-instagram" style="color: #fff"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" aria-label="Email">
-                                <i class="lab la-linkedin" style="color: #fff"></i>
-                            </a>
-                        </li>
+                        <li><a href="" aria-label="Instagram"><i class="lab la-instagram"></i></a></li>
+                        <li><a href="" aria-label="Linkedin"><i class="lab la-linkedin"></i></a></li>
                       </ul>
                     </div>
                   </div>

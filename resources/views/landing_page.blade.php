@@ -358,7 +358,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                      <form id="contact-form" action="#" method="post" role="form">
+                      <form id="contact-form" action="#" method="post" role="abel">
                         <div class="error-container"></div>
                         <div class="row">
                           <div class="col-md-6">

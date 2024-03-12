@@ -198,7 +198,7 @@
             <div class="row justify-content-between">
                 <div class="col-lg-4 col-md-6 footer-widget footer-about">
                 <h3 class="widget-title">Sobre Nós</h3>
-                <img loading="lazy" width="200px" class="footer-logo" src="{{ asset('img/logo.svg') }}" alt="Constra">
+                <img loading="lazy" width="200px" class="footer-logo" src="{{ asset('img/logo-white.png') }}" alt="Constra">
                 <p> 
                     A essência da Fóros - Gestão Tributária
                     reside em oferecer segurança financeira
@@ -207,21 +207,8 @@
                 </p>
                 <div class="footer-social">
                     <ul>
-                    <li>
-                        <a href="" aria-label="Facebook">
-                            <i class="lab la-facebook-square"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" aria-label="Instagram">
-                            <i class="lab la-instagram"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" aria-label="Email">
-                            <i class="lab la-google-plus"></i>
-                        </a>
-                    </li>
+                        <li><a href="" aria-label="Instagram"><i class="lab la-instagram"></i></a></li>
+                        <li><a href="" aria-label="Linkedin"><i class="lab la-linkedin"></i></a></li>
                     </ul>
                 </div>
                 </div>

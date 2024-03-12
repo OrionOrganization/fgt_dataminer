@@ -207,8 +207,8 @@
 
 .footer-social ul li a i {
     display: block;
-    font-size: 22px;
-    color: #999;
+    font-size: 30px;
+    color: var(--light-color);
     transition: 400ms;
     padding: 10px 13px;
 }
@@ -282,4 +282,16 @@
     position: fixed;
     right: 15px;
     bottom: 15px;
+}
+
+@media (max-width: 767px) {
+    .service {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .service-left-content, .service-right-content {
+        width: 90%;
+    }
 }

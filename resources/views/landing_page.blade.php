@@ -1,5 +1,5 @@
 @php
-    $whatsappUrl = 'https://api.whatsapp.com/send?phone=5535984558944&text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20a%20respeito%20da%20F%C3%B3ros.';    
+    $whatsappUrl = 'https://contate.me/forosgt';    
     $instagramUrl = 'https://www.instagram.com/forosgt/';
     $linkedinUrl = 'https://www.linkedin.com/company/forosgestaotributaria';
 @endphp
@@ -39,6 +39,8 @@
             </a>
 
             <nav id="main-navigation">
+                <img src="{{ asset('img/logo-white.png') }}" alt="" class="d-none" id="main-navigation-logo">
+                
                 <a href="#" class="header-nav-link">Início</a>
                 <a href="#about-section" class="header-nav-link">Sobre</a>
                 <a href="/servicos" class="header-nav-link">Serviços</a>
@@ -136,31 +138,37 @@
             </section>
 
             <!-- History -->
-            <section id="history-section" class="container">
-                    <img class="hidden" src="{{ asset('img/history-pic.jpg') }}" alt="Foto da equipe da FGT">
-                    <div class="hidden">
+            <div class="container text-left">
+                <div class="row" id="history-section">
+                  <div class="col">
+                    <img class="hidden" style="width: 100%" src="{{ asset('img/history-pic.jpg') }}" alt="Foto da equipe da FGT">
+                  </div>
+                  <div class="col">
+                    <div class="hidden text-content">
                         <small>Venha conhecer</small>
                         <h1>Nossa História</h1>
                         <br>
                         <p>
-                            A Fóros nasceu da visão empreendedora <br>
-                            dos fundadores, que almejavam estabelecer um escritório <br>
-                            especializado em fornecer <strong>soluções tributárias personalizadas <br>
+                            A Fóros nasceu da visão empreendedora
+                            dos fundadores, que almejavam estabelecer um escritório
+                            especializado em fornecer <strong>soluções tributárias personalizadas
                             e seguras para seus clientes.</strong><br>
                             <br>
         
-                            Nosso compromisso é oferecer excelência na gestão fiscal, <br>
-                            proporcionando <strong>confiança e tranquilidade aos empresários</strong> <br>
+                            Nosso compromisso é oferecer excelência na gestão fiscal,
+                            proporcionando <strong>confiança e tranquilidade aos empresários</strong>
                             que buscam otimizar sua performance financeira. <br>
         
                             <br>
         
-                            Contamos com uma equipe dedicada e especializada, <br>
-                            pronta para transformar desafios tributários em oportunidades <br>
+                            Contamos com uma equipe dedicada e especializada,
+                            pronta para transformar desafios tributários em oportunidades
                             de crescimento para o seu negócio.
                         </p>
                     </div>
-            </section>
+                  </div>
+                </div>
+            </div>
 
             <!-- Team -->
             <section id="team-section">

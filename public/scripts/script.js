@@ -32,15 +32,22 @@ window.addEventListener('scroll', function() {
 // HAMBURGER MENU
 
 const hamburger = document.querySelector('.hamburger-menu');
-
 const mainNav = document.querySelector('#main-navigation');
-
 const subHeader = document.querySelector('#sub-header');
 
 hamburger.addEventListener('click', () => {
     mainNav.classList.toggle('actived-menu');
-
     hamburger.classList.toggle('actived-hamburger');
-    
     subHeader.classList.toggle('d-none');
 });
+
+
+ var links = document.querySelectorAll('.header-nav-link');
+
+ links.forEach(function(link) {
+     link.addEventListener('click', function(event) {
+
+         var hamburger = document.querySelector('.hamburger-menu');
+         hamburger.click();
+     });
+ });

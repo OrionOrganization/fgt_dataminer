@@ -211,11 +211,11 @@
 }
 
 #main-slider .carousel-caption {
-    top: 25%;
+    top: 30%;
 }
 
 #main-slider .carousel-caption h2 {
-    font-size: 4vw;
+    font-size: 3.5vw;
     font-family: var(--secondary-font-family);
     font-weight: 600;
     margin-bottom: 10px;
@@ -223,7 +223,7 @@
 }
 
 #main-slider .carousel-caption p {
-    font-size: 2.5vw;
+    font-size: 2vw;
     font-weight: 300;
     margin-bottom: 50px;
     color: var(--light-color);
@@ -244,7 +244,7 @@
 }
 
 #honesty-figure .blockquote p {
-    margin-top: 4vw;
+    font-size: clamp(0.8em, 0.8em + 0.8vw, 0.8em);
 }
 
 /* ABOUT */
@@ -310,7 +310,7 @@
     margin: 0;
 }
 
-#history-section p {
+#history-section .text-content p {
     text-align: justify;
 }
 
@@ -514,7 +514,7 @@
     align-items: flex-start;
     justify-content: space-around;
     padding: 0 5%;
-    gap: 30px;
+    gap: 5px;
     height: auto;
     transition: height 1s ease;
     flex-wrap: wrap;
@@ -558,7 +558,6 @@
 
 #services-container .card:hover {
     border: var(--main-color) 1px solid;
-    transform: scale(1.1);
 }
 
 #services-container .card:hover .service-icon {
@@ -793,6 +792,9 @@ RESPONSIVIDADE
 ================================
 */
 
+
+/* HAMBURGER MENU RESPONSIVITY */
+
 @media (max-width: 700px) {
     #sub-header-socials {
       display: none;
@@ -833,6 +835,24 @@ RESPONSIVIDADE
         font-size: 24px;
         opacity: 0;
         color: var(--light-color);
+    }
+
+    #main-navigation a::after {
+        content: " ";
+        width: 200px;
+        height: 1px;
+        background-color: var(--light-color);
+        opacity: 0.3;
+        bottom: -15px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #main-navigation img {
+        width: 20%;
+        margin-left: 20px;
+        display: block !important;
     }
 
     #main-navigation:nth-child(1) a {
@@ -879,6 +899,7 @@ RESPONSIVIDADE
 }
 
 @media (max-width: 767px) {
+    /* CAROUSEL */
     #main-slider, #main-slider .carousel-inner, #main-slider .carousel-item {
         height: auto;
     }
@@ -887,6 +908,7 @@ RESPONSIVIDADE
         margin-bottom: 20px
     }
 
+    /* ABOUT US */
     #about-container {
         width: 100%;
         display: flex;
@@ -904,6 +926,30 @@ RESPONSIVIDADE
         display: none;
     }
 
+    /* HISTORY */
+    #history-section {
+        flex-direction: column;
+    }
+
+    #history-section img {
+        width: 90%;
+        margin: auto;
+    }
+
+    #history-section .text-content {
+        width: 90%;
+        margin-inline: auto;
+        margin-top: 15px;
+        text-align: left;
+    }
+
+    /* TEAM */
+    #team-section #team-container .team-member-card {
+        width: 35em;
+        margin-bottom: 40px;
+    }
+
+    /* VALUES */
     #values-section {
         padding: 0;
     }
@@ -913,34 +959,16 @@ RESPONSIVIDADE
     }
 
     #values-section #values-text-content {
-        display: flex;
         flex-direction: column;
         justify-content: space-around;
-        align-items: center;
-        text-align: left;
+        align-items: flex-start;
+        padding-left: 5%;
     }
+}
 
-    #history-section img {
-        width: 90%;
-        margin: auto;
-    }
-
-    #history-section h1 {
-        width: 90%;
-        margin: auto;
-        text-align: left;
-    }
-
-    #history-section small {
-        width: 90%;
-        margin: auto !important;
-        text-align: left;
-    }
-    
-    #history-section p {
-        width: 90%;
-        margin: auto;
-        text-align: left;
+@media (max-width: 975px) {
+    #main-slider, #main-slider .carousel-inner, #main-slider .carousel-item {
+        height: auto;
     }
 }
   

@@ -29,8 +29,8 @@
                 <div><i class="las la-envelope header-contact-icon"></i> <span>fgtgestao@gmail.com</span></div>
             </div>
             <div id="sub-header-socials">
-                <a href="{{$instagramUrl}}" target="_blank" class="header-social-link"><i class="lab la-instagram header-social-icon"></i></a>
-                <a href="{{$linkedinUrl}}" target="_blank" class="header-social-link"><i class="lab la-linkedin header-social-icon"></i></a>
+                <a href="{{$instagramUrl}}" target="_blank" class="header-social-link" aria-label="Acesse nosso Instagram"><i class="lab la-instagram header-social-icon"></i></a>
+                <a href="{{$linkedinUrl}}" target="_blank" class="header-social-link"><i class="Acesse nosso LinkedIn"></i></a>
             </div>
         </nav>
         <header id="main-header">
@@ -50,7 +50,7 @@
                 <a href="{{$whatsappUrl}}" target="_blank" class="header-nav-button main-button">Conhecer</a>
             </nav>
 
-            <button class="hamburger-menu"></button>
+            <button class="hamburger-menu" aria-label="Botão acessar menu"></button>
         </header>
 
         <!-- Main -->
@@ -363,26 +363,26 @@
                         <div class="row">
                           <div class="col-md-6">
                             <div class="form-group">
-                              <label>Nome</label>
+                              <label for="name">Nome</label>
                               <input class="form-control form-control-name" name="name" id="name" placeholder="" type="text" required>
                             </div>
                           </div>
                           <div class="col-md-6">
                             <div class="form-group">
-                              <label>Telefone</label>
+                              <label for="phone">Telefone</label>
                               <input class="form-control form-control-phone" name="phone" id="phone" placeholder="" required>
                             </div>
                           </div>
                           <div class="col-md-12 mt-3">
                             <div class="form-group">
-                              <label>Email</label>
+                              <label for="email">Email</label>
                               <input class="form-control form-control-email" name="email" id="email" placeholder="" type="email"
                                 required>
                             </div>
                           </div>
                         </div>
                         <div class="form-group">
-                          <label>Mensagem</label>
+                          <label for="message">Mensagem</label>
                             <textarea class="form-control form-control-message" name="message" id="message" placeholder="" rows="10"
                             required></textarea>
                         </div>
@@ -463,11 +463,6 @@
                       <a class="main-button" href="https://testeoriontecnologia.blogspot.com/" target="_blank">Ver Todos</a>
                   </div>
             </section>
-
-            <!-- Instagram Widget -->
-            <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
-
-            <iframe src="//lightwidget.com/widgets/8d9bd1a28e585e9b9aee813cf01f37ea.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;padding-inline:5%;margin-top:50px"></iframe>
         </main>
 
         <!-- Footer -->

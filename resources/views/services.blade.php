@@ -243,9 +243,7 @@
         
         <!-- Copyright -->
         <div class="copyright">
-            <span>Copyright &copy; <script>
-                document.write(new Date().getFullYear())
-                </script>, Desenhado &amp; Desenvolvido pela <em>Orion</em></span>
+            <span>Copyright &copy; {{ date('Y') }}, Desenhado &amp; Desenvolvido pela <em>Orion</em></span>
             </div>
         </div>
     </footer>

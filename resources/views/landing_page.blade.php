@@ -65,7 +65,7 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active" data-bs-interval="5000">
-                        <img src="" class="d-block w-100" id="carousel-pic-1" alt="Foto 1 da equipe FGT - Fundo de carrossel de fotos">
+                        <img src="" class="d-block w-100" id="carousel-pic-1" alt="Foto 1 da equipe FGT - Fundo de carrossel de fotos" width="100%" height="100%">
                         <div class="carousel-caption hidden d-md-block">
                             <h2>Gestão Tributária</h2>
                             <p>Gerenciamento, planejamento, análise, controle e acompanhamento</p>
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     <div class="carousel-item" data-bs-interval="5000">
-                        <img src="" class="d-block w-100" id="carousel-pic-2" alt="Foto 2 da equipe FGT - Fundo de carrossel de fotos">
+                        <img src="" class="d-block w-100" id="carousel-pic-2" alt="Foto 2 da equipe FGT - Fundo de carrossel de fotos" width="100%" height="100%">
                         <div class="carousel-caption hidden d-md-block">
                             <h2>Recuperação de Créditos</h2>
                             <p>Visa reaver valores devidos e não pagos pelo inadimplente.</p>
@@ -81,7 +81,7 @@
                         </div>
                     </div>
                     <div class="carousel-item" data-bs-interval="5000">
-                        <img src="" class="d-block w-100" id="carousel-pic-3" alt="Foto 3 da equipe FGT - Fundo de carrossel de fotos">
+                        <img src="" class="d-block w-100" id="carousel-pic-3" alt="Foto 3 da equipe FGT - Fundo de carrossel de fotos" width="100%" height="100%">
                         <div class="carousel-caption hidden d-md-block">
                             <h2>Busca de Dívida Tributária Ativa</h2>
                             <p>Encontre e solucione suas dívidas empresariais ativas.</p>
@@ -149,7 +149,7 @@
             <div class="container text-left">
                 <div class="row" id="history-section">
                   <div class="col">
-                    <img src="" id="history-image" alt="Foto da equipe da FGT" class="w-100 hidden">
+                    <img src="" id="history-image" alt="Foto da equipe da FGT" class="w-100 hidden" width="100%" height="auto">
                     </picture>
                   </div>
                   <div class="col">
@@ -184,7 +184,7 @@
                 <div id="team-container">
                     {{-- Marco --}}
                     <div class="team-member-card hidden">
-                        <img src="" id="lawyer-1-pic" alt="Foto do CEO da FGT, Marco Desiato">
+                        <img src="" id="lawyer-1-pic" alt="Foto do CEO da FGT, Marco Desiato" width="250px" height="450px">
                         <div class="overlay">
                             <span>
                                 Formado em Engenharia da Computação pela Pontifícia Universidade Católica Campinas/SP.
@@ -525,9 +525,7 @@
             
             <!-- Copyright -->
             <div class="copyright">
-                <span>Copyright &copy; <script>
-                    document.write(new Date().getFullYear())
-                    </script>, Desenhado &amp; Desenvolvido pela <em>Orion</em></span>
+                <span>Copyright &copy; {{ date('Y') }}, Desenhado &amp; Desenvolvido pela <em>Orion</em></span>
                 </div>
             </div>
         </footer>

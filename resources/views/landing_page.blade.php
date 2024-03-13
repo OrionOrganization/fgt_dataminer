@@ -67,7 +67,7 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active" data-bs-interval="5000">
-                        <img src="" class="d-block w-100" id="carousel-pic-1" alt="Foto 1 da equipe FGT - Fundo de carrossel de fotos" width="100%" height="100%">
+                        <img src="" class="d-block w-100" id="carousel-pic-1" alt="Foto 1 da equipe FGT - Fundo de carrossel de fotos" width="100%" height="100%" loading="lazy">
                         <div class="carousel-caption hidden d-md-block">
                             <h2>Gestão Tributária</h2>
                             <p>Gerenciamento, planejamento, análise, controle e acompanhamento</p>
@@ -75,7 +75,7 @@
                         </div>
                     </div>
                     <div class="carousel-item" data-bs-interval="5000">
-                        <img src="" class="d-block w-100" id="carousel-pic-2" alt="Foto 2 da equipe FGT - Fundo de carrossel de fotos" width="100%" height="100%">
+                        <img src="" class="d-block w-100" id="carousel-pic-2" alt="Foto 2 da equipe FGT - Fundo de carrossel de fotos" width="100%" height="100%" loading="lazy">
                         <div class="carousel-caption hidden d-md-block">
                             <h2>Recuperação de Créditos</h2>
                             <p>Visa reaver valores devidos e não pagos pelo inadimplente.</p>
@@ -83,7 +83,7 @@
                         </div>
                     </div>
                     <div class="carousel-item" data-bs-interval="5000">
-                        <img src="" class="d-block w-100" id="carousel-pic-3" alt="Foto 3 da equipe FGT - Fundo de carrossel de fotos" width="100%" height="100%">
+                        <img src="" class="d-block w-100" id="carousel-pic-3" alt="Foto 3 da equipe FGT - Fundo de carrossel de fotos" width="100%" height="100%" loading="lazy">
                         <div class="carousel-caption hidden d-md-block">
                             <h2>Busca de Dívida Tributária Ativa</h2>
                             <p>Encontre e solucione suas dívidas empresariais ativas.</p>

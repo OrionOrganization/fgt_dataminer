@@ -997,4 +997,201 @@ RESPONSIVIDADE
         height: auto;
     }
 }
-  
+
+/* IMAGES RESIZE */
+
+@media (min-width: 801px) {
+    /* CAROUSEL */
+
+    #carousel-pic-1, #carousel-pic-2, #carousel-pic-3 {
+        width: 1200px;
+        height: auto;
+    }
+
+    #carousel-pic-1 {
+        content: url("../img/carousel/carousel-pic-1-1200w.webp");
+    }
+
+    #carousel-pic-2 {
+        content: url("../img/carousel/carousel-pic-2-1200w.webp");
+    }
+
+    #carousel-pic-3 {
+        content: url("../img/carousel/carousel-pic-3-1200w.webp");
+    }
+
+    /* ABOUT */
+
+    #about-bg-image {
+        content: url('../img/about/about-bg-1200w.webp');
+        width: 1200px;
+        height: auto;
+    }
+
+    /* HISTORY */
+
+    #history-image {
+        content: url("../img/history/history-pic-1200w.webp");
+        width: 520px;
+        height: auto;
+    }
+
+    /* TEAM */
+
+    #lawyer-1-pic, #lawyer-2-pic, #lawyer-3-pic, #lawyer-4-pic {
+        width: 1200px;
+        height: auto;
+    }
+
+    #lawyer-1-pic {
+        content: url("../img/team/lawyer-1-1200w.webp");
+    }
+    
+    #lawyer-2-pic {
+        content: url("../img/team/lawyer-2-1200w.webp");
+    }
+
+    #lawyer-3-pic {
+        content: url("../img/team/lawyer-3-1200w.webp");
+    }
+
+    #lawyer-4-pic {
+        content: url("../img/team/lawyer-4-1200w.webp");
+    }
+
+    /* VALUES */
+
+    #values-pic {
+        content: url("../img/values/values-pic-1200w.webp");
+        width: 1200px;
+        height: auto;
+    }
+}
+
+@media (max-width: 800px) {
+    /* CAROUSEL */
+
+    #carousel-pic-1, #carousel-pic-2, #carousel-pic-3 {
+        width: 800px;
+        height: auto;
+    }
+
+    #carousel-pic-1 {
+        content: url("../img/carousel/carousel-pic-1-800w.webp");
+    }
+
+    #carousel-pic-2 {
+        content: url("../img/carousel/carousel-pic-2-800w.webp");
+    }
+
+    #carousel-pic-3 {
+        content: url("../img/carousel/carousel-pic-3-800w.webp");
+    }
+
+    /* ABOUT */
+
+    #about-bg-image {
+        content: url('../img/about/about-bg-800w.webp');
+        width: 800px;
+        height: auto;
+    }
+
+    /* HISTORY */
+
+    #history-image {
+        content: url("../img/history/history-pic-800w.webp");
+        width: 520px;
+        height: auto;
+    }
+
+    /* TEAM */
+
+    #lawyer-1-pic, #lawyer-2-pic, #lawyer-3-pic, #lawyer-4-pic {
+        width: 800px;
+        height: auto;
+    }
+
+    #lawyer-1-pic {
+        content: url("../img/team/lawyer-1-800w.webp");
+    }
+
+    #lawyer-2-pic {
+        content: url("../img/team/lawyer-2-800w.webp");
+    }
+
+    #lawyer-3-pic {
+        content: url("../img/team/lawyer-3-800w.webp");
+    }
+
+    #lawyer-4-pic {
+        content: url("../img/team/lawyer-4-800w.webp");
+    }
+
+    /* VALUES */
+
+    #values-pic {
+        content: url("../img/values/values-pic-800w.webp");
+        width: 800px;
+        height: auto;
+    }
+}
+
+@media (max-width: 520px) {
+    /* CAROUSEL */
+
+    #carousel-pic-1, #carousel-pic-2, #carousel-pic-3 {
+        width: 520px;
+        height: auto;
+    }
+
+    #carousel-pic-1 {
+        content: url("../img/carousel/carousel-pic-1-520w.webp");
+    }
+
+    #carousel-pic-2 {
+        content: url("../img/carousel/carousel-pic-2-520w.webp");
+    }
+
+    #carousel-pic-3 {
+        content: url("../img/carousel/carousel-pic-3-520w.webp");
+    }
+
+    /* ABOUT */
+
+    #about-bg-image {
+        content: url('../img/about/about-bg-520w.webp');
+        width: 520px;
+        height: auto;
+    }
+
+    /* HISTORY */
+
+    #history-image {
+        content: url("../img/history/history-pic-520w.webp");
+        width: 520px;
+        height: auto;
+    }
+
+    /* TEAM */
+
+    #lawyer-1-pic, #lawyer-2-pic, #lawyer-3-pic, #lawyer-4-pic {
+        width: 520px;
+        height: auto;
+    }
+
+    #lawyer-1-pic {
+        content: url("../img/team/lawyer-1-520w.webp");
+    }
+
+    #lawyer-2-pic {
+        content: url("../img/team/lawyer-2-520w.webp");
+    }
+
+    #lawyer-3-pic {
+        content: url("../img/team/lawyer-3-520w.webp");
+    }
+
+    #lawyer-4-pic {
+        content: url("../img/team/lawyer-4-520w.webp");
+    }
+}

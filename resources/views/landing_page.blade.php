@@ -57,43 +57,31 @@
         <!-- Main -->
         <main>
             <!-- Carousel -->
-            <section id="main-slider" class="carousel slide">
+            <section id="main-slider" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#main-slider" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#main-slider" data-bs-slide-to="1" aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#main-slider" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <picture>
-                            <source media="(max-width: 520px)" srcset="{{ asset('img/carousel/carousel-pic-1-520w.webp') }}">
-                            <source media="(max-width: 800px)" srcset="{{ asset('img/carousel/carousel-pic-1-800w.webp') }}">
-                            <img src="{{ asset('img/carousel/carousel-pic-1-1200w.webp') }}" class="d-block w-100" alt="Foto 1 da equipe FGT - Fundo de carrossel de fotos">
-                        </picture>
+                    <div class="carousel-item active" data-bs-interval="5000">
+                        <img src="" class="d-block w-100" id="carousel-pic-1" alt="Foto 1 da equipe FGT - Fundo de carrossel de fotos">
                         <div class="carousel-caption hidden d-md-block">
                             <h2>Gestão Tributária</h2>
                             <p>Gerenciamento, planejamento, análise, controle e acompanhamento</p>
                             <a href="{{$whatsappUrl}}" target="_blank" class="main-button">Quero Conhecer a FGT</a>
                         </div>
                     </div>
-                    <div class="carousel-item">
-                        <picture>
-                            <source media="(max-width: 520px)" srcset="{{ asset('img/carousel/carousel-pic-2-520w.webp') }}">
-                            <source media="(max-width: 800px)" srcset="{{ asset('img/carousel/carousel-pic-2-800w.webp') }}">
-                            <img src="{{ asset('img/carousel/carousel-pic-2-1200w.webp') }}" class="d-block w-100" alt="Foto 2 da equipe FGT - Fundo de carrossel de fotos">
-                        </picture>
+                    <div class="carousel-item" data-bs-interval="5000">
+                        <img src="" class="d-block w-100" id="carousel-pic-2" alt="Foto 2 da equipe FGT - Fundo de carrossel de fotos">
                         <div class="carousel-caption hidden d-md-block">
                             <h2>Recuperação de Créditos</h2>
                             <p>Visa reaver valores devidos e não pagos pelo inadimplente.</p>
                             <a href="{{$whatsappUrl}}" target="_blank" class="main-button">Quero Conhecer a FGT</a>
                         </div>
                     </div>
-                    <div class="carousel-item">
-                        <picture>
-                            <source media="(max-width: 520px)" srcset="{{ asset('img/carousel/carousel-pic-3-520w.webp') }}">
-                            <source media="(max-width: 800px)" srcset="{{ asset('img/carousel/carousel-pic-3-800w.webp') }}">
-                            <img src="{{ asset('img/carousel/carousel-pic-3-1200w.webp') }}" class="d-block w-100" alt="Foto 3 da equipe FGT - Fundo de carrossel de fotos">
-                        </picture>
+                    <div class="carousel-item" data-bs-interval="5000">
+                        <img src="" class="d-block w-100" id="carousel-pic-3" alt="Foto 3 da equipe FGT - Fundo de carrossel de fotos">
                         <div class="carousel-caption hidden d-md-block">
                             <h2>Busca de Dívida Tributária Ativa</h2>
                             <p>Encontre e solucione suas dívidas empresariais ativas.</p>
@@ -128,11 +116,7 @@
             <!-- About -->
             <section id="about-section">
                 <figure id="image-figure">
-                    <picture>
-                        <source media="(max-width: 520px)" srcset="{{ asset('img/about/about-bg-520w.webp') }}">
-                        <source media="(max-width: 800px)" srcset="{{ asset('img/about/about-bg-800w.webp') }}">
-                        <img src="{{ asset('img/about/about-bg-1200w.webp') }}" alt="Imagem de fundo da seção Sobre">
-                    </picture>
+                    <img src="" id="about-bg-image" alt="Imagem de fundo da seção Sobre">
                 </figure>
                 <div id="about-container" class="container">
                     <div id="text-content">
@@ -165,10 +149,7 @@
             <div class="container text-left">
                 <div class="row" id="history-section">
                   <div class="col">
-                    <picture>
-                        <source media="(max-width: 520px)" srcset="{{ asset('img/history/history-pic-520w.webp') }}">
-                        <source media="(max-width: 800px)" srcset="{{ asset('img/history/history-pic-800w.webp') }}">
-                        <img src="{{ asset('img/history/history-pic-1200w.webp') }}" alt="Foto da equipe da FGT" class="w-100 hidden">
+                    <img src="" id="history-image" alt="Foto da equipe da FGT" class="w-100 hidden">
                     </picture>
                   </div>
                   <div class="col">
@@ -203,11 +184,7 @@
                 <div id="team-container">
                     {{-- Marco --}}
                     <div class="team-member-card hidden">
-                        <picture>
-                            <source media="(max-width: 520px)" srcset="{{ asset('img/team/lawyer-1-520w.webp') }}">
-                            <source media="(max-width: 800px)" srcset="{{ asset('img/team/lawyer-1-800w.webp') }}">
-                            <img src="{{ asset('img/team/lawyer-1-1200w.webp') }}" alt="Foto do CEO da FGT, Marco Desiato">
-                        </picture>
+                        <img src="" id="lawyer-1-pic" alt="Foto do CEO da FGT, Marco Desiato">
                         <div class="overlay">
                             <span>
                                 Formado em Engenharia da Computação pela Pontifícia Universidade Católica Campinas/SP.
@@ -224,11 +201,7 @@
 
                     {{-- Everton --}}
                     <div class="team-member-card hidden">
-                        <picture>
-                            <source media="(max-width: 520px)" srcset="{{ asset('img/team/lawyer-3-520w.webp') }}">
-                            <source media="(max-width: 800px)" srcset="{{ asset('img/team/lawyer-3-800w.webp') }}">
-                            <img src="{{ asset('img/team/lawyer-3-1200w.webp') }}" alt="Foto do CRO da FGT, Everton Alves">
-                        </picture>
+                        <img src="" id="lawyer-2-pic" alt="Foto do CRO da FGT, Everton Alves">
                         <div class="overlay">
                             <span>
                                 Pós graduando em Direito Tributário e Processual Tributário pela Faculdade Alphaville (FAVI) 
@@ -244,11 +217,7 @@
 
                     {{-- Fernanda --}}
                     <div class="team-member-card hidden">
-                        <picture>
-                            <source media="(max-width: 520px)" srcset="{{ asset('img/team/lawyer-4-520w.webp') }}">
-                            <source media="(max-width: 800px)" srcset="{{ asset('img/team/lawyer-4-800w.webp') }}">
-                            <img src="{{ asset('img/team/lawyer-4-1200w.webp') }}" alt="Foto da CTO da FGT, Fernanda Guidotti">
-                        </picture>
+                        <img src="" id="lawyer-3-pic" alt="Foto da CTO da FGT, Fernanda Guidotti">
                         <div class="overlay">
                             <span>
                                 Doutoranda em Matemática Computacional pela Universidade de São Paulo (USP), 
@@ -265,11 +234,7 @@
 
                     {{-- Victor --}}
                     <div class="team-member-card hidden">
-                        <picture>
-                            <source media="(max-width: 520px)" srcset="{{ asset('img/team/lawyer-2-520w.webp') }}">
-                            <source media="(max-width: 800px)" srcset="{{ asset('img/team/lawyer-2-800w.webp') }}">
-                            <img src="{{ asset('img/team/lawyer-2-1200w.webp') }}" alt="Foto do CLO da FGT, Victor Dallacosta">
-                        </picture>
+                        <img src="" id="lawyer-4-pic" alt="Foto do CLO da FGT, Victor Dallacosta">
                         <div class="overlay">
                             <span>
                                 Mestrando em Direito Tributário pela Pontifícia Universidade Católica de São Paulo (PUC-SP)
@@ -336,11 +301,7 @@
                     </div>
                 </div>
                 <div id="values-image-content">
-                    <picture>
-                        <source media="(max-width: 520px)" srcset="{{ asset('img/values/values-pic-520w.webp') }}">
-                        <source media="(max-width: 800px)" srcset="{{ asset('img/values/values-pic-800w.webp') }}">
-                        <img src="{{ asset('img/values/values-pic-1200w.webp') }}" alt="Foto da equipe reunida na mesa">
-                    </picture>
+                    <img src="" id="values-pic" alt="Foto da equipe reunida na mesa">
                 </div>
             </section>
 
@@ -511,6 +472,7 @@
                       <a class="main-button" href="https://testeoriontecnologia.blogspot.com/" target="_blank">Ver Todos</a>
                   </div>
             </section>
+
         </main>
 
         <!-- Footer -->

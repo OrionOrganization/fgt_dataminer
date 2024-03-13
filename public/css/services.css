@@ -311,3 +311,29 @@
         width: 90%;
     }
 }
+
+/* IMAGES RESIZE */
+
+@media (min-width: 801px) {
+    #services-bg {
+        content: url("../img/services/services-bg-1200w.webp");
+        width: 1200px;
+        height: auto;
+    }
+}
+
+@media (max-width: 800px) {
+    #services-bg {
+        content: url("../img/services/services-bg-800w.webp");
+        width: 800px;
+        height: auto;
+    }
+}
+
+@media (max-width: 520px) {
+    #services-bg {
+        content: url("../img/services/services-bg-520w.webp");
+        width: 520px;
+        height: auto;
+    }
+}

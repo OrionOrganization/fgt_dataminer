@@ -9,6 +9,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Bem-vindo à Fóros - Gestão Tributária, uma empresa dedicada a fornecer soluções de gestão tributária para nossos clientes. Com uma equipe experiente de advogados especializados, estamos comprometidos em oferecer serviços de alta qualidade. Conte conosco para alcançar resultados eficazes. Agende uma consulta hoje mesmo e descubra como podemos ajudar você a alcançar seus objetivos legais.">
 
         <title>Fóros - Gestão Tributária</title>
 
@@ -30,16 +31,16 @@
             </div>
             <div id="sub-header-socials">
                 <a href="{{$instagramUrl}}" target="_blank" class="header-social-link" aria-label="Acesse nosso Instagram"><i class="lab la-instagram header-social-icon"></i></a>
-                <a href="{{$linkedinUrl}}" target="_blank" class="header-social-link"><i class="Acesse nosso LinkedIn"></i></a>
+                <a href="{{$linkedinUrl}}" target="_blank" class="header-social-link" aria-label="Acesse nosso LinkedIn"><i class="lab la-linkedin header-social-icon"></i></a>
             </div>
         </nav>
         <header id="main-header">
             <a href="#">
-                <img src="{{ asset('img/logo.svg') }}" alt="Logo FGT (Fóros Gestão Tributária)" id="header-logo">
+                <img src="{{ asset('img/logo.svg') }}" alt="Logo FGT (Fóros Gestão Tributária)" id="header-logo" width="140px" height="75px">
             </a>
 
             <nav id="main-navigation">
-                <img src="{{ asset('img/logo-white.png') }}" alt="" class="d-none" id="main-navigation-logo">
+                <img src="{{ asset('img/logo-white.png') }}" alt="Logo FGT (Fóros - Gestão Tributária)" class="d-none" id="main-navigation-logo" width="70px" height="30px">
                 
                 <a href="#" class="header-nav-link">Início</a>
                 <a href="#about-section" class="header-nav-link">Sobre</a>
@@ -47,7 +48,7 @@
                 <a href="#contact-section" class="header-nav-link">Contato</a>
                 <a href="#news-section" class="header-nav-link">Blog</a>
 
-                <a href="{{$whatsappUrl}}" target="_blank" class="header-nav-button main-button">Conhecer</a>
+                <a href="{{$whatsappUrl}}" target="_blank" class="header-nav-button secondary-button">Conhecer</a>
             </nav>
 
             <button class="hamburger-menu" aria-label="Botão acessar menu"></button>
@@ -64,7 +65,11 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="{{ asset('img/carousel-pic-1.jpg') }}" class="d-block w-100" alt="...">
+                        <picture>
+                            <source media="(max-width: 520px)" srcset="{{ asset('img/carousel/carousel-pic-1-520w.webp') }}">
+                            <source media="(max-width: 800px)" srcset="{{ asset('img/carousel/carousel-pic-1-800w.webp') }}">
+                            <img src="{{ asset('img/carousel/carousel-pic-1-1200w.webp') }}" class="d-block w-100" alt="Foto 1 da equipe FGT - Fundo de carrossel de fotos">
+                        </picture>
                         <div class="carousel-caption hidden d-md-block">
                             <h2>Gestão Tributária</h2>
                             <p>Gerenciamento, planejamento, análise, controle e acompanhamento</p>
@@ -72,7 +77,11 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="{{ asset('img/carousel-pic-2.jpg') }}" class="d-block w-100" alt="...">
+                        <picture>
+                            <source media="(max-width: 520px)" srcset="{{ asset('img/carousel/carousel-pic-2-520w.webp') }}">
+                            <source media="(max-width: 800px)" srcset="{{ asset('img/carousel/carousel-pic-2-800w.webp') }}">
+                            <img src="{{ asset('img/carousel/carousel-pic-2-1200w.webp') }}" class="d-block w-100" alt="Foto 2 da equipe FGT - Fundo de carrossel de fotos">
+                        </picture>
                         <div class="carousel-caption hidden d-md-block">
                             <h2>Recuperação de Créditos</h2>
                             <p>Visa reaver valores devidos e não pagos pelo inadimplente.</p>
@@ -80,7 +89,11 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="{{ asset('img/carousel-pic-3.jpg') }}" class="d-block w-100" alt="...">
+                        <picture>
+                            <source media="(max-width: 520px)" srcset="{{ asset('img/carousel/carousel-pic-3-520w.webp') }}">
+                            <source media="(max-width: 800px)" srcset="{{ asset('img/carousel/carousel-pic-3-800w.webp') }}">
+                            <img src="{{ asset('img/carousel/carousel-pic-3-1200w.webp') }}" class="d-block w-100" alt="Foto 3 da equipe FGT - Fundo de carrossel de fotos">
+                        </picture>
                         <div class="carousel-caption hidden d-md-block">
                             <h2>Busca de Dívida Tributária Ativa</h2>
                             <p>Encontre e solucione suas dívidas empresariais ativas.</p>
@@ -113,7 +126,14 @@
             </figure>
 
             <!-- About -->
-            <section id="about-section" style="background-image: url({{ asset('img/about-bg.png') }});">
+            <section id="about-section">
+                <figure id="image-figure">
+                    <picture>
+                        <source media="(max-width: 520px)" srcset="{{ asset('img/about/about-bg-520w.webp') }}">
+                        <source media="(max-width: 800px)" srcset="{{ asset('img/about/about-bg-800w.webp') }}">
+                        <img src="{{ asset('img/about/about-bg-1200w.webp') }}" alt="Imagem de fundo da seção Sobre">
+                    </picture>
+                </figure>
                 <div id="about-container" class="container">
                     <div id="text-content">
                         <h1>Sobre Nós</h1>
@@ -130,10 +150,14 @@
                             Marco Desiato, <cite title="Source Title">CEO da FGT</cite>
                             </figcaption>
                         </figure>
-                        <a href="" class="main-button">Solicitar Orçamento</a>
+                        <a href="{{ $whatsappUrl }}" class="main-button">Solicitar Orçamento</a>
                     </div>
 
-                    <img src="{{ asset('img/about-pic.jpeg') }}" alt="Foto de Marco Desiato, CEO da FGT" id="about-image">
+                    <picture>
+                        <source media="(max-width: 520px)" srcset="{{ asset('img/about/about-pic-520w.webp') }}">
+                        <source media="(max-width: 800px)" srcset="{{ asset('img/about/about-pic-800w.webp') }}">
+                        <img src="{{ asset('img/about/about-pic-1200w.webp') }}" alt="Foto de Marco Desiato, CEO da FGT" id="about-image">
+                    </picture>
                 </div>
             </section>
 
@@ -141,7 +165,11 @@
             <div class="container text-left">
                 <div class="row" id="history-section">
                   <div class="col">
-                    <img class="hidden" style="width: 100%" src="{{ asset('img/history-pic.jpg') }}" alt="Foto da equipe da FGT">
+                    <picture>
+                        <source media="(max-width: 520px)" srcset="{{ asset('img/history/history-pic-520w.webp') }}">
+                        <source media="(max-width: 800px)" srcset="{{ asset('img/history/history-pic-800w.webp') }}">
+                        <img src="{{ asset('img/history/history-pic-1200w.webp') }}" alt="Foto da equipe da FGT" class="w-100 hidden">
+                    </picture>
                   </div>
                   <div class="col">
                     <div class="hidden text-content">
@@ -175,7 +203,11 @@
                 <div id="team-container">
                     {{-- Marco --}}
                     <div class="team-member-card hidden">
-                        <img src="{{ asset('img/lawyer-1.png') }}" alt="Foto do CEO da FGT, Marco Desiato">
+                        <picture>
+                            <source media="(max-width: 520px)" srcset="{{ asset('img/team/lawyer-1-520w.webp') }}">
+                            <source media="(max-width: 800px)" srcset="{{ asset('img/team/lawyer-1-800w.webp') }}">
+                            <img src="{{ asset('img/team/lawyer-1-1200w.webp') }}" alt="Foto do CEO da FGT, Marco Desiato">
+                        </picture>
                         <div class="overlay">
                             <span>
                                 Formado em Engenharia da Computação pela Pontifícia Universidade Católica Campinas/SP.
@@ -184,7 +216,7 @@
                             </span>
                         </div>
                         <div class="bottom-div">
-                            <h5>Marco Desiato</h5>
+                            <h2>Marco Desiato</h2>
                             <hr class="divisor">
                             <small>Presidente - CEO</small>
                         </div>
@@ -192,7 +224,11 @@
 
                     {{-- Everton --}}
                     <div class="team-member-card hidden">
-                        <img src="{{ asset('img/lawyer-3.png') }}" alt="Foto do CRO da FGT, Everton Alves">
+                        <picture>
+                            <source media="(max-width: 520px)" srcset="{{ asset('img/team/lawyer-3-520w.webp') }}">
+                            <source media="(max-width: 800px)" srcset="{{ asset('img/team/lawyer-3-800w.webp') }}">
+                            <img src="{{ asset('img/team/lawyer-3-1200w.webp') }}" alt="Foto do CRO da FGT, Everton Alves">
+                        </picture>
                         <div class="overlay">
                             <span>
                                 Pós graduando em Direito Tributário e Processual Tributário pela Faculdade Alphaville (FAVI) 
@@ -200,7 +236,7 @@
                             </span>
                         </div>
                         <div class="bottom-div">
-                            <h5>Everton Alves</h5>
+                            <h2>Everton Alves</h2>
                             <hr class="divisor">
                             <small>Diretor de Receita - CRO</small>
                         </div>
@@ -208,7 +244,11 @@
 
                     {{-- Fernanda --}}
                     <div class="team-member-card hidden">
-                        <img src="{{ asset('img/lawyer-4.png') }}" alt="Foto da CTO da FGT, Fernanda Guidotti">
+                        <picture>
+                            <source media="(max-width: 520px)" srcset="{{ asset('img/team/lawyer-4-520w.webp') }}">
+                            <source media="(max-width: 800px)" srcset="{{ asset('img/team/lawyer-4-800w.webp') }}">
+                            <img src="{{ asset('img/team/lawyer-4-1200w.webp') }}" alt="Foto da CTO da FGT, Fernanda Guidotti">
+                        </picture>
                         <div class="overlay">
                             <span>
                                 Doutoranda em Matemática Computacional pela Universidade de São Paulo (USP), 
@@ -217,7 +257,7 @@
                             </span>
                         </div>
                         <div class="bottom-div">
-                            <h5>Fernanda Guidotti</h5>
+                            <h2>Fernanda Guidotti</h2>
                             <hr class="divisor">
                             <small>Diretora de Tecnologia - CTO</small>
                         </div>
@@ -225,7 +265,11 @@
 
                     {{-- Victor --}}
                     <div class="team-member-card hidden">
-                        <img src="{{ asset('img/lawyer-2.png') }}" alt="Foto do CLO da FGT, Victor Dallacosta">
+                        <picture>
+                            <source media="(max-width: 520px)" srcset="{{ asset('img/team/lawyer-2-520w.webp') }}">
+                            <source media="(max-width: 800px)" srcset="{{ asset('img/team/lawyer-2-800w.webp') }}">
+                            <img src="{{ asset('img/team/lawyer-2-1200w.webp') }}" alt="Foto do CLO da FGT, Victor Dallacosta">
+                        </picture>
                         <div class="overlay">
                             <span>
                                 Mestrando em Direito Tributário pela Pontifícia Universidade Católica de São Paulo (PUC-SP)
@@ -234,7 +278,7 @@
                             </span>
                         </div>
                         <div class="bottom-div">
-                            <h5>Victor Dallacosta</h5>
+                            <h2>Victor Dallacosta</h2>
                             <hr class="divisor">
                             <small>Diretor Jurídico - CLO</small>
                         </div>
@@ -292,7 +336,11 @@
                     </div>
                 </div>
                 <div id="values-image-content">
-                    <img src="{{ asset('img/values-pic.jpg') }}" alt="Foto de Marco Desiato">
+                    <picture>
+                        <source media="(max-width: 520px)" srcset="{{ asset('img/values/values-pic-520w.webp') }}">
+                        <source media="(max-width: 800px)" srcset="{{ asset('img/values/values-pic-800w.webp') }}">
+                        <img src="{{ asset('img/values/values-pic-1200w.webp') }}" alt="Foto da equipe reunida na mesa">
+                    </picture>
                 </div>
             </section>
 
@@ -308,7 +356,7 @@
                     <div class="card text-center" style="width: 18rem;">
                         <div class="card-body">
                             <i class="service-icon las la-comments-dollar"></i>
-                            <h5 class="card-title">Consultoria Tributária</h5>
+                            <h2 class="card-title">Consultoria Tributária</h2>
                             <hr class="card-divisor">
                             <p class="card-text">Análise detalhada da situação tributária para identificar oportunidades de otimização.</p>
                             <a href="/servicos" class="main-button">Saiba Mais</a>
@@ -317,7 +365,7 @@
                     <div class="card text-center" style="width: 18rem;">
                         <div class="card-body">
                             <i class="service-icon las la-donate"></i>
-                            <h5 class="card-title">Recuperação de Créditos</h5>
+                            <h2 class="card-title">Recuperação de Créditos</h2>
                             <hr class="card-divisor">
                             <p class="card-text">Avaliação minuciosa de registros e transações para identificar oportunidades de recuperação.</p>
                             <a href="/servicos" class="main-button">Saiba Mais</a>
@@ -326,7 +374,7 @@
                     <div class="card text-center" style="width: 18rem;">
                         <div class="card-body">
                             <i class="service-icon las la-balance-scale-right"></i>
-                            <h5 class="card-title">Dívida Ativa</h5>
+                            <h2 class="card-title">Dívida Ativa</h2>
                             <hr class="card-divisor">
                             <p class="card-text">Ferramenta exclusiva que permite verificar ativamente suas dívidas tributárias.</p>
                             <a href="/servicos" class="main-button">Saiba Mais</a>
@@ -335,7 +383,7 @@
                     <div class="card text-center" style="width: 18rem;">
                         <div class="card-body">
                             <i class="service-icon las la-file-invoice-dollar"></i>
-                            <h5 class="card-title">Regularização Fiscal</h5>
+                            <h2 class="card-title">Regularização Fiscal</h2>
                             <hr class="card-divisor">
                             <p class="card-text">Orientação técnica e profissional para empresas em processo de regularização fiscal.</p>
                             <a href="/servicos" class="main-button">Saiba Mais</a>
@@ -358,7 +406,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                      <form id="contact-form" action="#" method="post" role="abel">
+                      <form id="contact-form" action="#" method="post">
                         <div class="error-container"></div>
                         <div class="row">
                           <div class="col-md-6">
@@ -407,9 +455,9 @@
                               </a>
                             </div>
                             <div class="post-body">
-                              <h4 class="post-title">
+                              <h2 class="post-title">
                                   <a target="_blank" href="https://testeoriontecnologia.blogspot.com/2024/03/5-estrategias-eficientes-para-otimizar.html" class="d-inline-block">5 Estratégias Eficientes para Otimizar a Gestão Tributária da sua Empresa</a>
-                              </h4>
+                              </h2>
                               <div class="latest-post-meta">
                                   <span class="post-item-date">
                                     <i class="fa fa-clock-o"></i> Março, 2024
@@ -427,9 +475,9 @@
                               </a>
                             </div>
                             <div class="post-body">
-                              <h4 class="post-title">
+                              <h2 class="post-title">
                                   <a href="https://testeoriontecnologia.blogspot.com/2024/03/user-os-impactos-da-legislacao.html" target="_blank" class="d-inline-block">Os Impactos da Legislação Tributária Atual no Setor Agro</a>
-                              </h4>
+                              </h2>
                               <div class="latest-post-meta">
                                   <span class="post-item-date">
                                     <i class="fa fa-clock-o"></i> Março, 2024
@@ -447,9 +495,9 @@
                               </a>
                             </div>
                             <div class="post-body">
-                              <h4 class="post-title">
+                              <h2 class="post-title">
                                   <a href="https://testeoriontecnologia.blogspot.com/2024/03/entendendo-os-principais-tributos.html" target="_blank" class="d-inline-block">Entendendo os Principais Tributos Brasileiros: ICMS, IPI, ISS e Outros</a>
-                              </h4>
+                              </h2>
                               <div class="latest-post-meta">
                                   <span class="post-item-date">
                                     <i class="fa fa-clock-o"></i> Março, 2024
@@ -473,7 +521,7 @@
                 <div class="row justify-content-between">
                   <div class="col-lg-4 col-md-6 footer-widget footer-about">
                     <h3 class="widget-title">Sobre Nós</h3>
-                    <img loading="lazy" width="200px" class="footer-logo" src="{{ asset('img/logo-white.png') }}" alt="Constra">
+                    <img loading="lazy" width="200px" height="88px" class="footer-logo" src="{{ asset('img/logo-white.png') }}" alt="Logo contrastada FGT">
                     <p> 
                         A essência da Fóros - Gestão Tributária
                         reside em oferecer segurança financeira
@@ -524,7 +572,7 @@
 
         <!-- Whatsapp Button -->
         <a href="{{$whatsappUrl}}" class="whatsapp-button" target="_blank">
-            <img src="https://i.ibb.co/VgSspjY/whatsapp-button.png" alt="Botão Whatsapp">
+            <img src="https://i.ibb.co/VgSspjY/whatsapp-button.png" alt="Botão Whatsapp" width="60px" height="60px">
         </a>
 
         <!-- Bootstrap -->

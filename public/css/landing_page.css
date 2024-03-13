@@ -92,11 +92,11 @@
     align-items: center;
     gap: 10px;
     flex-wrap: wrap;
-    color: var(--light-gray-color);
+    color: var(--dark-gray-color);
 }
 
 #sub-header-contact a {
-    color: var(--light-gray-color);
+    color: var(--dark-gray-color);
     text-decoration: none;
     font-size: 15px;
 }
@@ -110,7 +110,7 @@
 }
 
 .header-social-link {
-    color: var(--light-gray-color);
+    color: var(--dark-gray-color);
 }
 
 .header-social-link:hover {
@@ -145,7 +145,7 @@
     position: relative;
     text-decoration: none;
     font-family: var(--main-font-family);
-    color: var(--light-gray-color);
+    color: var(--dark-gray-color);
     margin-left: 20px;
 }
 
@@ -257,11 +257,32 @@
     background-size: 100% 70%;
     background-color: var(--light-color);
     padding: 40px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+#about-section #image-figure {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    margin: 0;
+    padding: 0;
+    z-index: 0;
+}
+
+#about-section #image-figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 #about-container {
+    position: relative;
+    z-index: 1;
     width: 80%;
-    padding: 80px 70px;
+    padding: 50px 70px;
     background-color: var(--blue-color);
     color: var(--light-color);
     display: flex;
@@ -284,9 +305,13 @@
     margin-bottom: 2rem;
 }
 
-#about-image {
+#about-container picture {
     width: 50%;
-    height: 50%;
+}
+
+#about-image {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
@@ -391,7 +416,7 @@
     cursor: default;
 }
 
-#team-section #team-container .team-member-card .bottom-div h5 {
+#team-section #team-container .team-member-card .bottom-div h2 {
     font-family: var(--secondary-font-family);
     font-size: 22px;
 }
@@ -535,6 +560,7 @@
 
 #services-container .card .card-body .card-title {
     margin-top: 10px;
+    font-size: 20px;
 }
 
 #services-container .card .card-body .card-text {

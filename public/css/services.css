@@ -68,6 +68,22 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+#main-header #image-figure {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    z-index: 0;
+}
+
+#main-header #image-figure img {
+    width: 100%;
+    object-fit: cover;
 }
 
 #main-header h1 {
@@ -76,12 +92,12 @@
     font-size: 45px;
     color: var(--light-color);
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 #main-header a {
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 #main-header::before {
@@ -93,7 +109,7 @@
     height: 300px;
     background-color: var(--blue-color);
     opacity: 0.5;
-    z-index: 0;
+    z-index: 1;
 }
 
 /* MAIN */

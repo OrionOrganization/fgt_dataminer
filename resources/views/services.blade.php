@@ -17,7 +17,14 @@
 </head>
 <body>
     <!-- Header -->
-    <header id="main-header" style="background-image: url({{asset('img/services-bg.jpg')}});">
+    <header id="main-header">
+        <figure id="image-figure">
+            <picture>
+                <source media="(max-width: 520px)" srcset="{{ asset('img/services/services-bg-520w.webp') }}">
+                <source media="(max-width: 800px)" srcset="{{ asset('img/services/services-bg-800w.webp') }}">
+                <img src="{{ asset('img/services/services-bg-1200w.webp') }}" alt="Imagem de fundo página de serviços">
+            </picture>
+        </figure>
         <a href="/" class="main-link"><i class="las la-arrow-left"></i> Voltar ao Início</a>
         <h1>Nossos Serviços</h1>
         <a href="" class="secondary-button">Entrar em Contato</a>

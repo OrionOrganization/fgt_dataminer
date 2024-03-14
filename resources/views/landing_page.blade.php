@@ -67,7 +67,25 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active" data-bs-interval="5000">
-                        <img src="" rel="preload" fetchpriority="high" as="image" type="image/webp" class="d-block w-100" id="carousel-pic-1" alt="Foto 1 da equipe FGT - Fundo de carrossel de fotos" width="100%" height="100%">
+                        <img 
+                            srcset=
+                                "{{ asset('img/carousel/carousel-pic-1-520w.webp') }} 520w,
+                                {{ asset('img/carousel/carousel-pic-1-800w.webp') }} 800w,
+                                {{ asset('img/carousel/carousel-pic-1-1200w.webp') }} 1200w"
+                            sizes=
+                                "(max-width: 520px) 520px,
+                                (max-width: 800px) 800px,
+                                1200px"
+                            src="{{ asset('img/carousel/carousel-pic-1-1200w.webp') }}"
+                            rel="preload"
+                            fetchpriority="high"
+                            as="image"
+                            type="image/webp"
+                            class="d-block w-100"
+                            alt="Foto 1 da equipe FGT - Fundo de carrossel de fotos"
+                            width="100%"
+                            height="100%"
+                        >
                         <div class="carousel-caption hidden d-md-block">
                             <h2>Gestão Tributária</h2>
                             <p>Gerenciamento, planejamento, análise, controle e acompanhamento</p>
@@ -530,7 +548,7 @@
 
         <!-- Whatsapp Button -->
         <a href="{{$whatsappUrl}}" class="whatsapp-button" target="_blank">
-            <img src="https://i.ibb.co/VgSspjY/whatsapp-button.png" alt="Botão Whatsapp" width="60px" height="60px">
+            <img src="https://i.ibb.co/VgSspjY/whatsapp-button.png" alt="Botão Whatsapp" width="90px" height="90px">
         </a>
 
         <!-- Bootstrap -->

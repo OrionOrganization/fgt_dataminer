@@ -67,7 +67,7 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active" data-bs-interval="5000">
-                        <img src="" class="d-block w-100" id="carousel-pic-1" alt="Foto 1 da equipe FGT - Fundo de carrossel de fotos" width="100%" height="100%">
+                        <img src="" rel="preload" fetchpriority="high" as="image" type="image/webp" class="d-block w-100" id="carousel-pic-1" alt="Foto 1 da equipe FGT - Fundo de carrossel de fotos" width="100%" height="100%">
                         <div class="carousel-caption hidden d-md-block">
                             <h2>Gestão Tributária</h2>
                             <p>Gerenciamento, planejamento, análise, controle e acompanhamento</p>

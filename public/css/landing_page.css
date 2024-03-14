@@ -262,19 +262,19 @@
 }
 
 #about-section #image-figure {
-    position: absolute;
-    top: 20%;
     left: 0;
     width: 100%;
     height: 60%;
     margin: 0;
     padding: 0;
-    z-index: 0;
 }
 
-#about-section #image-figure img {
+#about-section #about-bg-image {
+    position: absolute;
+    z-index: 0;
+    top: 20%;
     width: 100%;
-    height: 100%;
+    height: 60%;
     object-fit: cover;
 }
 
@@ -479,7 +479,7 @@
 }
 
 #values-section #values-image-content img {
-    width: 38rem;
+    width: 50%;
     height: 100%;
     object-fit: cover;
     object-position: right;
@@ -809,6 +809,7 @@
     position: fixed;
     right: 15px;
     bottom: 15px;
+    z-index: 10;
 }
 
 
@@ -817,13 +818,16 @@
 RESPONSIVIDADE
 ================================
 */
-
-
-/* HAMBURGER MENU RESPONSIVITY */
-
-@media (max-width: 700px) {
+  
+/* Para celulares */
+@media (max-width: 768px) {
+    /* HAMBURGER MENU */
     #sub-header-socials {
-      display: none;
+        display: none;
+    }
+
+    #sub-header {
+        display: none;
     }
 
     #main-header {
@@ -842,7 +846,7 @@ RESPONSIVIDADE
         width: 100vw;
         height: 100vh;
         background: var(--blue-color);
-        clip-path: circle(100px at 90% -15%);
+        clip-path: circle(100px at 90% -25%);
         transition: 1s ease-out;
         display: flex;
         flex-direction: column;
@@ -877,6 +881,7 @@ RESPONSIVIDADE
 
     #main-navigation img {
         width: 20%;
+        height: auto;
         margin-left: 20px;
         display: block !important;
     }
@@ -900,31 +905,29 @@ RESPONSIVIDADE
     #main-navigation:nth-child(5) a {
         transition: 0.10s 0.10s;
     }
-
+  
     #main-navigation.actived-menu a {
         opacity: 1;
     }
-
+  
     .actived-hamburger {
         position: fixed;
         top: 26px;
         right: 16px;
         border-top-color: transparent;
     }
-
+  
     .actived-hamburger::before {
         transform: rotate(135deg);
         background: var(--light-color);
     }
-
+  
     .actived-hamburger::after {
         transform: rotate(-135deg);
         top: -7px;
         background: var(--light-color);
     }
-}
 
-@media (max-width: 767px) {
     /* CAROUSEL */
     #main-slider, #main-slider .carousel-inner, #main-slider .carousel-item {
         height: auto;
@@ -959,6 +962,7 @@ RESPONSIVIDADE
 
     #history-section img {
         width: 90%;
+        max-width: 767px;
         margin: auto;
     }
 
@@ -991,23 +995,29 @@ RESPONSIVIDADE
         padding-left: 5%;
     }
 }
-
-@media (max-width: 975px) {
-    #main-slider, #main-slider .carousel-inner, #main-slider .carousel-item {
-        height: auto;
+  
+/* Para tablets */
+@media (min-width: 769px) and (max-width: 1200px) {
+    #main-navigation-logo {
+        height: 100px;
     }
 }
+  
+/* Para desktops */
+@media (min-width: 1201px) {
 
-/* IMAGES RESIZE */
+}
 
-@media (min-width: 801px) {
-    /* CAROUSEL */
 
-    #carousel-pic-1, #carousel-pic-2, #carousel-pic-3 {
-        width: 1200px;
-        height: auto;
-    }
+/* 
+==============================
+        IMAGES RESIZE
+==============================
+*/
 
+/* CAROUSEL */
+
+@media (min-width: 1200px) {
     #carousel-pic-1 {
         content: url("../img/carousel/carousel-pic-1-1200w.webp");
     }
@@ -1024,8 +1034,6 @@ RESPONSIVIDADE
 
     #about-bg-image {
         content: url('../img/about/about-bg-1200w.webp');
-        width: 1200px;
-        height: auto;
     }
 
     #about-image {
@@ -1040,15 +1048,10 @@ RESPONSIVIDADE
 
     /* TEAM */
 
-    #lawyer-1-pic, #lawyer-2-pic, #lawyer-3-pic, #lawyer-4-pic {
-        width: 1200px;
-        height: auto;
-    }
-
     #lawyer-1-pic {
         content: url("../img/team/lawyer-1-1200w.webp");
     }
-    
+
     #lawyer-2-pic {
         content: url("../img/team/lawyer-2-1200w.webp");
     }
@@ -1065,19 +1068,11 @@ RESPONSIVIDADE
 
     #values-pic {
         content: url("../img/values/values-pic-1200w.webp");
-        width: 1200px;
-        height: auto;
     }
 }
 
-@media (max-width: 800px) {
+@media (min-width: 800px) and (max-width: 1199px) {
     /* CAROUSEL */
-
-    #carousel-pic-1, #carousel-pic-2, #carousel-pic-3 {
-        width: 800px;
-        height: auto;
-    }
-
     #carousel-pic-1 {
         content: url("../img/carousel/carousel-pic-1-800w.webp");
     }
@@ -1094,8 +1089,6 @@ RESPONSIVIDADE
 
     #about-bg-image {
         content: url('../img/about/about-bg-800w.webp');
-        width: 800px;
-        height: auto;
     }
 
     #about-image {
@@ -1109,11 +1102,6 @@ RESPONSIVIDADE
     }
 
     /* TEAM */
-
-    #lawyer-1-pic, #lawyer-2-pic, #lawyer-3-pic, #lawyer-4-pic {
-        width: 800px;
-        height: auto;
-    }
 
     #lawyer-1-pic {
         content: url("../img/team/lawyer-1-800w.webp");
@@ -1135,19 +1123,11 @@ RESPONSIVIDADE
 
     #values-pic {
         content: url("../img/values/values-pic-800w.webp");
-        width: 800px;
-        height: auto;
     }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 799px) {
     /* CAROUSEL */
-
-    #carousel-pic-1, #carousel-pic-2, #carousel-pic-3 {
-        width: 520px;
-        height: auto;
-    }
-
     #carousel-pic-1 {
         content: url("../img/carousel/carousel-pic-1-520w.webp");
     }
@@ -1164,8 +1144,6 @@ RESPONSIVIDADE
 
     #about-bg-image {
         content: url('../img/about/about-bg-520w.webp');
-        width: 520px;
-        height: auto;
     }
 
     #about-image {
@@ -1179,12 +1157,6 @@ RESPONSIVIDADE
     }
 
     /* TEAM */
-
-    #lawyer-1-pic, #lawyer-2-pic, #lawyer-3-pic, #lawyer-4-pic {
-        width: 520px;
-        height: auto;
-    }
-
     #lawyer-1-pic {
         content: url("../img/team/lawyer-1-520w.webp");
     }

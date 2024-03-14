@@ -67,25 +67,7 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active" data-bs-interval="5000">
-                        <img 
-                            srcset=
-                                "{{ asset('img/carousel/carousel-pic-1-520w.webp') }} 520w,
-                                {{ asset('img/carousel/carousel-pic-1-800w.webp') }} 800w,
-                                {{ asset('img/carousel/carousel-pic-1-1200w.webp') }} 1200w"
-                            sizes=
-                                "(max-width: 520px) 520px,
-                                (max-width: 800px) 800px,
-                                1200px"
-                            src="{{ asset('img/carousel/carousel-pic-1-1200w.webp') }}"
-                            rel="preload"
-                            fetchpriority="high"
-                            as="image"
-                            type="image/webp"
-                            class="d-block w-100"
-                            alt="Foto 1 da equipe FGT - Fundo de carrossel de fotos"
-                            width="100%"
-                            height="100%"
-                        >
+                        <img src="" id="carousel-pic-1" rel="preload" fetchpriority="high" as="image" type="image/webp" class="d-block w-100" alt="Foto 1 da equipe FGT - Fundo de carrossel de fotos" width="100%" height="100%">
                         <div class="carousel-caption hidden d-md-block">
                             <h2>Gestão Tributária</h2>
                             <p>Gerenciamento, planejamento, análise, controle e acompanhamento</p>
@@ -135,9 +117,7 @@
 
             <!-- About -->
             <section id="about-section">
-                <figure id="image-figure">
-                    <img src="" id="about-bg-image" alt="Imagem de fundo da seção Sobre">
-                </figure>
+                <img src="" id="about-bg-image" alt="Imagem de fundo da seção Sobre">
                 <div id="about-container" class="container">
                     <div id="text-content">
                         <h1>Sobre Nós</h1>
@@ -164,10 +144,7 @@
             <!-- History -->
             <div class="container text-left">
                 <div class="row" id="history-section">
-                  <div class="col">
-                    <img src="" id="history-image" alt="Foto da equipe da FGT" class="w-100 hidden">
-                    </picture>
-                  </div>
+                <img src="" id="history-image" alt="Foto da equipe da FGT" class="hidden">
                   <div class="col">
                     <div class="hidden text-content">
                         <small>Venha conhecer</small>
@@ -548,7 +525,7 @@
 
         <!-- Whatsapp Button -->
         <a href="{{$whatsappUrl}}" class="whatsapp-button" target="_blank">
-            <img src="https://i.ibb.co/VgSspjY/whatsapp-button.png" alt="Botão Whatsapp" width="90px" height="90px">
+            <img src="{{ asset('img/whatsapp-button.webp') }}" alt="Botão Whatsapp" width="60px" height="60px">
         </a>
 
         <!-- Bootstrap -->

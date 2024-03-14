@@ -1028,6 +1028,12 @@ RESPONSIVIDADE
         height: auto;
     }
 
+    #about-image {
+        content: url('../img/about/about-pic-1200w.webp');
+        width: 1200px;
+        height: auto;
+    }
+
     /* HISTORY */
 
     #history-image {
@@ -1094,6 +1100,12 @@ RESPONSIVIDADE
         height: auto;
     }
 
+    #about-image {
+        content: url('../img/about/about-pic-800w.webp');
+        width: 800px;
+        height: auto;
+    }
+
     /* HISTORY */
 
     #history-image {
@@ -1156,6 +1168,12 @@ RESPONSIVIDADE
 
     #about-bg-image {
         content: url('../img/about/about-bg-520w.webp');
+        width: 520px;
+        height: auto;
+    }
+
+    #about-image {
+        content: url('../img/about/about-pic-520w.webp');
         width: 520px;
         height: auto;
     }

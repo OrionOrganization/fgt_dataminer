@@ -139,11 +139,7 @@
                         <a href="{{ $whatsappUrl }}" class="main-button">Solicitar Orçamento</a>
                     </div>
 
-                    <picture>
-                        <source media="(max-width: 520px)" srcset="{{ asset('img/about/about-pic-520w.webp') }}">
-                        <source media="(max-width: 800px)" srcset="{{ asset('img/about/about-pic-800w.webp') }}">
-                        <img src="{{ asset('img/about/about-pic-1200w.webp') }}" alt="Foto de Marco Desiato, CEO da FGT" id="about-image">
-                    </picture>
+                    <img src="" alt="Foto de Marco Desiato, CEO da FGT" id="about-image" loading="lazy">
                 </div>
             </section>
 

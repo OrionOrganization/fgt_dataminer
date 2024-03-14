@@ -1032,8 +1032,6 @@ RESPONSIVIDADE
 
     #history-image {
         content: url("../img/history/history-pic-1200w.webp");
-        width: 1200px;
-        height: auto;
     }
 
     /* TEAM */
@@ -1100,8 +1098,6 @@ RESPONSIVIDADE
 
     #history-image {
         content: url("../img/history/history-pic-800w.webp");
-        width: 800px;
-        height: auto;
     }
 
     /* TEAM */
@@ -1168,8 +1164,6 @@ RESPONSIVIDADE
 
     #history-image {
         content: url("../img/history/history-pic-520w.webp");
-        width: 1200px;
-        height: auto;
     }
 
     /* TEAM */

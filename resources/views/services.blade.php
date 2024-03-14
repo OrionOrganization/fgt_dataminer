@@ -1,3 +1,11 @@
+@php
+    $whatsappUrl = 'https://contate.me/forosgt';    
+    $whatsappNumber = '(19) 97127-6718';
+    $instagramUrl = 'https://www.instagram.com/forosgt/';
+    $linkedinUrl = 'https://www.linkedin.com/company/forosgestaotributaria';
+    $email = 'contato@forosgt.com.br';
+@endphp
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -23,7 +31,7 @@
         </figure>
         <a href="/" class="main-link"><i class="las la-arrow-left"></i> Voltar ao Início</a>
         <h1>Nossos Serviços</h1>
-        <a href="" class="secondary-button">Entrar em Contato</a>
+        <a href="{{$whatsappUrl}}" target="_blank" class="secondary-button">Entrar em Contato</a>
     </header>
 
     <main>
@@ -48,7 +56,7 @@
                 </p>
                 <br>
                 <br>
-                <a href="" class="main-button">Entrar em Contato</a>
+                <a href="{{$whatsappUrl}}" class="main-button" target="_blank">Entrar em Contato</a>
             </div>
             <div class="service-right-content">
                 <p>
@@ -89,7 +97,7 @@
                 </p>
                 <br>
                 <br>
-                <a href="" class="main-button">Entrar em Contato</a>
+                <a href="{{$whatsappUrl}}" class="main-button" target="_blank">Entrar em Contato</a>
             </div>
             <div class="service-right-content">
                 <p>
@@ -130,7 +138,7 @@
                 </p>
                 <br>
                 <br>
-                <a href="" class="main-button">Entrar em Contato</a>
+                <a href="{{$whatsappUrl}}" class="main-button" target="_blank">Entrar em Contato</a>
             </div>
             <div class="service-right-content">
                 <p>
@@ -171,7 +179,7 @@
                 </p>
                 <br>
                 <br>
-                <a href="" class="main-button">Entrar em Contato</a>
+                <a href="{{$whatsappUrl}}" class="main-button" target="_blank">Entrar em Contato</a>
             </div>
             <div class="service-right-content">
                 <p>
@@ -210,8 +218,8 @@
                 </p>
                 <div class="footer-social">
                     <ul>
-                        <li><a href="" aria-label="Instagram"><i class="lab la-instagram"></i></a></li>
-                        <li><a href="" aria-label="Linkedin"><i class="lab la-linkedin"></i></a></li>
+                        <li><a href="{{$instagramUrl}}" target="_blank" aria-label="Instagram"><i class="lab la-instagram"></i></a></li>
+                        <li><a href="{{$linkedinUrl}}" target="_blank" aria-label="Linkedin"><i class="lab la-linkedin"></i></a></li>
                     </ul>
                 </div>
                 </div>
@@ -219,12 +227,9 @@
                 <div class="col-lg-4 col-md-6 footer-widget mt-5 mt-md-0">
                 <h3 class="widget-title">Contatos</h3>
                 <div class="footer-contacts">
-                    <p class="contact-content"><strong><i class="las la-phone header-contact-icon"></i> Telefone:</strong> (19) xxxx-xxxx</p>
-                    <p class="contact-content"><strong><i class="las la-thumbtack header-contact-icon"></i> Endereço:</strong> Av. Brasil, 510 - Campinas, SP</p>
-                    <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Comercial:</strong> comercial@forosgt.com.br</p>
-                    <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Suporte:</strong> suporte@forosgt.com.br</p>
-                    <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Financeiro:</strong> financeiro@forosgt.com.br</p>
-                    <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Jurídico:</strong> juridico@forosgt.com.br</p>
+                    <p class="contact-content"><strong><i class="las la-phone header-contact-icon"></i> Telefone:</strong> {{$whatsappNumber}}</p>
+                        <p class="contact-content"><strong><i class="las la-thumbtack header-contact-icon"></i> Endereço:</strong> Av. Brasil, 510 - Campinas, SP</p>
+                        <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Email:</strong> {{$email}}</p>
                 </div>
                 </div>
     
@@ -249,8 +254,8 @@
     </footer>
 
     {{-- Whatsapp Button --}}
-    <a href="" class="whatsapp-button" target="_blank">
-        <img src="https://i.ibb.co/VgSspjY/whatsapp-button.png" alt="Botão Whatsapp">
+    <a href="{{$whatsappUrl}}" class="whatsapp-button" target="_blank">
+        <img src="{{ asset('img/whatsapp-button.webp') }}" alt="Botão Whatsapp" width="60px" height="60px">
     </a>
 
     <!-- Bootstrap -->

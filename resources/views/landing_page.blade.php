@@ -1,7 +1,9 @@
 @php
     $whatsappUrl = 'https://contate.me/forosgt';    
+    $whatsappNumber = '(19) 97127-6718';
     $instagramUrl = 'https://www.instagram.com/forosgt/';
     $linkedinUrl = 'https://www.linkedin.com/company/forosgestaotributaria';
+    $email = 'contato@forosgt.com.br';
 @endphp
 
 <!DOCTYPE html>
@@ -28,8 +30,8 @@
          <!-- Header -->
         <nav id="sub-header" class="display-flex-around">
             <div id="sub-header-contact">
-                <div><i class="las la-phone header-contact-icon"></i> <span><a href="{{$whatsappUrl}}" target="_blank">(35) 98455-8944</a></span></div>
-                <div><i class="las la-envelope header-contact-icon"></i> <span>fgtgestao@gmail.com</span></div>
+                <div><i class="las la-phone header-contact-icon"></i> <span><a href="{{$whatsappUrl}}" target="_blank">{{$whatsappNumber}}</a></span></div>
+                <div><i class="las la-envelope header-contact-icon"></i> <span>{{$email}}</span></div>
             </div>
             <div id="sub-header-socials">
                 <a href="{{$instagramUrl}}" target="_blank" class="header-social-link" aria-label="Acesse nosso Instagram"><i class="lab la-instagram header-social-icon"></i></a>
@@ -134,7 +136,7 @@
                             Marco Desiato, <cite title="Source Title">CEO da FGT</cite>
                             </figcaption>
                         </figure>
-                        <a href="{{ $whatsappUrl }}" class="main-button">Solicitar Orçamento</a>
+                        <a href="{{$whatsappUrl}}" target="_blank" class="main-button">Solicitar Orçamento</a>
                     </div>
 
                     <img src="" alt="Foto de Marco Desiato, CEO da FGT" id="about-image" loading="lazy">
@@ -293,9 +295,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="values-image-content">
-                    <img src="" id="values-pic" alt="Foto da equipe reunida na mesa">
-                </div>
+                <img src="" id="values-pic" alt="Foto da equipe reunida na mesa">
             </section>
 
             <!-- Services -->
@@ -356,7 +356,7 @@
                         através de um dos nossos telefones ou email. <br>
                         Se tiver preferência, venha visitar nosso escritório!
                     </p>
-                    <div><i class="las la-phone header-contact-icon"></i> <span>(35) 98455-8944</span></div>
+                    <div><i class="las la-phone header-contact-icon"></i> <span>{{ $whatsappNumber }}</span></div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
@@ -485,8 +485,8 @@
                     </p>
                     <div class="footer-social">
                       <ul>
-                        <li><a href="" aria-label="Instagram"><i class="lab la-instagram"></i></a></li>
-                        <li><a href="" aria-label="Linkedin"><i class="lab la-linkedin"></i></a></li>
+                        <li><a href="{{$instagramUrl}}" target="_blank" aria-label="Instagram"><i class="lab la-instagram"></i></a></li>
+                        <li><a href="{{$linkedinUrl}}" target="_blank" aria-label="Linkedin"><i class="lab la-linkedin"></i></a></li>
                       </ul>
                     </div>
                   </div>
@@ -494,12 +494,9 @@
                   <div class="col-lg-4 col-md-6 footer-widget mt-5 mt-md-0">
                     <h3 class="widget-title">Contatos</h3>
                     <div class="footer-contacts">
-                        <p class="contact-content"><strong><i class="las la-phone header-contact-icon"></i> Telefone:</strong> (19) xxxx-xxxx</p>
+                        <p class="contact-content"><strong><i class="las la-phone header-contact-icon"></i> Telefone:</strong> {{$whatsappNumber}}</p>
                         <p class="contact-content"><strong><i class="las la-thumbtack header-contact-icon"></i> Endereço:</strong> Av. Brasil, 510 - Campinas, SP</p>
-                        <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Comercial:</strong> comercial@forosgt.com.br</p>
-                        <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Suporte:</strong> suporte@forosgt.com.br</p>
-                        <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Financeiro:</strong> financeiro@forosgt.com.br</p>
-                        <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Jurídico:</strong> juridico@forosgt.com.br</p>
+                        <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Email:</strong> {{$email}}</p>
                     </div>
                   </div>
         

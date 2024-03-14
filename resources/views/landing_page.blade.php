@@ -151,7 +151,7 @@
             <div class="container text-left">
                 <div class="row" id="history-section">
                   <div class="col">
-                    <img src="" id="history-image" alt="Foto da equipe da FGT" class="w-100 hidden" width="545px" height="365px">
+                    <img src="" id="history-image" alt="Foto da equipe da FGT" class="w-100 hidden">
                     </picture>
                   </div>
                   <div class="col">

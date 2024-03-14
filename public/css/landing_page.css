@@ -1032,7 +1032,7 @@ RESPONSIVIDADE
 
     #history-image {
         content: url("../img/history/history-pic-1200w.webp");
-        width: 520px;
+        width: 1200px;
         height: auto;
     }
 
@@ -1100,7 +1100,7 @@ RESPONSIVIDADE
 
     #history-image {
         content: url("../img/history/history-pic-800w.webp");
-        width: 520px;
+        width: 800px;
         height: auto;
     }
 
@@ -1168,7 +1168,7 @@ RESPONSIVIDADE
 
     #history-image {
         content: url("../img/history/history-pic-520w.webp");
-        width: 520px;
+        width: 1200px;
         height: auto;
     }
 

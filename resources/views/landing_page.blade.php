@@ -401,68 +401,33 @@
             <!-- Blog/News -->
             <section id="news-section">
                   <div class="row">
-                      <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="latest-post">
-                            <div class="latest-post-media">
-                              <a target="_blank" href="https://testeoriontecnologia.blogspot.com/2024/03/5-estrategias-eficientes-para-otimizar.html" class="latest-post-img">
-                                  <img loading="lazy" class="img-fluid" src="{{ asset('img/blog/blog-post-1.jpg') }}" alt="img">
-                              </a>
+                        @php
+                            $blogs = \App\Models\BlogPost::orderBy('created_at', 'DESC')->take(3)->get();
+                        @endphp
+
+                        @foreach ($blogs as $blog)
+                            <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="latest-post">
+                                <div class="latest-post-media">
+                                <a target="_blank" href="">
+                                    <img loading="lazy" class="img-fluid latest-post-img" src="{{ $blog->image }}" alt="img">
+                                </a>
+                                </div>
+                                <div class="post-body">
+                                <h2 class="post-title">
+                                    <a target="_blank" href="" class="d-inline-block">
+                                        {{ $blog->title }}
+                                    </a>
+                                </h2>
+                                <div class="latest-post-meta">
+                                    <span class="post-item-date">
+                                        <i class="fa fa-clock-o"></i> {{ \Carbon\Carbon::parse($blog->created_at)->format('M Y'); }}
+                                    </span>
+                                </div>
+                                </div>
                             </div>
-                            <div class="post-body">
-                              <h2 class="post-title">
-                                  <a target="_blank" href="https://testeoriontecnologia.blogspot.com/2024/03/5-estrategias-eficientes-para-otimizar.html" class="d-inline-block">5 Estratégias Eficientes para Otimizar a Gestão Tributária da sua Empresa</a>
-                              </h2>
-                              <div class="latest-post-meta">
-                                  <span class="post-item-date">
-                                    <i class="fa fa-clock-o"></i> Março, 2024
-                                  </span>
-                              </div>
                             </div>
-                        </div>
-                      </div>
-              
-                      <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="latest-post">
-                            <div class="latest-post-media">
-                              <a href="https://testeoriontecnologia.blogspot.com/2024/03/user-os-impactos-da-legislacao.html" target="_blank" class="latest-post-img">
-                                  <img loading="lazy" class="img-fluid" src="{{ asset('img/blog/blog-post-2.jpg') }}" alt="img">
-                              </a>
-                            </div>
-                            <div class="post-body">
-                              <h2 class="post-title">
-                                  <a href="https://testeoriontecnologia.blogspot.com/2024/03/user-os-impactos-da-legislacao.html" target="_blank" class="d-inline-block">Os Impactos da Legislação Tributária Atual no Setor Agro</a>
-                              </h2>
-                              <div class="latest-post-meta">
-                                  <span class="post-item-date">
-                                    <i class="fa fa-clock-o"></i> Março, 2024
-                                  </span>
-                              </div>
-                            </div>
-                        </div>
-                      </div>
-              
-                      <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="latest-post">
-                            <div class="latest-post-media">
-                              <a href="https://testeoriontecnologia.blogspot.com/2024/03/entendendo-os-principais-tributos.html" target="_blank" class="latest-post-img">
-                                  <img loading="lazy" class="img-fluid" src="{{ asset('img/blog/blog-post-3.jpg') }}" alt="img">
-                              </a>
-                            </div>
-                            <div class="post-body">
-                              <h2 class="post-title">
-                                  <a href="https://testeoriontecnologia.blogspot.com/2024/03/entendendo-os-principais-tributos.html" target="_blank" class="d-inline-block">Entendendo os Principais Tributos Brasileiros: ICMS, IPI, ISS e Outros</a>
-                              </h2>
-                              <div class="latest-post-meta">
-                                  <span class="post-item-date">
-                                    <i class="fa fa-clock-o"></i> Março, 2024
-                                  </span>
-                              </div>
-                            </div>
-                        </div>
-                      </div>
-                  </div>
-                  <div class="text-center mt-4">
-                      <a class="main-button" href="https://testeoriontecnologia.blogspot.com/" target="_blank">Ver Todos</a>
+                        @endforeach
                   </div>
             </section>
 

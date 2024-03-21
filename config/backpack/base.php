@@ -42,8 +42,8 @@ return [
 
     // CSS files that are loaded in all pages, using Laravel's asset() helper
     'styles' => [
-        'packages/backpack/base/css/bundle.css', // has primary color electric purple (backpack default)
-        // 'packages/backpack/base/css/blue-bundle.css', // has primary color blue
+        // 'packages/backpack/base/css/bundle.css', // has primary color electric purple (backpack default)
+        'packages/backpack/base/css/blue-bundle.css', // has primary color blue
 
         // Here's what's inside the bundle:
         // 'packages/@digitallyhappy/backstrap/css/style.min.css',
@@ -73,7 +73,7 @@ return [
     'header_class' => 'app-header navbar',
 
     // Menu logo. You can replace this with an <img> tag if you have a logo.
-    'project_logo'   => '<img src="' . asset("img/logo.svg") . '" alt="Logo do Projeto" style="width: 60%;align-self: center">',
+    'project_logo'   => '<b>Fóros</b> GT',
 
     // Show / hide breadcrumbs on admin panel pages.
     'breadcrumbs' => true,

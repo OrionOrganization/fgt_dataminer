@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\BlogPostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,5 @@ Route::get('/', function () {
 Route::get('/servicos', function () {
     return view('services');
 });
+
+Route::get('/blog', [BlogPostController::class, 'index']);

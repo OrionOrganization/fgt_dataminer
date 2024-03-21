@@ -1,5 +1,5 @@
 @php
-    $whatsappUrl = 'https://contate.me/forosgt';    
+    $whatsappUrl = 'https://contate.me/forosgt';
     $whatsappNumber = '(19) 97127-6718';
     $instagramUrl = 'https://www.instagram.com/forosgt/';
     $linkedinUrl = 'https://www.linkedin.com/company/forosgestaotributaria';
@@ -45,7 +45,7 @@
 
             <nav id="main-navigation">
                 <img src="{{ asset('img/logo-white.png') }}" alt="Logo FGT (Fóros - Gestão Tributária)" class="d-none" id="main-navigation-logo" width="70px" height="30px">
-                
+
                 <a href="#" class="header-nav-link">Início</a>
                 <a href="#about-section" class="header-nav-link">Sobre</a>
                 <a href="/servicos" class="header-nav-link">Serviços</a>
@@ -127,7 +127,7 @@
                             <blockquote class="blockquote">
                                 <p>
                                     <em>
-                                    "A escolha da FÓROS é optar pela segurança, agilidade e eficiencia em sua gestão Fiscal. 
+                                    "A escolha da FÓROS é optar pela segurança, agilidade e eficiencia em sua gestão Fiscal.
                                     Possuimos uma equipe especializada e antenada com as regulamentações mais recentes garantido que sua empresa estará sempre atualizada, sendo pionera comparado com seus concorrentes. Confie na FÓROS, sua melhor parceria de gestão tributária."
                                     </em>
                                 </p>
@@ -158,13 +158,13 @@
                             especializado em fornecer <strong>soluções tributárias personalizadas
                             e seguras para seus clientes.</strong><br>
                             <br>
-        
+
                             Nosso compromisso é oferecer excelência na gestão fiscal,
                             proporcionando <strong>confiança e tranquilidade aos empresários</strong>
                             que buscam otimizar sua performance financeira. <br>
-        
+
                             <br>
-        
+
                             Contamos com uma equipe dedicada e especializada,
                             pronta para transformar desafios tributários em oportunidades
                             de crescimento para o seu negócio.
@@ -199,7 +199,7 @@
                         <img src="" id="lawyer-2-pic" alt="Foto do CRO da FGT, Everton Alves">
                         <div class="overlay">
                             <span>
-                                Pós graduando em Direito Tributário e Processual Tributário pela Faculdade Alphaville (FAVI) 
+                                Pós graduando em Direito Tributário e Processual Tributário pela Faculdade Alphaville (FAVI)
                                 Bacharel em Direito pela Universidade São Francisco de Campinas/SP (USF)
                             </span>
                         </div>
@@ -215,7 +215,7 @@
                         <img src="" id="lawyer-3-pic" alt="Foto da CTO da FGT, Fernanda Guidotti">
                         <div class="overlay">
                             <span>
-                                Doutoranda em Matemática Computacional pela Universidade de São Paulo (USP), 
+                                Doutoranda em Matemática Computacional pela Universidade de São Paulo (USP),
                                 Msc em Matemática Computacional pela Universidade de São Paulo (USP) e
                                 Graduada em Processamento de Dados pela Faculdade de Tecnologia do Estado de São Paulo de Taquaritinga/SP (FATEC).
                             </span>
@@ -394,7 +394,7 @@
                         </div>
                       </form>
                     </div>
-              
+
                   </div><!-- Content row -->
             </section>
 
@@ -420,7 +420,7 @@
                             </div>
                         </div>
                       </div>
-              
+
                       <div class="col-lg-4 col-md-6 mb-4">
                         <div class="latest-post">
                             <div class="latest-post-media">
@@ -440,7 +440,7 @@
                             </div>
                         </div>
                       </div>
-              
+
                       <div class="col-lg-4 col-md-6 mb-4">
                         <div class="latest-post">
                             <div class="latest-post-media">
@@ -477,7 +477,7 @@
                   <div class="col-lg-4 col-md-6 footer-widget footer-about">
                     <h3 class="widget-title">Sobre Nós</h3>
                     <img loading="lazy" width="200px" height="88px" class="footer-logo" src="{{ asset('img/logo-white.png') }}" alt="Logo contrastada FGT">
-                    <p> 
+                    <p>
                         A essência da Fóros - Gestão Tributária
                         reside em oferecer segurança financeira
                         e excelência na gestão tributária, pautadas
@@ -490,7 +490,7 @@
                       </ul>
                     </div>
                   </div>
-        
+
                   <div class="col-lg-4 col-md-6 footer-widget mt-5 mt-md-0">
                     <h3 class="widget-title">Contatos</h3>
                     <div class="footer-contacts">
@@ -499,7 +499,7 @@
                         <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Email:</strong> {{$email}}</p>
                     </div>
                   </div>
-        
+
                   <div class="col-lg-3 col-md-6 mt-5 mt-lg-0 footer-widget">
                     <h3 class="widget-title">Serviços</h3>
                     <ul class="list-arrow">
@@ -512,7 +512,7 @@
                 </div>
               </div>
             </div>
-            
+
             <!-- Copyright -->
             <div class="copyright">
                 <span>Copyright &copy; {{ date('Y') }}, Desenhado &amp; Desenvolvido pela <em>Orion</em></span>
@@ -527,7 +527,7 @@
 
         <!-- Bootstrap -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    
+
         <!-- Script -->
         <script src="{{ asset('scripts/script.js') }}"></script>
     </body>

@@ -531,7 +531,7 @@
 #services-section #services-container {
     display: flex;
     flex-wrap: nowrap;
-    align-items: flex-start;
+    align-items: stretch;
     justify-content: space-around;
     padding: 0 5%;
     gap: 5px;
@@ -656,15 +656,21 @@
     text-decoration: none;
     color: var(--dark-gray-color);
     transition: 0.5s;
+    text-transform: uppercase;
+}
+
+.latest-post-img {
+    width: 100%;
+    height: 220px !important;
 }
   
 .latest-post .post-title a:hover {
     color: var(--main-color);
 }
   
-.latest-post-meta {
+.latest-post-meta p {
     font-size: 13px;
-    text-transform: uppercase;
+    color: var(--light-gray-color);
 }
   
 .latest-post .post-body {
@@ -729,13 +735,13 @@
 .footer-social ul li a i {
     display: block;
     font-size: 30px;
-    color: var(--light-color);
+    color: var(--main-color);
     transition: 400ms;
     padding: 10px 13px;
 }
 
 .footer-social ul li a i:hover {
-    color: var(--main-color);
+    color: var(--light-color);
 }
   
 /* LINKS */

@@ -1,5 +1,5 @@
 @php
-    $whatsappUrl = 'https://contate.me/forosgt';    
+    $whatsappUrl = 'https://contate.me/forosgt';
     $whatsappNumber = '(19) 97127-6718';
     $instagramUrl = 'https://www.instagram.com/forosgt/';
     $linkedinUrl = 'https://www.linkedin.com/company/forosgestaotributaria';
@@ -25,6 +25,9 @@
         <!-- Line Awesome Icons -->
         <link rel="preload" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="styles.css"></noscript>
+
+        <!-- Noty -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
     </head>
     <body>
          <!-- Header -->
@@ -45,7 +48,7 @@
 
             <nav id="main-navigation">
                 <img src="{{ asset('img/logo-white.png') }}" alt="Logo FGT (Fóros - Gestão Tributária)" class="d-none" id="main-navigation-logo" width="70px" height="30px">
-                
+
                 <a href="#" class="header-nav-link">Início</a>
                 <a href="#about-section" class="header-nav-link">Sobre</a>
                 <a href="/servicos" class="header-nav-link">Serviços</a>
@@ -72,7 +75,7 @@
                         <img src="" id="carousel-pic-1" rel="preload" fetchpriority="high" as="image" type="image/webp" class="d-block w-100" alt="Foto 1 da equipe FGT - Fundo de carrossel de fotos" width="100%" height="100%">
                         <div class="carousel-caption hidden d-md-block">
                             <h2>Gestão Tributária</h2>
-                            <p>Gerenciamento, planejamento, análise, controle e acompanhamento</p>
+                            <p>Gerenciamento, planejamento, análise, controle e acompanhamento.</p>
                             <a href="{{$whatsappUrl}}" target="_blank" class="main-button">Quero Conhecer a FGT</a>
                         </div>
                     </div>
@@ -80,7 +83,7 @@
                         <img src="" class="d-block w-100" id="carousel-pic-2" alt="Foto 2 da equipe FGT - Fundo de carrossel de fotos" width="100%" height="100%">
                         <div class="carousel-caption hidden d-md-block">
                             <h2>Recuperação de Créditos</h2>
-                            <p>Visa reaver valores devidos e não pagos pelo inadimplente.</p>
+                            <p>Recuperação de valores pagos a título de tributação indevida ou a maior.</p>
                             <a href="{{$whatsappUrl}}" target="_blank" class="main-button">Quero Conhecer a FGT</a>
                         </div>
                     </div>
@@ -88,7 +91,7 @@
                         <img src="" class="d-block w-100" id="carousel-pic-3" alt="Foto 3 da equipe FGT - Fundo de carrossel de fotos" width="100%" height="100%">
                         <div class="carousel-caption hidden d-md-block">
                             <h2>Busca de Dívida Tributária Ativa</h2>
-                            <p>Encontre e solucione suas dívidas empresariais ativas.</p>
+                            <p>Encontre a solução para o passivo inscrito em dívida ativa.</p>
                             <a href="{{$whatsappUrl}}" target="_blank" class="main-button">Quero Conhecer a FGT</a>
                         </div>
                     </div>
@@ -127,8 +130,7 @@
                             <blockquote class="blockquote">
                                 <p>
                                     <em>
-                                    "A escolha da FÓROS é optar pela segurança, agilidade e eficiencia em sua gestão Fiscal. 
-                                    Possuimos uma equipe especializada e antenada com as regulamentações mais recentes garantido que sua empresa estará sempre atualizada, sendo pionera comparado com seus concorrentes. Confie na FÓROS, sua melhor parceria de gestão tributária."
+                                    "Escolher a FÓROS é optar pela segurança, agilidade e eficiência na gestão Fiscal. Possuimos uma equipe especializada e antenada com as regulamentações mais recentes, garantido que a gestão fiscal estará sempre atualizada e propondo soluções avançadas e inovadoras. Confie na FÓROS, sua melhor parceria de gestão tributária."
                                     </em>
                                 </p>
                             </blockquote>
@@ -158,13 +160,13 @@
                             especializado em fornecer <strong>soluções tributárias personalizadas
                             e seguras para seus clientes.</strong><br>
                             <br>
-        
+
                             Nosso compromisso é oferecer excelência na gestão fiscal,
                             proporcionando <strong>confiança e tranquilidade aos empresários</strong>
                             que buscam otimizar sua performance financeira. <br>
-        
+
                             <br>
-        
+
                             Contamos com uma equipe dedicada e especializada,
                             pronta para transformar desafios tributários em oportunidades
                             de crescimento para o seu negócio.
@@ -199,7 +201,7 @@
                         <img src="" id="lawyer-2-pic" alt="Foto do CRO da FGT, Everton Alves">
                         <div class="overlay">
                             <span>
-                                Pós graduando em Direito Tributário e Processual Tributário pela Faculdade Alphaville (FAVI) 
+                                Pós graduando em Direito Tributário e Processual Tributário pela Faculdade Alphaville (FAVI)
                                 Bacharel em Direito pela Universidade São Francisco de Campinas/SP (USF)
                             </span>
                         </div>
@@ -215,7 +217,7 @@
                         <img src="" id="lawyer-3-pic" alt="Foto da CTO da FGT, Fernanda Guidotti">
                         <div class="overlay">
                             <span>
-                                Doutoranda em Matemática Computacional pela Universidade de São Paulo (USP), 
+                                Doutoranda em Matemática Computacional pela Universidade de São Paulo (USP),
                                 Msc em Matemática Computacional pela Universidade de São Paulo (USP) e
                                 Graduada em Processamento de Dados pela Faculdade de Tecnologia do Estado de São Paulo de Taquaritinga/SP (FATEC).
                             </span>
@@ -321,7 +323,7 @@
                             <i class="service-icon las la-donate"></i>
                             <h2 class="card-title">Recuperação de Créditos</h2>
                             <hr class="card-divisor">
-                            <p class="card-text">Avaliação minuciosa de registros e transações para identificar oportunidades de recuperação.</p>
+                            <p class="card-text">Avaliação minuciosa de registros e transações para identificar oportunidades de reduzir a tributação e recuperar os valores pagos a maior.</p>
                             <a href="/servicos" class="main-button">Saiba Mais</a>
                         </div>
                     </div>
@@ -356,11 +358,16 @@
                         através de um dos nossos telefones ou email. <br>
                         Se tiver preferência, venha visitar nosso escritório!
                     </p>
-                    <div><i class="las la-phone header-contact-icon"></i> <span>{{ $whatsappNumber }}</span></div>
+                    <div class="footer-contacts">
+                        <p class="contact-content"><strong><i class="las la-phone header-contact-icon"></i> Telefone:</strong> {{$whatsappNumber}}</p>
+                        <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Email:</strong> {{$email}}</p>
+                        <p class="contact-content"><strong><i class="las la-thumbtack header-contact-icon"></i> Endereço:</strong> Rua Conceição, 233, Sala 916, Centro, <br> Campinas SP, 13010-916, Brasil</p>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                      <form id="contact-form" action="#" method="post">
+                      <form id="contact-form" action="{{ url('/lead') }}" method="post">
+                        @csrf
                         <div class="error-container"></div>
                         <div class="row">
                           <div class="col-md-6">
@@ -394,78 +401,46 @@
                         </div>
                       </form>
                     </div>
-              
-                  </div><!-- Content row -->
+
+                  </div>
             </section>
 
             <!-- Blog/News -->
             <section id="news-section">
-                  <div class="row">
-                      <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="latest-post">
-                            <div class="latest-post-media">
-                              <a target="_blank" href="https://testeoriontecnologia.blogspot.com/2024/03/5-estrategias-eficientes-para-otimizar.html" class="latest-post-img">
-                                  <img loading="lazy" class="img-fluid" src="{{ asset('img/blog/blog-post-1.jpg') }}" alt="img">
-                              </a>
-                            </div>
-                            <div class="post-body">
-                              <h2 class="post-title">
-                                  <a target="_blank" href="https://testeoriontecnologia.blogspot.com/2024/03/5-estrategias-eficientes-para-otimizar.html" class="d-inline-block">5 Estratégias Eficientes para Otimizar a Gestão Tributária da sua Empresa</a>
-                              </h2>
-                              <div class="latest-post-meta">
-                                  <span class="post-item-date">
-                                    <i class="fa fa-clock-o"></i> Março, 2024
-                                  </span>
-                              </div>
-                            </div>
-                        </div>
-                      </div>
-              
-                      <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="latest-post">
-                            <div class="latest-post-media">
-                              <a href="https://testeoriontecnologia.blogspot.com/2024/03/user-os-impactos-da-legislacao.html" target="_blank" class="latest-post-img">
-                                  <img loading="lazy" class="img-fluid" src="{{ asset('img/blog/blog-post-2.jpg') }}" alt="img">
-                              </a>
-                            </div>
-                            <div class="post-body">
-                              <h2 class="post-title">
-                                  <a href="https://testeoriontecnologia.blogspot.com/2024/03/user-os-impactos-da-legislacao.html" target="_blank" class="d-inline-block">Os Impactos da Legislação Tributária Atual no Setor Agro</a>
-                              </h2>
-                              <div class="latest-post-meta">
-                                  <span class="post-item-date">
-                                    <i class="fa fa-clock-o"></i> Março, 2024
-                                  </span>
-                              </div>
-                            </div>
-                        </div>
-                      </div>
-              
-                      <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="latest-post">
-                            <div class="latest-post-media">
-                              <a href="https://testeoriontecnologia.blogspot.com/2024/03/entendendo-os-principais-tributos.html" target="_blank" class="latest-post-img">
-                                  <img loading="lazy" class="img-fluid" src="{{ asset('img/blog/blog-post-3.jpg') }}" alt="img">
-                              </a>
-                            </div>
-                            <div class="post-body">
-                              <h2 class="post-title">
-                                  <a href="https://testeoriontecnologia.blogspot.com/2024/03/entendendo-os-principais-tributos.html" target="_blank" class="d-inline-block">Entendendo os Principais Tributos Brasileiros: ICMS, IPI, ISS e Outros</a>
-                              </h2>
-                              <div class="latest-post-meta">
-                                  <span class="post-item-date">
-                                    <i class="fa fa-clock-o"></i> Março, 2024
-                                  </span>
-                              </div>
-                            </div>
-                        </div>
-                      </div>
-                  </div>
-                  <div class="text-center mt-4">
-                      <a class="main-button" href="https://testeoriontecnologia.blogspot.com/" target="_blank">Ver Todos</a>
-                  </div>
-            </section>
+                <div class="row">
+                    @php
+                        $blogs = \App\Models\BlogPost::orderBy('created_at', 'DESC')->take(3)->get();
+                    @endphp
 
+                    @foreach ($blogs as $blog)
+                        <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="latest-post">
+                            <div class="latest-post-media">
+                            <a target="_blank" href="">
+                                <img loading="lazy" class="img-fluid latest-post-img" src="{{ $blog->image }}" alt="img">
+                            </a>
+                            </div>
+                            <div class="post-body">
+                                <h2 class="post-title">
+                                    <a target="_blank" href="{{ url('/blog/' . $blog->id) }}" class="d-inline-block">
+                                        {{ $blog->title }}
+                                    </a>
+                                </h2>
+                                <div class="latest-post-meta">
+                                    <p>{{ $blog->resume }}</p>
+                                    <span class="post-item-date">
+                                        <i class="las la-clock"></i> {{ \Carbon\Carbon::parse($blog->created_at)->format('M Y'); }}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="text-center mt-4">
+                    <a class="main-button" href="/blog" target="_blank">Ver Mais</a>
+                </div>
+            </section>
         </main>
 
         <!-- Footer -->
@@ -477,7 +452,7 @@
                   <div class="col-lg-4 col-md-6 footer-widget footer-about">
                     <h3 class="widget-title">Sobre Nós</h3>
                     <img loading="lazy" width="200px" height="88px" class="footer-logo" src="{{ asset('img/logo-white.png') }}" alt="Logo contrastada FGT">
-                    <p> 
+                    <p>
                         A essência da Fóros - Gestão Tributária
                         reside em oferecer segurança financeira
                         e excelência na gestão tributária, pautadas
@@ -490,16 +465,16 @@
                       </ul>
                     </div>
                   </div>
-        
+
                   <div class="col-lg-4 col-md-6 footer-widget mt-5 mt-md-0">
                     <h3 class="widget-title">Contatos</h3>
                     <div class="footer-contacts">
                         <p class="contact-content"><strong><i class="las la-phone header-contact-icon"></i> Telefone:</strong> {{$whatsappNumber}}</p>
-                        <p class="contact-content"><strong><i class="las la-thumbtack header-contact-icon"></i> Endereço:</strong> Av. Brasil, 510 - Campinas, SP</p>
+                        <p class="contact-content"><strong><i class="las la-thumbtack header-contact-icon"></i> Endereço:</strong> Rua Conceição, 233, Sala 916, Centro, Campinas SP, 13010-916, Brasil</p>
                         <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Email:</strong> {{$email}}</p>
                     </div>
                   </div>
-        
+
                   <div class="col-lg-3 col-md-6 mt-5 mt-lg-0 footer-widget">
                     <h3 class="widget-title">Serviços</h3>
                     <ul class="list-arrow">
@@ -512,11 +487,10 @@
                 </div>
               </div>
             </div>
-            
+
             <!-- Copyright -->
             <div class="copyright">
-                <span>Copyright &copy; {{ date('Y') }}, Desenhado &amp; Desenvolvido pela <em>Orion</em></span>
-                </div>
+                <span>Copyright &copy; {{ date('Y') }}, Desenhado &amp; Desenvolvido pela <em><a href="https://www.linkedin.com/company/orion-erp-solutions/" target="_blank">Orion</a></em></span>
             </div>
         </footer>
 
@@ -527,8 +501,44 @@
 
         <!-- Bootstrap -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    
+
         <!-- Script -->
         <script src="{{ asset('scripts/script.js') }}"></script>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                $('#contact-form').submit(function(event) {
+                    event.preventDefault();
+
+                    var formData = $(this).serialize();
+                    var route = "{{ url('/lead') }}";
+
+                    let form = this;
+
+                    $.ajax({
+                        url: route,
+                        type: 'POST',
+                        data: formData,
+                        success: function(response) {
+                            new Noty({
+                                type: 'success',
+                                text: 'Formulário enviado com sucesso! Entraremos em contato o mais rápido possível.'
+                            }).show();
+
+                            form.reset();
+                        },
+                        error: function(xhr, status, error) {
+                            new Noty({
+                                type: 'error',
+                                text: 'Ocorreu um erro ao enviar o formulário. Por favor, tente novamente.'
+                            }).show();
+                        }
+                    });
+                });
+            });
+        </script>
     </body>
 </html>

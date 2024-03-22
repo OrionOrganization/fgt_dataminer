@@ -269,6 +269,16 @@
 .footer-contacts .text-right {
     float: right;
 }
+
+.footer-menu ul li {
+    display: inline-block;
+    line-height: 12px;
+    padding-left: 15px;
+}
+
+.footer-menu ul li a:hover {
+    color: #fff;
+}
   
 /* COPYRIGHT */
 
@@ -280,16 +290,6 @@
     font-weight: 600;
     font-size: 12px;
     padding-block: 10px;
-}
-
-.footer-menu ul li {
-    display: inline-block;
-    line-height: 12px;
-    padding-left: 15px;
-}
-
-.footer-menu ul li a:hover {
-    color: #fff;
 }
 
 /* WPP BUTTON */

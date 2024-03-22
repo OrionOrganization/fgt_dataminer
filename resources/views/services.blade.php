@@ -82,18 +82,22 @@
             <div class="service-left-content">
                 <small>Nós oferecemos</small>
                 <h3>
-                    Recuperação de Créditos
+                    Recuperação de Valores Pagos a Título de Tributação Indevida ou a Maior
                 </h3>
                 <br>
                 <p>
-                    Por vezes, devido a várias circunstâncias, empresas podem enfrentar <br>
-                    desafios relacionados à recuperação de créditos de clientes inadimplentes. <br>
-                    Na <em>FGT</em>, compreendemos a importância vital desses créditos <br>
-                    para a saúde financeira de sua empresa.
+                    De acordo com dados do IBGE/Impostômetro, 95% das empresas <br>
+                    pagam impostos em excesso devido à complexidade da <br>
+                    legislação tributária brasileira. Isso resulta em desembolsos que excedem o valor devido.
                     <br>
                     <br>
-                    Nossa equipe trabalha de forma diligente para ajudar  <br>
-                    sua empresa a recuperar valores em atraso de forma eficiente e ética. <br>
+                    Você já parou para pensar quanto dinheiro sua empresa pode estar deixando <br>
+                    na mesa devido a créditos tributários não aproveitados? <br>
+                    Imagine ter a oportunidade de recuperar esses recursos e direcioná-los <br>
+                    para impulsionar o crescimento do seu negócio.
+                    <br>
+                    <br>
+                    Com a equipe especializada da FGT ao seu lado, essa realidade está mais próxima do que você imagina.
                 </p>
                 <br>
                 <br>
@@ -122,10 +126,7 @@
         <div class="service">
             <div class="service-left-content">
                 <small>Nós oferecemos</small>
-                <h3>
-                    Busca de Dívida <br>
-                    Tributária Ativa
-                </h3>
+                <h3>Busca de Dívida Ativa Tributária </h3>
                 <br>
                 <p>
                     Oferecemos uma ferramenta exclusiva projetada especificamente <br>
@@ -228,7 +229,7 @@
                 <h3 class="widget-title">Contatos</h3>
                 <div class="footer-contacts">
                     <p class="contact-content"><strong><i class="las la-phone header-contact-icon"></i> Telefone:</strong> {{$whatsappNumber}}</p>
-                        <p class="contact-content"><strong><i class="las la-thumbtack header-contact-icon"></i> Endereço:</strong> Av. Brasil, 510 - Campinas, SP</p>
+                        <p class="contact-content"><strong><i class="las la-thumbtack header-contact-icon"></i> Endereço:</strong> Rua Conceição, 233, Sala 916, Centro, Campinas SP, 13010-916, Brasil</p>
                         <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Email:</strong> {{$email}}</p>
                 </div>
                 </div>
@@ -248,8 +249,7 @@
         
         <!-- Copyright -->
         <div class="copyright">
-            <span>Copyright &copy; {{ date('Y') }}, Desenhado &amp; Desenvolvido pela <em>Orion</em></span>
-            </div>
+            <span>Copyright &copy; {{ date('Y') }}, Desenhado &amp; Desenvolvido pela <em><a href="https://www.linkedin.com/company/orion-erp-solutions/" target="_blank">Orion</a></em></span>
         </div>
     </footer>
 

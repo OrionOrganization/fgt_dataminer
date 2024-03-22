@@ -21,4 +21,5 @@ Route::group([
     Route::crud('client', 'ClientCrudController');
     Route::crud('task', 'TaskCrudController');
     Route::crud('blog-post', 'BlogPostCrudController');
+    Route::crud('lead', 'LeadCrudController');
 }); // this should be the absolute last line of this file

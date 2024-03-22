@@ -30,7 +30,7 @@ class TaskCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Task::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/task');
-        CRUD::setEntityNameStrings('task', 'tasks');
+        CRUD::setEntityNameStrings('tarefa', 'tarefas');
     }
 
     /**
@@ -42,14 +42,37 @@ class TaskCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('id');
-        CRUD::column('name');
-        CRUD::column('company_id');
-        CRUD::column('user_id');
-        CRUD::column('due_date');
-        CRUD::column('type');
-        CRUD::column('status');
-        CRUD::column('created_at');
-        CRUD::column('updated_at');
+        CRUD::column('name')->label('Nome');
+        CRUD::column('company_id')->label('Empresa');
+        CRUD::column('user_id')->label('Responsável');
+        CRUD::column('due_date')->label('Data');
+        CRUD::addColumn([
+            'name' => 'type',
+            'label' => 'Tipo',
+            'type' => 'closure',
+            'function' => function($entry) {
+                return TaskType::from($entry->type)->getLabel();
+            }
+        ]);
+        CRUD::addColumn([
+            'name' => 'status',
+            'label' => 'Status',
+            'type' => 'closure',
+            'function' => function($entry) {
+                return TaskStatus::from($entry->status)->getLabel();
+            }
+        ]);
+        CRUD::addColumn([
+            'name' => 'created_at',
+            'label' => 'Criação',
+            'type' => 'datetime'
+        ]);
+
+        CRUD::addColumn([
+            'name' => 'updated_at',
+            'label' => 'Atualização',
+            'type' => 'datetime'
+        ]);
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:

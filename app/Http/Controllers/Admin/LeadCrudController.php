@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Enum\ClientTaxRegime;
-use App\Http\Requests\ClientRequest;
+use App\Http\Requests\LeadRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class ClientCrudController
+ * Class LeadCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class ClientCrudController extends CrudController
+class LeadCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -22,19 +21,19 @@ class ClientCrudController extends CrudController
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
-     *
+     * 
      * @return void
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Client::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/client');
-        CRUD::setEntityNameStrings('cliente', 'clientes');
+        CRUD::setModel(\App\Models\Lead::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/lead');
+        CRUD::setEntityNameStrings('lead', 'leads');
     }
 
     /**
      * Define what happens when the List operation is loaded.
-     *
+     * 
      * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
      * @return void
      */
@@ -42,9 +41,9 @@ class ClientCrudController extends CrudController
     {
         CRUD::column('id');
         CRUD::column('name')->label('Nome');
-        CRUD::column('tax_regime')->label('Regime Tributário');
-        CRUD::column('employees_quantity')->label('Funcionários');
-        CRUD::column('cnae')->label('CNAE');
+        CRUD::column('phone')->label('Telefone');
+        CRUD::column('email');
+        CRUD::column('cnpj')->label('CNPJ');
         CRUD::addColumn([
             'name' => 'created_at',
             'label' => 'Criação',
@@ -60,46 +59,47 @@ class ClientCrudController extends CrudController
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
+         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']); 
          */
     }
 
     /**
      * Define what happens when the Create operation is loaded.
-     *
+     * 
      * @see https://backpackforlaravel.com/docs/crud-operation-create
      * @return void
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(ClientRequest::class);
+        CRUD::setValidation(LeadRequest::class);
 
-        CRUD::field('name');
-        CRUD::addField([
-            'name'        => 'tax_regime',
-            'label'       => "Regime Tributário",
-            'type'        => 'select_from_array',
-            'options'     => ClientTaxRegime::labels(),
-            'allows_null' => false,
-        ]);
-        CRUD::field('employees_quantity');
-        CRUD::field('cnae');
+        CRUD::field('name')->label('Nome');
+        CRUD::field('phone')->label('Telefone');
+        CRUD::field('email');
+        CRUD::field('cnpj')->label('CNPJ');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');
-         * - CRUD::addField(['name' => 'price', 'type' => 'number']));
+         * - CRUD::addField(['name' => 'price', 'type' => 'number'])); 
          */
     }
 
     /**
      * Define what happens when the Update operation is loaded.
-     *
+     * 
      * @see https://backpackforlaravel.com/docs/crud-operation-update
      * @return void
      */
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+
+    protected function setupShowOperation()
+    {
+        $this->setupListOperation();
+
+        CRUD::column('message')->label('Mensagem');
     }
 }

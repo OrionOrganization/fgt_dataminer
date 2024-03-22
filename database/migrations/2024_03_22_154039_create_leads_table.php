@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBlogPostsTable extends Migration
+class CreateLeadsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateBlogPostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('blog_posts', function (Blueprint $table) {
+        Schema::create('leads', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('resume', 250);
-            $table->integer('views')->default(0);
-            $table->string('image');
-            $table->text('content');
+            $table->string('name');
+            $table->string('phone')->nullable();
+            $table->string('email')->unique()->nullable();
+            $table->longText('message')->nullable();
+            $table->string('cnpj')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateBlogPostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blog_posts');
+        Schema::dropIfExists('leads');
     }
 }

@@ -11,6 +11,14 @@ class BlogPostController extends Controller
     {
         $blogPosts = BlogPost::all();
 
-        return view(backpack_view('blog'))->with(compact('blogPosts'));
+        return view('blog')->with(compact('blogPosts'));
+    }
+
+    public function show(BlogPost $model)
+    {
+        $model->views += 1;
+        $model->save();
+
+        return view('blog_show')->with(compact('model'));
     }
 }

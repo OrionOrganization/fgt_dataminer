@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Web\BlogPostController;
+use App\Http\Controllers\Web\LeadController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,3 +24,6 @@ Route::get('/servicos', function () {
 });
 
 Route::get('/blog', [BlogPostController::class, 'index']);
+Route::get('/blog/{model}', [BlogPostController::class, 'show']);
+
+Route::post('/lead', [LeadController::class, 'store']);

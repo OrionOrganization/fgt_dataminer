@@ -26,8 +26,9 @@ class BlogPostRequest extends FormRequest
     {
         return [
             'title' => 'required|min:5|max:255',
+            'resume' => 'required|min:20|max:250',
             'content' => 'required|min:10',
-            'image' => 'required'
+            'image' => 'required',
         ];
     }
 
@@ -54,6 +55,10 @@ class BlogPostRequest extends FormRequest
             'title.required' => 'É necessário fornecer um título!',
             'title.min' => 'O título deve ter ao menos :min caracteres!',
             'title.max' => 'O título não pode ultrapassar :max caracteres!',
+
+            'resume.required' => 'É necessário fornecer um resumo!',
+            'resume.min' => 'O resumo deve ter ao menos :min caracteres!',
+            'resume.max' => 'O resumo deve ter no máximo :max caracteres!',
 
             'content.required' => 'É necessário fornecer um conteúdo!',
             'content.min' => 'O conteúdo deve ter ao menos :min caracteres!',

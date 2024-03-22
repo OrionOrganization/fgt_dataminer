@@ -28,7 +28,7 @@ class ProductCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Product::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/product');
-        CRUD::setEntityNameStrings('product', 'products');
+        CRUD::setEntityNameStrings('produto', 'produtos');
     }
 
     /**
@@ -40,12 +40,21 @@ class ProductCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('id');
-        CRUD::column('resume');
-        CRUD::column('description');
-        CRUD::column('condition');
-        CRUD::column('risk');
-        CRUD::column('created_at');
-        CRUD::column('updated_at');
+        CRUD::column('resume')->label('Resumo');
+        CRUD::column('description')->label('Descrição');
+        CRUD::column('condition')->label('Condições');
+        CRUD::column('risk')->label('Risco');
+        CRUD::addColumn([
+            'name' => 'created_at',
+            'label' => 'Criação',
+            'type' => 'datetime'
+        ]);
+
+        CRUD::addColumn([
+            'name' => 'updated_at',
+            'label' => 'Atualização',
+            'type' => 'datetime'
+        ]);
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:

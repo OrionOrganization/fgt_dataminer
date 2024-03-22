@@ -31,7 +31,7 @@ class CompanyCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Company::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/company');
-        CRUD::setEntityNameStrings('company', 'companies');
+        CRUD::setEntityNameStrings('empresa', 'empresas');
     }
 
     /**
@@ -43,21 +43,51 @@ class CompanyCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('id');
-        CRUD::column('nickname');
-        CRUD::column('cnpj');
-        CRUD::column('social_reason');
-        CRUD::column('category');
-        CRUD::column('origin');
-        CRUD::column('user_id');
-        CRUD::column('setor');
-        CRUD::column('description');
-        CRUD::column('phone');
+        CRUD::column('nickname')->label('Nome');
+        CRUD::column('cnpj')->label('CNPJ');
+        CRUD::column('social_reason')->label('Razão Social');
+        CRUD::addColumn([
+            'name' => 'category',
+            'label' => 'Categoria',
+            'type' => 'closure',
+            'function' => function($entry) {
+                return CompanyCategory::from($entry->category)->getLabel();
+            }
+        ]);
+        CRUD::addColumn([
+            'name' => 'origin',
+            'label' => 'Origem',
+            'type' => 'closure',
+            'function' => function($entry) {
+                return CompanyOrigin::from($entry->origin)->getLabel();
+            }
+        ]);
+        CRUD::column('user_id')->label('Responsável');
+        CRUD::addColumn([
+            'name' => 'setor',
+            'label' => 'Setor',
+            'type' => 'closure',
+            'function' => function($entry) {
+                return CompanySetor::from($entry->setor)->getLabel();
+            }
+        ]);
+        CRUD::column('description')->label('Descrição');
+        CRUD::column('phone')->label('Telefone');
         CRUD::column('whatsapp');
         CRUD::column('email');
         CRUD::column('site');
         CRUD::column('address');
-        CRUD::column('created_at');
-        CRUD::column('updated_at');
+        CRUD::addColumn([
+            'name' => 'created_at',
+            'label' => 'Criação',
+            'type' => 'datetime'
+        ]);
+
+        CRUD::addColumn([
+            'name' => 'updated_at',
+            'label' => 'Atualização',
+            'type' => 'datetime'
+        ]);
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -76,9 +106,9 @@ class CompanyCrudController extends CrudController
     {
         CRUD::setValidation(CompanyRequest::class);
 
-        CRUD::field('nickname');
-        CRUD::field('cnpj');
-        CRUD::field('social_reason');
+        CRUD::field('nickname')->label('Nome');
+        CRUD::field('cnpj')->label('CNPJ');
+        CRUD::field('social_reason')->label('Razão Social');
         CRUD::addField([
             'name'        => 'category',
             'label'       => "Categoria",
@@ -101,7 +131,7 @@ class CompanyCrudController extends CrudController
             'options'     => CompanySetor::labels(),
             'allows_null' => false,
         ]);
-        CRUD::field('description');
+        CRUD::field('description')->label('Descrição');
         CRUD::field('phone');
         CRUD::field('whatsapp');
         CRUD::field('email');

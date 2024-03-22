@@ -48,7 +48,7 @@ return [
         // Here's what's inside the bundle:
         // 'packages/@digitallyhappy/backstrap/css/style.min.css',
         // 'packages/animate.css/animate.min.css',
-        // 'packages/noty/noty.css',
+        'packages/noty/noty.css',
 
         // Load the fonts separately (so that you can replace them at will):
         'packages/source-sans-pro/source-sans-pro.css',
@@ -71,6 +71,8 @@ return [
     // HEADER
     // ------
     'header_class' => 'app-header navbar',
+    'body_class' => 'app aside-menu-fixed sidebar-lg-show',
+    'sidebar_class' => 'sidebar',
 
     // Menu logo. You can replace this with an <img> tag if you have a logo.
     'project_logo'   => '<b>FGT</b> / Orion',
@@ -78,7 +80,6 @@ return [
     // Show / hide breadcrumbs on admin panel pages.
     'breadcrumbs' => true,
 
-    'sidebar_class' => 'sidebar',
 
     // Horizontal navbar classes. Helps make the admin panel look similar to your project's design.
     // For background colors use: bg-dark, bg-primary, bg-secondary, bg-danger, bg-warning, bg-success, bg-info, bg-blue, bg-light-blue, bg-indigo, bg-purple, bg-pink, bg-red, bg-orange, bg-yellow, bg-green, bg-teal, bg-cyan, bg-white
@@ -89,7 +90,6 @@ return [
     // ----
 
     // Body element classes.
-    'body_class' => 'app aside-menu-fixed sidebar-lg-show',
     // Try sidebar-hidden, sidebar-fixed, sidebar-compact, sidebar-lg-show
 
     // Sidebar element classes.

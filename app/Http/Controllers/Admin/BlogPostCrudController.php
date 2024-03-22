@@ -37,6 +37,8 @@ class BlogPostCrudController extends CrudController
         CRUD::setModel(\App\Models\BlogPost::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/blog-post');
         CRUD::setEntityNameStrings('blog post', 'blog posts');
+
+        $this->crud->addButtonFromView('line', 'view_blog', 'view_blog', 'beginning');
     }
 
     /**
@@ -50,6 +52,8 @@ class BlogPostCrudController extends CrudController
         CRUD::column('id');
 
         CRUD::column('title')->label('Título');
+
+        CRUD::column('resume')->label('Resumo');
 
         CRUD::addColumn([
             'name' => 'created_at',
@@ -81,6 +85,12 @@ class BlogPostCrudController extends CrudController
         CRUD::setValidation(BlogPostRequest::class);
 
         CRUD::field('title')->label('Título');
+
+        CRUD::addField([
+            'name'  => 'resume',
+            'label' => 'Resumo',
+            'type'  => 'textarea'
+        ]);
 
         CRUD::addField([
             'label' => 'Imagem de Capa',
@@ -131,6 +141,7 @@ class BlogPostCrudController extends CrudController
     protected function setupShowOperation()
     {
         CRUD::column('title')->label('Título');
+        CRUD::column('resume')->label('Resumo');
 
         CRUD::addColumn([
             'name' => 'created_at',

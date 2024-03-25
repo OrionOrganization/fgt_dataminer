@@ -25,7 +25,8 @@ class LeadRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+            'name' => 'required|max:255',
+            'company_name' => 'required|max:255'
         ];
     }
 
@@ -49,7 +50,8 @@ class LeadRequest extends FormRequest
     public function messages()
     {
         return [
-            //
+            'name.required' => 'Insira o nome do lead.',
+            'company_name.required' => 'Insira o nome da empresa.'
         ];
     }
 }

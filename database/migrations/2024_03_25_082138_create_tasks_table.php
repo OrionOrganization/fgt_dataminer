@@ -16,15 +16,21 @@ class CreateTasksTable extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('company_id')
+
+            $table->foreignId('oportunity_id')
+                ->nullable()
                 ->constrained()
-                ->nullable();
+                ->onDelete('set null');
+
             $table->foreignId('user_id')
+                ->nullable()
                 ->constrained()
-                ->nullable();
+                ->onDelete('set null');
+
             $table->date('due_date')->nullable();
             $table->integer('type');
             $table->integer('status');
+            $table->text('obs')->nullable();
             $table->timestamps();
         });
     }

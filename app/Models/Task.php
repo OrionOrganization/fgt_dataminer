@@ -35,9 +35,9 @@ class Task extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function company()
+    public function oportunity()
     {
-        return $this->belongsTo(Company::class, 'company_id');
+        return $this->belongsTo(Oportunity::class, 'oportunity_id');
     }
 
     public function responsible()

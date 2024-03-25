@@ -50,6 +50,11 @@ class Oportunity extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function tasks()
+    {
+        return $this->hasMany(Task::class, 'oportunity_id');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

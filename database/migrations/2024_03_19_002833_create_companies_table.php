@@ -21,8 +21,9 @@ class CreateCompaniesTable extends Migration
             $table->integer('category')->nullable();
             $table->integer('origin')->nullable();
             $table->foreignId('user_id')
+                ->nullable()
                 ->constrained()
-                ->nullable();
+                ->onDelete('set null');
             $table->integer('setor')->nullable();
             $table->longText('description');
             $table->string('phone')->nullable();

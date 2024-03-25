@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Enum\CompanyCategory;
 use App\Enum\CompanyOrigin;
 use App\Enum\CompanySetor;
+use App\Enum\CompanyTaxRegime;
 use App\Http\Requests\CompanyRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
@@ -44,39 +45,70 @@ class CompanyCrudController extends CrudController
     {
         CRUD::column('id');
         CRUD::column('nickname')->label('Nome');
+        CRUD::column('description')->label('Descrição');
         CRUD::column('cnpj')->label('CNPJ');
         CRUD::column('social_reason')->label('Razão Social');
+        
         CRUD::addColumn([
             'name' => 'category',
             'label' => 'Categoria',
             'type' => 'closure',
             'function' => function($entry) {
-                return CompanyCategory::from($entry->category)->getLabel();
+                return ($entry->category) ? CompanyCategory::from($entry->category)->getLabel() : '';
             }
         ]);
+
         CRUD::addColumn([
             'name' => 'origin',
             'label' => 'Origem',
             'type' => 'closure',
             'function' => function($entry) {
-                return CompanyOrigin::from($entry->origin)->getLabel();
+                return ($entry->origin) ? CompanyOrigin::from($entry->origin)->getLabel() : '';
             }
         ]);
-        CRUD::column('user_id')->label('Responsável');
+
+        CRUD::addColumn([
+            'type' => 'relationship',
+            'name' => 'user_id',
+            'label' => 'Responsável',
+            'attribute' => 'name',
+            'entity' => 'responsible',
+        ]);
+
         CRUD::addColumn([
             'name' => 'setor',
             'label' => 'Setor',
             'type' => 'closure',
             'function' => function($entry) {
-                return CompanySetor::from($entry->setor)->getLabel();
+                return ($entry->setor) ? CompanySetor::from($entry->setor)->getLabel() : '';
             }
         ]);
-        CRUD::column('description')->label('Descrição');
+
+        CRUD::column('employees_quantity')->label('Funcionários');
+        CRUD::column('cnae')->label('CNAE');
+
+        CRUD::addColumn([
+            'label'     => 'Produtos',
+            'type'      => 'select_multiple',
+            'name'      => 'products',
+            'entity'    => 'products',
+            'attribute' => 'resume',
+            'model'     => 'App\Models\Product',
+        ]);
+
         CRUD::column('phone')->label('Telefone');
         CRUD::column('whatsapp');
         CRUD::column('email');
         CRUD::column('site');
-        CRUD::column('address');
+        CRUD::addColumn([
+            'name' => 'tax_regime',
+            'label' => 'Regime Tributário',
+            'type' => 'closure',
+            'function' => function($entry) {
+                return ($entry->tax_regime) ? CompanyTaxRegime::from($entry->tax_regime)->getLabel() : '';
+            }
+        ]);
+
         CRUD::addColumn([
             'name' => 'created_at',
             'label' => 'Criação',
@@ -107,36 +139,56 @@ class CompanyCrudController extends CrudController
         CRUD::setValidation(CompanyRequest::class);
 
         CRUD::field('nickname')->label('Nome');
+        CRUD::field('description')->label('Descrição');
         CRUD::field('cnpj')->label('CNPJ');
         CRUD::field('social_reason')->label('Razão Social');
         CRUD::addField([
-            'name'        => 'category',
-            'label'       => "Categoria",
-            'type'        => 'select_from_array',
-            'options'     => CompanyCategory::labels(),
-            'allows_null' => false,
+            'name' => 'category',
+            'label' => "Categoria",
+            'type' => 'select_from_array',
+            'options' => CompanyCategory::labels(),
+            'allows_null' => true,
         ]);
         CRUD::addField([
-            'name'        => 'origin',
-            'label'       => "Origem",
-            'type'        => 'select_from_array',
-            'options'     => CompanyOrigin::labels(),
-            'allows_null' => false,
+            'name' => 'origin',
+            'label' => "Origem",
+            'type' => 'select_from_array',
+            'options' => CompanyOrigin::labels(),
+            'allows_null' => true,
         ]);
-        CRUD::field('user_id');
         CRUD::addField([
-            'name'        => 'setor',
-            'label'       => "Setor",
-            'type'        => 'select_from_array',
-            'options'     => CompanySetor::labels(),
-            'allows_null' => false,
+            'type' => 'relationship',
+            'name' => 'user_id',
+            'label' => 'Responsável',
+            'attribute' => 'name',
+            'entity' => 'responsible',
         ]);
-        CRUD::field('description')->label('Descrição');
-        CRUD::field('phone');
+        CRUD::addField([
+            'name' => 'setor',
+            'label' => "Setor",
+            'type' => 'select_from_array',
+            'options' => CompanySetor::labels(),
+            'allows_null' => true,
+        ]);
+        CRUD::addField([
+            'name' => 'tax_regime',
+            'label' => 'Regime Tributário',
+            'type' => 'select_from_array',
+            'options' => CompanyTaxRegime::labels()
+        ]);
+        CRUD::field('employees_quantity')->label('Funcionários');
+        CRUD::field('cnae')->label('CNAE');
+        CRUD::field('phone')->label('Telefone');
         CRUD::field('whatsapp');
         CRUD::field('email');
         CRUD::field('site');
-        CRUD::field('address');
+        CRUD::addField([
+            'label' => "Produtos",
+            'type' => 'select2_multiple',
+            'name' => 'products',
+            'attribute' => 'resume'
+        ],);
+        // CRUD::field('address')->label('Endereço');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
@@ -154,5 +206,10 @@ class CompanyCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+
+    protected function setupShowOperation()
+    {
+        $this->setupListOperation();
     }
 }

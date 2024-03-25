@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\LeadCrudController;
+use App\Http\Controllers\Admin\OportunityCrudController;
+use App\Http\Controllers\Admin\TaskCrudController;
 use Illuminate\Support\Facades\Route;
 
 // --------------------------
@@ -18,8 +21,15 @@ Route::group([
 ], function () { // custom admin routes
     Route::crud('company', 'CompanyCrudController');
     Route::crud('product', 'ProductCrudController');
-    Route::crud('client', 'ClientCrudController');
+    Route::crud('contact', 'ContactCrudController');
     Route::crud('task', 'TaskCrudController');
     Route::crud('blog-post', 'BlogPostCrudController');
     Route::crud('lead', 'LeadCrudController');
+    Route::crud('oportunity', 'OportunityCrudController');
+
+    Route::post('/lead/{model}/convert', [LeadCrudController::class, 'leadConvert'])->name('lead-convert');
+    
+    Route::get('/oportunity/{model}/update-status', [OportunityCrudController::class, 'updateOportunityStatus'])->name('oportunity-update-status');
+    
+    Route::get('/task/{model}/update-status', [TaskCrudController::class, 'updateTaskStatus'])->name('task-update-status');
 }); // this should be the absolute last line of this file

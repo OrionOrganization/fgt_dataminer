@@ -25,7 +25,8 @@ class CompanyRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+            'nickname' => 'required|max:255',
+            'description' => 'required'
         ];
     }
 
@@ -37,7 +38,7 @@ class CompanyRequest extends FormRequest
     public function attributes()
     {
         return [
-            //
+
         ];
     }
 
@@ -49,7 +50,8 @@ class CompanyRequest extends FormRequest
     public function messages()
     {
         return [
-            //
+            'nickname.required' => 'Informe o nome da empresa',
+            'description.required' => 'Informe uma descrição da empresa'
         ];
     }
 }

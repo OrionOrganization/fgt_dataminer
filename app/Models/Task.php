@@ -35,6 +35,16 @@ class Task extends Model
     |--------------------------------------------------------------------------
     */
 
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'company_id');
+    }
+
+    public function responsible()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

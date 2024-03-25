@@ -5,7 +5,7 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class Client extends Model
+class Oportunity extends Model
 {
     use CrudTrait;
 
@@ -15,7 +15,7 @@ class Client extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'clients';
+    protected $table = 'oportunities';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -34,6 +34,21 @@ class Client extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'company_id');
+    }
+
+    public function contact()
+    {
+        return $this->belongsTo(Contact::class, 'contact_id');
+    }
+
+    public function responsible()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
     /*
     |--------------------------------------------------------------------------

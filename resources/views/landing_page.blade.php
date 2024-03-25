@@ -90,7 +90,7 @@
                     <div class="carousel-item" data-bs-interval="5000">
                         <img src="" class="d-block w-100" id="carousel-pic-3" alt="Foto 3 da equipe FGT - Fundo de carrossel de fotos" width="100%" height="100%">
                         <div class="carousel-caption hidden d-md-block">
-                            <h2>Busca de Dívida Tributária Ativa</h2>
+                            <h2>Busca de Dívida Ativa Tributária</h2>
                             <p>Encontre a solução para o passivo inscrito em dívida ativa.</p>
                             <a href="{{$whatsappUrl}}" target="_blank" class="main-button">Quero Conhecer a FGT</a>
                         </div>
@@ -350,25 +350,24 @@
 
             <!-- Contact -->
             <section id="contact-section">
-                <div class="contact-container">
-                    <small>Contato</small>
-                    <h1>Fale Conosco</h1>
-                    <p>
-                        Caso tenha alguma dúvida, entre em contato <br>
-                        através de um dos nossos telefones ou email. <br>
-                        Se tiver preferência, venha visitar nosso escritório!
-                    </p>
-                    <div class="footer-contacts">
-                        <p class="contact-content"><strong><i class="las la-phone header-contact-icon"></i> Telefone:</strong> {{$whatsappNumber}}</p>
-                        <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Email:</strong> {{$email}}</p>
-                        <p class="contact-content"><strong><i class="las la-thumbtack header-contact-icon"></i> Endereço:</strong> Rua Conceição, 233, Sala 916, Centro, <br> Campinas SP, 13010-916, Brasil</p>
-                    </div>
-                </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="contact-container col-md-6">
+                        <small>Contato</small>
+                        <h1>Fale Conosco</h1>
+                        <p>
+                            Caso tenha alguma dúvida, entre em contato <br>
+                            através de um dos nossos telefones ou email. <br>
+                            Se tiver preferência, venha visitar nosso escritório!
+                        </p>
+                        <div class="footer-contacts">
+                            <p class="contact-content"><strong><i class="las la-phone header-contact-icon"></i> Telefone:</strong> {{$whatsappNumber}}</p>
+                            <p class="contact-content"><strong><i class="las la-envelope header-contact-icon"></i> Email:</strong> {{$email}}</p>
+                            <p class="contact-content"><strong><i class="las la-thumbtack header-contact-icon"></i> Endereço:</strong> Rua Conceição, 233, Sala 916, Centro, <br> Campinas SP, 13010-916, Brasil</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
                       <form id="contact-form" action="{{ url('/lead') }}" method="post">
                         @csrf
-                        <div class="error-container"></div>
                         <div class="row">
                           <div class="col-md-6">
                             <div class="form-group">
@@ -377,6 +376,12 @@
                             </div>
                           </div>
                           <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="company_name">Empresa</label>
+                              <input class="form-control form-control-company_name" name="company_name" id="company_name" placeholder="" type="text" required>
+                            </div>
+                          </div>
+                          <div class="col-md-12 mt-3">
                             <div class="form-group">
                               <label for="phone">Telefone</label>
                               <input class="form-control form-control-phone" name="phone" id="phone" placeholder="" required>

@@ -24,10 +24,10 @@ class TaskStatus extends Enum
     public static function labels(): array
     {
         return [
-            self::NON_STARTED => __('Não Iniciado'),
-            self::STARTED => __('Iniciado'),
-            self::PAUSED => __('Pausado'),
-            self::FINISHED => __('Finalizado'),
+            self::NON_STARTED => __('Não Iniciada'),
+            self::STARTED => __('Iniciada'),
+            self::PAUSED => __('Pausada'),
+            self::FINISHED => __('Finalizada'),
         ];
     }
 

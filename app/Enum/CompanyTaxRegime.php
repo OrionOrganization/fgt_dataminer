@@ -10,7 +10,7 @@ use MyCLabs\Enum\Enum;
  * @method static self REAL_PROFIT()
  * @method static self NONE()
  */
-class ClientTaxRegime extends Enum
+class CompanyTaxRegime extends Enum
 {
     private const NATIONAL_SIMPLE = 0;
     private const PRESUMED_PROFIT = 1;

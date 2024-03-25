@@ -41,26 +41,23 @@ class ProductCrudController extends CrudController
     {
         CRUD::column('id');
         CRUD::column('resume')->label('Resumo');
+        CRUD::addColumn([
+            'name' => 'condition',
+            'label' => 'Condições',
+            'type' => 'closure',
+            'function' => function($entry) {
+                $conditions = json_decode($entry->condition);
+                $string = '';
+
+                foreach ($conditions as $item) {
+                    $string .= "<span class='bg-primary text-white rounded-pill p-1 m-1 small'>" . $item->value . "</span>";
+                }
+
+                return $string;
+            }
+        ]);
         CRUD::column('description')->label('Descrição');
-        CRUD::column('condition')->label('Condições');
         CRUD::column('risk')->label('Risco');
-        CRUD::addColumn([
-            'name' => 'created_at',
-            'label' => 'Criação',
-            'type' => 'datetime'
-        ]);
-
-        CRUD::addColumn([
-            'name' => 'updated_at',
-            'label' => 'Atualização',
-            'type' => 'datetime'
-        ]);
-
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
-         */
     }
 
     /**
@@ -73,10 +70,10 @@ class ProductCrudController extends CrudController
     {
         CRUD::setValidation(ProductRequest::class);
 
-        CRUD::field('resume');
-        CRUD::field('description');
-        CRUD::field('condition');
-        CRUD::field('risk');
+        CRUD::field('resume')->label('Resumo');
+        CRUD::field('description')->label('Descrição');
+        CRUD::field('condition')->label('Condições');
+        CRUD::field('risk')->label('Risco');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
@@ -94,5 +91,10 @@ class ProductCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+
+    protected function setupShowOperation()
+    {
+        $this->setupListOperation();
     }
 }

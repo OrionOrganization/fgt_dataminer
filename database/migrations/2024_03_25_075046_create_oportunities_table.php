@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTasksTable extends Migration
+class CreateOportunitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,31 @@ class CreateTasksTable extends Migration
      */
     public function up()
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create('oportunities', function (Blueprint $table) {
             $table->id();
+
             $table->string('name');
+
             $table->foreignId('company_id')
+                ->nullable()
                 ->constrained()
-                ->nullable();
+                ->onDelete('set null');
+
+            $table->foreignId('contact_id')
+                ->nullable()
+                ->constrained()
+                ->onDelete('set null');
+
+            $table->integer('status')->default(0);
+
             $table->foreignId('user_id')
+                ->nullable()
                 ->constrained()
-                ->nullable();
-            $table->date('due_date')->nullable();
-            $table->integer('type');
-            $table->integer('status');
+                ->onDelete('set null');
+
+            $table->text('obs')->nullable();
+            $table->date('date')->nullable();
+
             $table->timestamps();
         });
     }
@@ -36,6 +49,6 @@ class CreateTasksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tasks');
+        Schema::dropIfExists('oportunities');
     }
 }

@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\LeadRequest;
+use App\Models\Lead;
+use App\Services\LeadService;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Exception;
+use Illuminate\Http\Request;
 
 /**
  * Class LeadCrudController
@@ -20,6 +24,11 @@ class LeadCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
     /**
+     * @var \App\Services\LeadService
+     */
+    protected $leadService;
+
+    /**
      * Configure the CrudPanel object. Apply settings to all operations.
      * 
      * @return void
@@ -29,6 +38,10 @@ class LeadCrudController extends CrudController
         CRUD::setModel(\App\Models\Lead::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/lead');
         CRUD::setEntityNameStrings('lead', 'leads');
+
+        $this->crud->addButtonFromView('line', 'convert_lead', 'convert_lead', 'beginning');
+
+        $this->leadService = resolve(LeadService::class);
     }
 
     /**
@@ -41,6 +54,7 @@ class LeadCrudController extends CrudController
     {
         CRUD::column('id');
         CRUD::column('name')->label('Nome');
+        CRUD::column('company_name')->label('Nome Empresa');
         CRUD::column('phone')->label('Telefone');
         CRUD::column('email');
         CRUD::column('cnpj')->label('CNPJ');
@@ -74,6 +88,7 @@ class LeadCrudController extends CrudController
         CRUD::setValidation(LeadRequest::class);
 
         CRUD::field('name')->label('Nome');
+        CRUD::column('company_name')->label('Nome Empresa');
         CRUD::field('phone')->label('Telefone');
         CRUD::field('email');
         CRUD::field('cnpj')->label('CNPJ');
@@ -101,5 +116,20 @@ class LeadCrudController extends CrudController
         $this->setupListOperation();
 
         CRUD::column('message')->label('Mensagem');
+    }
+
+    public function leadConvert(Request $request, Lead $model)
+    {
+        try {
+            $this->leadService->convertLead($model);
+
+            return response()->json([
+                'success' => true
+            ]);
+        } catch (Exception $exception) {
+            return response()->json([
+                'success' => false
+            ]);
+        }
     }
 }

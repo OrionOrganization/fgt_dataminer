@@ -442,9 +442,11 @@
                         </div>
                     @endforeach
                 </div>
-                <div class="text-center mt-4">
-                    <a class="main-button" href="/blog" target="_blank">Ver Mais</a>
-                </div>
+                @if (count($blogs) > 0)
+                    <div class="text-center mt-4">
+                        <a class="main-button" href="/blog" target="_blank">Ver Mais</a>
+                    </div>
+                @endif
             </section>
         </main>
 

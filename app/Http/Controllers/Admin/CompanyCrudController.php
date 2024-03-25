@@ -7,8 +7,10 @@ use App\Enum\CompanyOrigin;
 use App\Enum\CompanySetor;
 use App\Enum\CompanyTaxRegime;
 use App\Http\Requests\CompanyRequest;
+use App\Models\Company;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Http\Request;
 
 /**
  * Class CompanyCrudController
@@ -121,11 +123,46 @@ class CompanyCrudController extends CrudController
             'type' => 'datetime'
         ]);
 
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
-         */
+        $this->setupFilters();
+    }
+
+    protected function setupFilters()
+    {
+        $this->crud->addFilter(
+            [
+                'type'  => 'text',
+                'name'  => 'id',
+                'label' => 'ID'
+            ], 
+            false, 
+            function($value) {
+                $this->crud->addClause('where', 'id', 'LIKE', "%$value%");
+            }
+        );
+
+        $this->crud->addFilter(
+            [
+                'type'  => 'text',
+                'name'  => 'nickname',
+                'label' => 'Nome'
+            ], 
+            false, 
+            function($value) {
+                $this->crud->addClause('where', 'nickname', 'LIKE', "%$value%");
+            }
+        );
+
+        $this->crud->addFilter(
+            [
+                'type'  => 'text',
+                'name'  => 'cnpj',
+                'label' => 'CNPJ'
+            ], 
+            false, 
+            function($value) {
+                $this->crud->addClause('where', 'cnpj', 'LIKE', "%$value%");
+            }
+        );
     }
 
     /**
@@ -187,14 +224,7 @@ class CompanyCrudController extends CrudController
             'type' => 'select2_multiple',
             'name' => 'products',
             'attribute' => 'resume'
-        ],);
-        // CRUD::field('address')->label('Endereço');
-
-        /**
-         * Fields can be defined using the fluent syntax or array syntax:
-         * - CRUD::field('price')->type('number');
-         * - CRUD::addField(['name' => 'price', 'type' => 'number']));
-         */
+        ]);
     }
 
     /**
@@ -211,5 +241,11 @@ class CompanyCrudController extends CrudController
     protected function setupShowOperation()
     {
         $this->setupListOperation();
+    }
+
+    public function companyOptions(Request $request) {
+        $term = $request->input('term');
+        $options = Company::where('nickname', 'like', '%'.$term.'%')->get()->pluck('nickname', 'id');
+        return $options;
     }
 }

@@ -7,6 +7,7 @@ use App\Enum\TaskType;
 use App\Http\Requests\TaskRequest;
 use App\Models\Oportunity;
 use App\Models\Task;
+use App\Models\User;
 use App\Services\TaskService;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
@@ -76,7 +77,7 @@ class TaskCrudController extends CrudController
             'attribute' => 'name',
             'entity' => 'responsible',
         ]);
-        CRUD::column('due_date')->label('Data');
+        CRUD::column('due_date')->type('date')->label('Data');
         CRUD::addColumn([
             'name' => 'type',
             'label' => 'Tipo',
@@ -106,11 +107,93 @@ class TaskCrudController extends CrudController
             'type' => 'datetime'
         ]);
 
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
-         */
+        $this->setupFilters();
+    }
+
+    protected function setupFilters()
+    {
+        $this->crud->addFilter(
+            [
+                'type'  => 'text',
+                'name'  => 'id',
+                'label' => 'ID'
+            ], 
+            false, 
+            function($value) {
+                $this->crud->addClause('where', 'id', 'LIKE', "%$value%");
+            }
+        );
+
+        $this->crud->addFilter(
+            [
+                'type'  => 'text',
+                'name'  => 'name',
+                'label' => 'Título'
+            ], 
+            false, 
+            function($value) {
+                $this->crud->addClause('where', 'name', 'LIKE', "%$value%");
+            }
+        );
+
+        $this->crud->addFilter(
+            [
+                'name' => 'oportunity_id',
+                'type' => 'select2_ajax',
+                'label' => 'Oportunidade',
+                'placeholder' => 'Selecione uma oportunidade'
+            ],
+            backpack_url('oportunity/ajax-oportunity-options')
+        );
+
+        $this->crud->addFilter(
+            [
+                'name'  => 'user_id',
+                'type'  => 'select2',
+                'label' => 'Responsável'
+            ],
+            function () {
+                return User::all()->keyBy('id')->pluck('name', 'id')->toArray();
+            }
+        );
+
+        $this->crud->addFilter(
+            [
+                'type'  => 'date_range',
+                'name'  => 'due_date',
+                'label' => 'Data'
+            ],
+            false,
+            function ($value) {
+                $dates = json_decode($value);
+                $this->crud->addClause('where', 'due_date', '>=', $dates->from);
+                $this->crud->addClause('where', 'due_date', '<=', $dates->to . ' 23:59:59');
+            }
+        );
+
+        $this->crud->addFilter(
+            [
+                'name'  => 'type',
+                'type'  => 'dropdown',
+                'label' => 'Tipo'
+            ],
+            TaskType::labels(),
+            function($value) {
+                $this->crud->addClause('where', 'type', $value);
+            }
+        );
+
+        $this->crud->addFilter(
+            [
+                'name'  => 'status',
+                'type'  => 'dropdown',
+                'label' => 'Status'
+            ],
+            TaskStatus::labels(),
+            function($value) {
+                $this->crud->addClause('where', 'status', $value);
+            }
+        );
     }
 
     /**

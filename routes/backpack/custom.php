@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\CompanyCrudController;
+use App\Http\Controllers\Admin\ContactCrudController;
 use App\Http\Controllers\Admin\LeadCrudController;
 use App\Http\Controllers\Admin\OportunityCrudController;
 use App\Http\Controllers\Admin\TaskCrudController;
@@ -19,10 +21,16 @@ Route::group([
     ),
     'namespace'  => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
-    Route::crud('company', 'CompanyCrudController');
     Route::crud('product', 'ProductCrudController');
-    Route::crud('contact', 'ContactCrudController');
     Route::crud('blog-post', 'BlogPostCrudController');
+
+    // CONTACT
+    Route::crud('contact', 'ContactCrudController');
+    Route::get('contact/ajax-contact-options', [ContactCrudController::class, 'contactOptions']);
+    
+    // COMPANY
+    Route::crud('company', 'CompanyCrudController');
+    Route::get('company/ajax-company-options', [CompanyCrudController::class, 'companyOptions']);
 
     // LEAD
     Route::crud('lead', 'LeadCrudController');
@@ -30,6 +38,7 @@ Route::group([
     
     // OPORTUNITY
     Route::crud('oportunity', 'OportunityCrudController');
+    Route::get('oportunity/ajax-oportunity-options', [OportunityCrudController::class, 'oportunityOptions']);
     Route::get('/oportunity/{model}/update-status', [OportunityCrudController::class, 'updateOportunityStatus'])->name('oportunity-update-status');
     
     // TASK

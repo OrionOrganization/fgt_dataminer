@@ -97,7 +97,7 @@ class BlogPostCrudController extends CrudController
             'name' => 'image',
             'type' => 'image',
             'crop' => true,
-            'aspect_ratio' => 1,
+            'aspect_ratio' => 2,
         ]);
         
         CRUD::addField(

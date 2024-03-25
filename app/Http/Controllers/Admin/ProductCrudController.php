@@ -58,6 +58,35 @@ class ProductCrudController extends CrudController
         ]);
         CRUD::column('description')->label('Descrição');
         CRUD::column('risk')->label('Risco');
+
+        $this->setupFilters();
+    }
+
+    protected function setupFilters()
+    {
+        $this->crud->addFilter(
+            [
+                'type'  => 'text',
+                'name'  => 'id',
+                'label' => 'ID'
+            ], 
+            false, 
+            function($value) {
+                $this->crud->addClause('where', 'id', 'LIKE', "%$value%");
+            }
+        );
+
+        $this->crud->addFilter(
+            [
+                'type'  => 'text',
+                'name'  => 'resume',
+                'label' => 'Resumo'
+            ], 
+            false, 
+            function($value) {
+                $this->crud->addClause('where', 'resume', 'LIKE', "%$value%");
+            }
+        );
     }
 
     /**

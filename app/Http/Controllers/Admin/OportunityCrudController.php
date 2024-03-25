@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Enum\OportunityStatus;
 use App\Http\Requests\OportunityRequest;
 use App\Models\Oportunity;
+use App\Models\User;
 use App\Services\OportunityService;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
@@ -120,11 +121,77 @@ class OportunityCrudController extends CrudController
             'type' => 'datetime'
         ]);
 
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']); 
-         */
+        $this->setupFilters();
+    }
+
+    protected function setupFilters()
+    {
+        $this->crud->addFilter(
+            [
+                'type'  => 'text',
+                'name'  => 'id',
+                'label' => 'ID'
+            ], 
+            false, 
+            function($value) {
+                $this->crud->addClause('where', 'id', 'LIKE', "%$value%");
+            }
+        );
+
+        $this->crud->addFilter(
+            [
+                'type'  => 'text',
+                'name'  => 'name',
+                'label' => 'Nome'
+            ], 
+            false, 
+            function($value) {
+                $this->crud->addClause('where', 'name', 'LIKE', "%$value%");
+            }
+        );
+
+        $this->crud->addFilter(
+            [
+                'name' => 'company_id',
+                'type' => 'select2_ajax',
+                'label' => 'Empresa',
+                'placeholder' => 'Selecione uma empresa'
+            ],
+            backpack_url('company/ajax-company-options')
+        );
+
+        $this->crud->addFilter(
+            [
+                'name' => 'contact_id',
+                'type' => 'select2_ajax',
+                'label' => 'Contato',
+                'placeholder' => 'Selecione um contato'
+            ],
+            backpack_url('contact/ajax-contact-options')
+        );
+
+        $this->crud->addFilter(
+            [
+                'name'  => 'status',
+                'type'  => 'dropdown',
+                'label' => 'Status'
+            ],
+            OportunityStatus::labels(),
+            function($value) {
+                $this->crud->addClause('where', 'status', $value);
+            }
+        );
+
+        $this->crud->addFilter(
+            [
+                'name'  => 'user_id',
+                'type'  => 'select2',
+                'label' => 'Responsável'
+            ],
+            function () {
+                return User::all()->keyBy('id')->pluck('name', 'id')->toArray();
+            }
+        );
     }
 
     /**
@@ -216,5 +283,11 @@ class OportunityCrudController extends CrudController
                 'message' => $exception->getMessage()
             ]);
         }
+    }
+
+    public function oportunityOptions(Request $request) {
+        $term = $request->input('term');
+        $options = Oportunity::where('name', 'like', '%'.$term.'%')->get()->pluck('name', 'id');
+        return $options;
     }
 }

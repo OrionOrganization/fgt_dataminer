@@ -16,7 +16,8 @@ class BlogPost extends Model
     {
         parent::boot();
         static::deleted(function($obj) {
-            Storage::disk('public_folder')->delete($obj->image);
+            $disk = config('backpack.base.root_disk_name');
+            Storage::disk($disk)->delete($obj->image);
         });
     }
 

@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Enum\ContactPosition;
 use App\Http\Requests\ContactRequest;
+use App\Models\Contact;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Http\Request;
 
 /**
  * Class ContactCrudController
@@ -57,9 +59,17 @@ class ContactCrudController extends CrudController
         ]);
 
         CRUD::column('phone')->label('Telefone');
-        CRUD::column('whatsapp');
         CRUD::column('email');
-        CRUD::column('position')->label('Cargo');
+        CRUD::addColumn([
+            'name' => 'position',
+            'label' => 'Cargo',
+            'type' => 'closure',
+            'function' => function($entry) {
+                return (!is_null($entry->position))
+                        ? ContactPosition::from($entry->position)->getLabel()
+                        : '';
+            }
+        ]);
         CRUD::column('obs')->label('Observação');
 
         CRUD::addColumn([
@@ -74,11 +84,80 @@ class ContactCrudController extends CrudController
             'type' => 'datetime'
         ]);
 
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
-         */
+        $this->setupFilters();
+    }
+
+    protected function setupFilters()
+    {
+        $this->crud->addFilter(
+            [
+                'type'  => 'text',
+                'name'  => 'id',
+                'label' => 'ID'
+            ], 
+            false, 
+            function($value) {
+                $this->crud->addClause('where', 'id', 'LIKE', "%$value%");
+            }
+        );
+
+        $this->crud->addFilter(
+            [
+                'type'  => 'text',
+                'name'  => 'name',
+                'label' => 'Nome'
+            ], 
+            false, 
+            function($value) {
+                $this->crud->addClause('where', 'name', 'LIKE', "%$value%");
+            }
+        );
+
+        $this->crud->addFilter(
+            [
+                'name' => 'company_id',
+                'type' => 'select2_ajax',
+                'label' => 'Empresa',
+                'placeholder' => 'Selecione uma empresa'
+            ],
+            backpack_url('company/ajax-company-options')
+        );
+
+        $this->crud->addFilter(
+            [
+                'type'  => 'text',
+                'name'  => 'phone',
+                'label' => 'Telefone'
+            ], 
+            false, 
+            function($value) {
+                $this->crud->addClause('where', 'phone', 'LIKE', "%$value%");
+            }
+        );
+
+        $this->crud->addFilter(
+            [
+                'type'  => 'text',
+                'name'  => 'email',
+                'label' => 'Email'
+            ], 
+            false, 
+            function($value) {
+                $this->crud->addClause('where', 'email', 'LIKE', "%$value%");
+            }
+        );
+
+        $this->crud->addFilter(
+            [
+                'name'  => 'position',
+                'type'  => 'dropdown',
+                'label' => 'Cargo'
+            ],
+            ContactPosition::labels(),
+            function($value) {
+                $this->crud->addClause('where', 'position', $value);
+            }
+        );
     }
 
     /**
@@ -102,7 +181,6 @@ class ContactCrudController extends CrudController
          ]);
 
         CRUD::field('phone')->label('Telefone');
-        CRUD::field('whatsapp');
         CRUD::field('email')->type('email');
 
         CRUD::addField([
@@ -136,5 +214,11 @@ class ContactCrudController extends CrudController
     protected function setupShowOperation()
     {
         $this->setupListOperation();
+    }
+
+    public function contactOptions(Request $request) {
+        $term = $request->input('term');
+        $options = Contact::where('name', 'like', '%'.$term.'%')->get()->pluck('name', 'id');
+        return $options;
     }
 }

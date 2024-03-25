@@ -70,11 +70,82 @@ class LeadCrudController extends CrudController
             'type' => 'datetime'
         ]);
 
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']); 
-         */
+        $this->setupFilters();
+    }
+
+    protected function setupFilters()
+    {
+        $this->crud->addFilter(
+            [
+                'type'  => 'text',
+                'name'  => 'id',
+                'label' => 'ID'
+            ], 
+            false, 
+            function($value) {
+                $this->crud->addClause('where', 'id', 'LIKE', "%$value%");
+            }
+        );
+
+        $this->crud->addFilter(
+            [
+                'type'  => 'text',
+                'name'  => 'name',
+                'label' => 'Nome'
+            ], 
+            false, 
+            function($value) {
+                $this->crud->addClause('where', 'name', 'LIKE', "%$value%");
+            }
+        );
+
+        $this->crud->addFilter(
+            [
+                'type'  => 'text',
+                'name'  => 'company_name',
+                'label' => 'Empresa'
+            ], 
+            false, 
+            function($value) {
+                $this->crud->addClause('where', 'company_name', 'LIKE', "%$value%");
+            }
+        );
+
+        $this->crud->addFilter(
+            [
+                'type'  => 'text',
+                'name'  => 'phone',
+                'label' => 'Telefone'
+            ], 
+            false, 
+            function($value) {
+                $this->crud->addClause('where', 'phone', 'LIKE', "%$value%");
+            }
+        );
+
+        $this->crud->addFilter(
+            [
+                'type'  => 'text',
+                'name'  => 'email',
+                'label' => 'Email'
+            ], 
+            false, 
+            function($value) {
+                $this->crud->addClause('where', 'email', 'LIKE', "%$value%");
+            }
+        );
+
+        $this->crud->addFilter(
+            [
+                'type'  => 'text',
+                'name'  => 'cnpj',
+                'label' => 'CNPJ'
+            ], 
+            false, 
+            function($value) {
+                $this->crud->addClause('where', 'cnpj', 'LIKE', "%$value%");
+            }
+        );
     }
 
     /**
@@ -92,12 +163,6 @@ class LeadCrudController extends CrudController
         CRUD::field('phone')->label('Telefone');
         CRUD::field('email');
         CRUD::field('cnpj')->label('CNPJ');
-
-        /**
-         * Fields can be defined using the fluent syntax or array syntax:
-         * - CRUD::field('price')->type('number');
-         * - CRUD::addField(['name' => 'price', 'type' => 'number'])); 
-         */
     }
 
     /**

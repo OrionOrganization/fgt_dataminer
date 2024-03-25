@@ -28,7 +28,7 @@ class TaskType extends Enum
     public static function labels(): array
     {
         return [
-            self::TEXT => __('Texo'),
+            self::TEXT => __('Texto'),
             self::EMAIL => __('Email'),
             self::PHONE => __('Telefone'),
             self::PROPOSAL => __('Proposta'),

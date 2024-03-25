@@ -92,7 +92,7 @@
     <div class="kanban mb-5">
         @php
             $taskStatus = \App\Enum\TaskStatus::labels();
-            $tasks = \App\Models\Task::with('responsible')->get();
+            $tasks = \App\Models\Task::with('responsible')->with('oportunity')->get();
         @endphp
         @foreach ($taskStatus as $statusId => $status)
             <div class="column-container">
@@ -113,7 +113,10 @@
                             data-id="{{ $task->status }}"
                             data-route="{{ route('task-update-status', ['model' => $task]) }}">
                             <div class="item" draggable="true">
-                                <i class="nav-icon las la-thumbtack"></i> {{ $task->name }}<br>
+                                <i class="nav-icon las la-tasks"></i> {{ $task->name }}<br>
+                                @if ($task->oportunity)
+                                    <i class="nav-icon las la-thumbtack"></i> {{ $task->oportunity->name }}<br>
+                                @endif
                                 <i class="nav-icon las la-user"></i> {{ $task->responsible->name }} <br>
                                 <i class="nav-icon las la-calendar-alt"></i> {{ \Carbon\Carbon::parse($task->due_date)->format('d/m/y') }}
                             </div>

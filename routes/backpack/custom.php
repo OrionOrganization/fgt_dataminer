@@ -22,14 +22,18 @@ Route::group([
     Route::crud('company', 'CompanyCrudController');
     Route::crud('product', 'ProductCrudController');
     Route::crud('contact', 'ContactCrudController');
-    Route::crud('task', 'TaskCrudController');
     Route::crud('blog-post', 'BlogPostCrudController');
-    Route::crud('lead', 'LeadCrudController');
-    Route::crud('oportunity', 'OportunityCrudController');
 
+    // LEAD
+    Route::crud('lead', 'LeadCrudController');
     Route::post('/lead/{model}/convert', [LeadCrudController::class, 'leadConvert'])->name('lead-convert');
     
+    // OPORTUNITY
+    Route::crud('oportunity', 'OportunityCrudController');
     Route::get('/oportunity/{model}/update-status', [OportunityCrudController::class, 'updateOportunityStatus'])->name('oportunity-update-status');
     
+    // TASK
+    Route::crud('task', 'TaskCrudController');
     Route::get('/task/{model}/update-status', [TaskCrudController::class, 'updateTaskStatus'])->name('task-update-status');
+    Route::post('/task/create/by-oportunity/{model}', [TaskCrudController::class, 'createTaskByOportunity'])->name('create-task-by-oportunity');
 }); // this should be the absolute last line of this file

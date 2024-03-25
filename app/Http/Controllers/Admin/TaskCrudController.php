@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Enum\TaskStatus;
 use App\Enum\TaskType;
 use App\Http\Requests\TaskRequest;
+use App\Models\Oportunity;
 use App\Models\Task;
 use App\Services\TaskService;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
@@ -57,13 +58,14 @@ class TaskCrudController extends CrudController
         CRUD::column('name')->label('Título');
         CRUD::addColumn([
             'type' => 'relationship',
-            'name' => 'company_id',
-            'label' => 'Empresa',
-            'attribute' => 'nickname',
-            'entity' => 'company',
+            'name' => 'oportunity_id',
+            'label' => 'Oportunidade',
+            'attribute' => 'name',
+            'entity' => 'oportunity',
+            'allows_null' => false,
             'wrapper'   => [
                 'href' => function ($crud, $column, $entry, $related_key) {
-                    return backpack_url('company/'.$related_key.'/show');
+                    return backpack_url('oportunity/'.$related_key.'/show');
                 },
             ],
         ]);
@@ -91,6 +93,7 @@ class TaskCrudController extends CrudController
                 return TaskStatus::from($entry->status)->getLabel();
             }
         ]);
+        CRUD::column('obs')->label('Observação');
         CRUD::addColumn([
             'name' => 'created_at',
             'label' => 'Criação',
@@ -123,10 +126,10 @@ class TaskCrudController extends CrudController
         CRUD::field('name')->label('Título');
         CRUD::addField([
             'type' => 'relationship',
-            'name' => 'company_id',
-            'label' => 'Empresa',
-            'attribute' => 'nickname',
-            'entity' => 'company',
+            'name' => 'oportunity_id',
+            'label' => 'Oportunidade',
+            'attribute' => 'name',
+            'entity' => 'oportunity',
             'allows_null' => false,
         ]);
         CRUD::addField([
@@ -152,6 +155,7 @@ class TaskCrudController extends CrudController
             'options' => TaskStatus::labels(),
             'allows_null' => false,
         ]);
+        CRUD::field('obs')->label('Observação');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
@@ -187,6 +191,28 @@ class TaskCrudController extends CrudController
         try {
             $input = $request->all();
             $this->taskService->updateStatus($model, $input);
+
+            return response()->json([
+                'success' => true
+            ]);
+        } catch (Exception $exception) {
+            return response()->json([
+                'success' => false,
+                'message' => $exception->getMessage()
+            ]);
+        }
+    }
+
+    /**
+     * @param Request $request
+     * @param Oportunity $model
+     * 
+     * @return JsonResponse
+     */
+    public function createTaskByOportunity(Request $request, Oportunity $model): JsonResponse
+    {
+        try {
+            $this->taskService->createTaskByOportunity($model);
 
             return response()->json([
                 'success' => true

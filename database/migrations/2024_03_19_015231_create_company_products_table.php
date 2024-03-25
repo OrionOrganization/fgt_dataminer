@@ -15,12 +15,17 @@ class CreateCompanyProductsTable extends Migration
     {
         Schema::create('company_products', function (Blueprint $table) {
             $table->id();
+
             $table->foreignId('company_id')
+                ->nullable()
                 ->constrained()
-                ->nullable();
+                ->onDelete('set null');
+
             $table->foreignId('product_id')
+                ->nullable()
                 ->constrained()
-                ->nullable();
+                ->onDelete('set null');
+
             $table->timestamps();
         });
     }

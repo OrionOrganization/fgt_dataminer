@@ -41,6 +41,8 @@ class OportunityCrudController extends CrudController
         CRUD::setRoute(config('backpack.base.route_prefix') . '/oportunity');
         CRUD::setEntityNameStrings('oportunidade', 'Oportunidades');
 
+        $this->crud->addButtonFromView('line', 'create_task', 'create_task', 'beginning');
+
         $this->oportunityService = resolve(OportunityService::class);
     }
 
@@ -94,6 +96,18 @@ class OportunityCrudController extends CrudController
         ]);
         CRUD::column('date')->label('Data')->type('date');
         CRUD::column('obs')->label('Observações');
+        CRUD::addColumn([
+            'label' => 'Tarefas',
+            'type' => 'select_multiple',
+            'name' => 'tasks',
+            'entity' => 'tasks',
+            'attribute' => 'name',
+            'model' => 'App\Models\Task',
+            'wrapper' => [
+                'element' => 'span',
+                'class' => 'badge badge-primary',
+            ],
+        ]);
         CRUD::addColumn([
             'name' => 'created_at',
             'label' => 'Criação',

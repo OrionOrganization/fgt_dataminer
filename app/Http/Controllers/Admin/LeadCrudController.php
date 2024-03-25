@@ -88,7 +88,7 @@ class LeadCrudController extends CrudController
         CRUD::setValidation(LeadRequest::class);
 
         CRUD::field('name')->label('Nome');
-        CRUD::column('company_name')->label('Nome Empresa');
+        CRUD::field('company_name')->label('Nome Empresa');
         CRUD::field('phone')->label('Telefone');
         CRUD::field('email');
         CRUD::field('cnpj')->label('CNPJ');
@@ -124,12 +124,13 @@ class LeadCrudController extends CrudController
             $this->leadService->convertLead($model);
 
             return response()->json([
-                'success' => true
+                'success' => true,
             ]);
         } catch (Exception $exception) {
             return response()->json([
-                'success' => false
-            ]);
+                'success' => false,
+                'message' => $exception->getMessage()
+            ], 400);
         }
     }
 }

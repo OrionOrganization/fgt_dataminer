@@ -96,7 +96,7 @@ class BlogPostCrudController extends CrudController
             'label' => 'Imagem de Capa',
             'name' => 'image',
             'type' => 'image',
-            'crop' => false,
+            'crop' => true,
             'aspect_ratio' => 1,
         ]);
         
@@ -162,65 +162,5 @@ class BlogPostCrudController extends CrudController
             'height' => '300px',
             'width'  => '300px',
         ],);
-    }
-
-    protected function store()
-    {
-        $request = $this->crud->getRequest();
-
-        $image = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $request->image));
-
-        $imageUrl = $this->storeImageAndGetUrl($image);
-
-        $this->crud->getRequest()->request->add(['image' => $imageUrl]);
-
-        return $this->traitStore();
-    }
-
-    protected function update()
-    {
-        $request = $this->crud->getRequest();
-        $entry = $this->crud->getCurrentEntry();
-
-        if ($request->has('image') && Str::startsWith($request->image, 'data:image')) {
-            if ($entry->image) {
-                $formatedUrlImage = str_replace('storage', 'public', $entry->image);
-                Storage::delete($formatedUrlImage);
-            }
-
-            $image = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $request->image));
-
-            $imageUrl = $this->storeImageAndGetUrl($image);
-
-            $this->crud->getRequest()->request->add(['image' => $imageUrl]);
-        }
-
-        return $this->traitUpdate();
-    }
-
-    public function destroy($id)
-    {
-        $entry = $this->crud->getCurrentEntry();
-
-        if ($entry->image) {
-            $formatedUrlImage = str_replace('storage', 'public', $entry->image);
-            Storage::delete($formatedUrlImage);
-        }
-
-        return $this->traitDestroy($id);
-    }
-
-    /**
-     * @param string $image // base64
-     * 
-     * @return string
-     */
-    protected function storeImageAndGetUrl(string $image): string
-    {
-        $imageName = (string) Str::uuid() . ".png";
-
-        Storage::put('public/img/blog-covers/' . $imageName, $image);
-
-        return Storage::url('public/img/blog-covers/' . $imageName);
     }
 }

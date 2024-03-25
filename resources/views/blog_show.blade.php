@@ -40,7 +40,7 @@
     <hr>
 
     <main>
-        <img src="{{ $model->image }}" alt="Imagem de capa do post" id="show-blog-image">
+        <img src="{{ asset($model->image) }}" alt="Imagem de capa do post" id="show-blog-image">
         <h1 id="show-blog-title">{{ $model->title }}</h1>
         <p id="show-blog-resume">{{ $model->resume }}</p>
         <article class="mt-5">

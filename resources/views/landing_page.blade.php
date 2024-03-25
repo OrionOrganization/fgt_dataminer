@@ -421,7 +421,7 @@
                         <div class="col-lg-4 col-md-6 mb-4">
                         <div class="latest-post">
                             <div class="latest-post-media">
-                            <a target="_blank" href="">
+                            <a target="_blank" href="{{ url('/blog/' . $blog->id) }}">
                                 <img loading="lazy" class="img-fluid latest-post-img" src="{{ $blog->image }}" alt="img">
                             </a>
                             </div>

@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Enum\ClientTaxRegime;
-use App\Http\Requests\ClientRequest;
+use App\Enum\ContactPosition;
+use App\Http\Requests\ContactRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class ClientCrudController
+ * Class ContactCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class ClientCrudController extends CrudController
+class ContactCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -27,9 +27,9 @@ class ClientCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Client::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/client');
-        CRUD::setEntityNameStrings('cliente', 'clientes');
+        CRUD::setModel(\App\Models\Contact::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/contact');
+        CRUD::setEntityNameStrings('contato', 'contatos');
     }
 
     /**
@@ -42,9 +42,26 @@ class ClientCrudController extends CrudController
     {
         CRUD::column('id');
         CRUD::column('name')->label('Nome');
-        CRUD::column('tax_regime')->label('Regime Tributário');
-        CRUD::column('employees_quantity')->label('Funcionários');
-        CRUD::column('cnae')->label('CNAE');
+        
+        CRUD::addColumn([
+            'type' => 'relationship',
+            'name' => 'company',
+            'label' => 'Empresa',
+            'attribute' => 'nickname',
+            'entity' => 'company',
+            'wrapper'   => [
+                'href' => function ($crud, $column, $entry, $related_key) {
+                    return backpack_url('company/'.$related_key.'/show');
+                },
+            ],
+        ]);
+
+        CRUD::column('phone')->label('Telefone');
+        CRUD::column('whatsapp');
+        CRUD::column('email');
+        CRUD::column('position')->label('Cargo');
+        CRUD::column('obs')->label('Observação');
+
         CRUD::addColumn([
             'name' => 'created_at',
             'label' => 'Criação',
@@ -72,18 +89,31 @@ class ClientCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(ClientRequest::class);
+        CRUD::setValidation(ContactRequest::class);
 
-        CRUD::field('name');
+        CRUD::field('name')->label('Nome');
+
         CRUD::addField([
-            'name'        => 'tax_regime',
-            'label'       => "Regime Tributário",
-            'type'        => 'select_from_array',
-            'options'     => ClientTaxRegime::labels(),
-            'allows_null' => false,
+            'type' => 'relationship',
+            'name' => 'company',
+            'label' => 'Empresa',
+            'attribute' => 'nickname',
+            'entity' => 'company',
+         ]);
+
+        CRUD::field('phone')->label('Telefone');
+        CRUD::field('whatsapp');
+        CRUD::field('email')->type('email');
+
+        CRUD::addField([
+            'name' => 'position',
+            'label' => 'Cargo',
+            'type' => 'select_from_array',
+            'options' => ContactPosition::labels(),
+            'allows_null' => true,
         ]);
-        CRUD::field('employees_quantity');
-        CRUD::field('cnae');
+
+        CRUD::field('obs')->label('Observação');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
@@ -101,5 +131,10 @@ class ClientCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+
+    protected function setupShowOperation()
+    {
+        $this->setupListOperation();
     }
 }

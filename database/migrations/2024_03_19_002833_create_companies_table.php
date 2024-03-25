@@ -16,7 +16,7 @@ class CreateCompaniesTable extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
             $table->string('nickname');
-            $table->string('cnpj');
+            $table->string('cnpj')->nullable()->unique();
             $table->string('social_reason')->nullable();
             $table->integer('category')->nullable();
             $table->integer('origin')->nullable();
@@ -30,6 +30,9 @@ class CreateCompaniesTable extends Migration
             $table->string('email')->nullable();
             $table->string('site')->nullable();
             $table->json('address')->nullable();
+            $table->integer('tax_regime')->nullable();
+            $table->integer('employees_quantity')->nullable();
+            $table->string('cnae')->nullable();
             $table->timestamps();
         });
     }

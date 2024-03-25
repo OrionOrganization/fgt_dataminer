@@ -73,9 +73,11 @@
             <!-- Secondary Blog Post -->
             @php
                 $secondaryPost = \App\Models\BlogPost::latest()->get()->skip(1)->first();
-                $postUrl = url('/blog/' . $secondaryPost->id);
             @endphp
             @if ($secondaryPost)
+                @php
+                    $postUrl = url('/blog/' . $secondaryPost->id);
+                @endphp
                 <section id="secondary-post">
                     <a href="{{ $postUrl }}">
                         <img src="{{ $secondaryPost->image }}" alt="Imagem de capa do post">
@@ -106,7 +108,7 @@
             @foreach ($blogs as $blog)
                 <div class="blog-post-container">
                     <a href="{{ url('/blog/' . $blog->id) }}">
-                        <img src="{{ $blog->image }}" alt="Imagem de capa do post">
+                        <img loading="lazy" class="img-fluid latest-post-img" src="{{ $blog->image }}" alt="img">
                     </a>
                     <div>
                         <a href="{{ url('/blog/' . $blog->id) }}">

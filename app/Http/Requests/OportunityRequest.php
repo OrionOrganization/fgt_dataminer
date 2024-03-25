@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TaskRequest extends FormRequest
+class OportunityRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,10 +26,8 @@ class TaskRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'company_id' => 'required',
+            'status' => 'required',
             'user_id' => 'required',
-            'type' => 'required',
-            'status' => 'required'
         ];
     }
 
@@ -41,6 +39,7 @@ class TaskRequest extends FormRequest
     public function attributes()
     {
         return [
+            'name.required' => 'Defina um nome para a oportunidade!'
         ];
     }
 
@@ -52,8 +51,7 @@ class TaskRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Insira um título para a tarefa.'
-
+            //
         ];
     }
 }

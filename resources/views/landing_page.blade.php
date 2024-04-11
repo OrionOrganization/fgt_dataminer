@@ -87,14 +87,15 @@
                             <a href="{{$whatsappUrl}}" target="_blank" class="main-button">Quero Conhecer a FGT</a>
                         </div>
                     </div>
-                    <div class="carousel-item" data-bs-interval="5000">
+                    {{-- AINDA EM CONSTRUÇÃO --}}
+                    {{-- <div class="carousel-item" data-bs-interval="5000">
                         <img src="" class="d-block w-100" id="carousel-pic-3" alt="Foto 3 da equipe FGT - Fundo de carrossel de fotos" width="100%" height="100%">
                         <div class="carousel-caption hidden d-md-block">
                             <h2>Busca de Dívida Ativa Tributária</h2>
                             <p>Encontre a solução para o passivo inscrito em dívida ativa.</p>
                             <a href="{{$whatsappUrl}}" target="_blank" class="main-button">Quero Conhecer a FGT</a>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#main-slider" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -111,8 +112,8 @@
                 <blockquote class="blockquote">
                     <i class="las la-balance-scale"></i>
                     <p>
-                        Nosso compromisso é com a honestidade e transparência, <br>
-                        guiando cada passo de nossa atuação empresarial.
+                        Nossa empresa compromete-se com a honestidade e transparência <br>
+                        em cada aspecto de sua atuação
                     </p>
                 </blockquote>
                 <figcaption class="blockquote-footer">
@@ -157,12 +158,12 @@
                         <p>
                             A Fóros nasceu da visão empreendedora
                             dos fundadores, que almejavam estabelecer um escritório
-                            especializado em fornecer <strong>soluções tributárias personalizadas
-                            e seguras para seus clientes.</strong><br>
+                            especializado em fornecer soluções tributárias personalizadas
+                            e seguras para seus clientes.<br>
                             <br>
 
                             Nosso compromisso é oferecer excelência na gestão fiscal,
-                            proporcionando <strong>confiança e tranquilidade aos empresários</strong>
+                            proporcionando confiança e tranquilidade aos empresários
                             que buscam otimizar sua performance financeira. <br>
 
                             <br>
@@ -290,8 +291,8 @@
                         <div class="values-text">
                             <h3 class="values-name">Impacto Positivo</h3>
                             <p>
-                                Contribuímos para a sociedade, ajudando as pessoas e as <br>
-                                empresas a recuperarem créditos, superarem desafios tributários <br>
+                               Contribuímos para o desenvolvimento social ajudando pessoas e <br>
+                                empresas a recuperarem créditos tributários, superarem desafios fiscais <br>
                                 e alcançarem seus objetivos financeiros.
                             </p>
                         </div>
@@ -309,6 +310,7 @@
                 </h1>
 
                 <div id="services-container">
+                    {{-- CONSULTORIA TRIBUTÁRIA --}}
                     <div class="card text-center" style="width: 18rem;">
                         <div class="card-body">
                             <i class="service-icon las la-comments-dollar"></i>
@@ -318,6 +320,7 @@
                             <a href="/servicos" class="main-button">Saiba Mais</a>
                         </div>
                     </div>
+                    {{-- RECUPERAÇÃO DE CRÉDITOS --}}
                     <div class="card text-center" style="width: 18rem;">
                         <div class="card-body">
                             <i class="service-icon las la-donate"></i>
@@ -327,7 +330,8 @@
                             <a href="/servicos" class="main-button">Saiba Mais</a>
                         </div>
                     </div>
-                    <div class="card text-center" style="width: 18rem;">
+                    {{-- DÍVIDA ATIVA --}}
+                    {{-- <div class="card text-center" style="width: 18rem;">
                         <div class="card-body">
                             <i class="service-icon las la-balance-scale-right"></i>
                             <h2 class="card-title">Dívida Ativa</h2>
@@ -335,7 +339,8 @@
                             <p class="card-text">Ferramenta exclusiva que permite verificar ativamente suas dívidas tributárias.</p>
                             <a href="/servicos" class="main-button">Saiba Mais</a>
                         </div>
-                    </div>
+                    </div> --}}
+                    {{-- REGULARIZAÇÃO FISCAL --}}
                     <div class="card text-center" style="width: 18rem;">
                         <div class="card-body">
                             <i class="service-icon las la-file-invoice-dollar"></i>
@@ -349,7 +354,7 @@
             </section>
 
             <!-- Contact -->
-            <section id="contact-section">
+            {{-- <section id="contact-section">
                 <div class="row">
                     <div class="contact-container col-md-6">
                         <small>Contato</small>
@@ -408,7 +413,7 @@
                     </div>
 
                   </div>
-            </section>
+            </section> --}}
 
             <!-- Blog/News -->
             <section id="news-section">

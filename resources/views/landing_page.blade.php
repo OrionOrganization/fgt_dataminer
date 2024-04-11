@@ -112,8 +112,7 @@
                 <blockquote class="blockquote">
                     <i class="las la-balance-scale"></i>
                     <p>
-                        Nossa empresa compromete-se com a honestidade e transparência <br>
-                        em cada aspecto de sua atuação
+                        Temos compromisso com a honestidade e a transparência, são estes os princípios mestres, que guiam nossa tomada de decisão .
                     </p>
                 </blockquote>
                 <figcaption class="blockquote-footer">

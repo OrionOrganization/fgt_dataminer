@@ -25,13 +25,34 @@
 </head>
 <body>
     <!-- Header -->
+    <nav id="sub-header" class="display-flex-around">
+        <div id="sub-header-contact">
+            <div><i class="las la-phone header-contact-icon"></i> <span><a href="{{$whatsappUrl}}" target="_blank">{{$whatsappNumber}}</a></span></div>
+            <div><i class="las la-envelope header-contact-icon"></i> <span>{{$email}}</span></div>
+        </div>
+        <div id="sub-header-socials">
+            <a href="{{$instagramUrl}}" target="_blank" class="header-social-link" aria-label="Acesse nosso Instagram"><i class="lab la-instagram header-social-icon"></i></a>
+            <a href="{{$linkedinUrl}}" target="_blank" class="header-social-link" aria-label="Acesse nosso LinkedIn"><i class="lab la-linkedin header-social-icon"></i></a>
+        </div>
+    </nav>
     <header id="main-header">
-        <figure id="image-figure">
-            <img src="" id="services-bg" alt="Imagem de fundo página de serviços">
-        </figure>
-        <a href="/" class="main-link"><i class="las la-arrow-left"></i> Voltar ao Início</a>
-        <h1>Nossos Serviços</h1>
-        <a href="{{$whatsappUrl}}" target="_blank" class="secondary-button">Entrar em Contato</a>
+        <a href="/">
+            <img src="{{ asset('img/logo.svg') }}" alt="Logo FGT (Fóros Gestão Tributária)" id="header-logo" width="140px" height="75px">
+        </a>
+
+        <nav id="main-navigation">
+            <img src="{{ asset('img/logo-white.png') }}" alt="Logo FGT (Fóros - Gestão Tributária)" class="d-none" id="main-navigation-logo" width="70px" height="30px">
+
+            <a href="/" class="header-nav-link">Início</a>
+            <a href="/#about-section" class="header-nav-link">Sobre</a>
+            <a href="#" class="header-nav-link">Serviços</a>
+            <a href="/#contact-section" class="header-nav-link">Contato</a>
+            <a href="/#news-section" class="header-nav-link">Blog</a>
+
+            <a href="{{$whatsappUrl}}" target="_blank" class="header-nav-button secondary-button">Conhecer</a>
+        </nav>
+
+        <button class="hamburger-menu" aria-label="Botão acessar menu"></button>
     </header>
 
     <main>
@@ -41,7 +62,7 @@
                 <small>Nós oferecemos</small>
                 <h3>
                     Consultoria Tributária <br>
-                    <strong>Personalizada</strong>
+                    Personalizada
                 </h3>
                 <br>
                 <p>
@@ -50,7 +71,7 @@
                     para empresas de todos os tamanhos.
                     <br>
                     <br>
-                    É por isso que oferecemos nossa <strong>Consultoria Tributária Personalizada</strong>, <br>
+                    É por isso que oferecemos nossa Consultoria Tributária Personalizada, <br>
                     um serviço dedicado a ajudar empresas a otimizar suas  <br>
                     operações fiscais e minimizar riscos.
                 </p>
@@ -82,7 +103,8 @@
             <div class="service-left-content">
                 <small>Nós oferecemos</small>
                 <h3>
-                    Recuperação de Valores Pagos a Título de Tributação Indevida ou a Maior
+                    Recuperação de Valores Pagos a <br>
+                    Título de Tributação Indevida
                 </h3>
                 <br>
                 <p>
@@ -126,16 +148,21 @@
         <div class="service">
             <div class="service-left-content">
                 <small>Nós oferecemos</small>
-                <h3>Busca de Dívida Ativa Tributária </h3>
+                <h3>
+                    Busca de Débitos Inscritos <br>
+                    em Dívida Ativa
+                </h3>
                 <br>
                 <p>
-                    Oferecemos uma ferramenta exclusiva projetada especificamente <br>
-                    para ajudar empresas a gerenciar e regularizar suas <br>
-                    obrigações tributárias de forma eficiente e oportuna.
+                    Oferecemos serviços especializados na busca e gestão de débitos <br>
+                    inscritos em dívida ativa. Nosso objetivo é auxiliar empresas <br>
+                    na regularização eficiente e oportuna de suas obrigações tributárias, <br>
+                    proporcionando tranquilidade e conformidade fiscal.
                     <br>
                     <br>
-                    Com esta ferramenta poderosa, oferecemos uma abordagem <br> 
-                    proativa para lidar com dívidas pendentes junto aos órgãos fiscais.
+                    Com nossa abordagem proativa, ajudamos nossos clientes a lidar de forma <br>
+                    eficaz com dívidas pendentes junto às autoridades fiscais, garantindo <br>
+                    uma gestão financeira mais segura e tranquila.
                 </p>
                 <br>
                 <br>
@@ -197,7 +224,7 @@
                 <br>
                 <p>
                     <i class="las la-hands-helping"></i> <span>Acompanhamento Contínuo</span> <br>
-                    Acompanhamento contínuo para garantir a conformidade <br> e evitar futuros problemas.</p>
+                    Acompanhamento contínuo, para manter-se em <br> conformidade com a legislação.</p>
             </div>
         </div>
     </main>

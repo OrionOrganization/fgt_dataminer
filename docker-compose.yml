@@ -1,9 +1,18 @@
-version: "3.7"
+networks:
+    laravel-eti:
+        driver: bridge
+
+
+volumes:
+    mydbfgt:
+    cache:
+
+
 services:
     # image project
     app:
-        build: 
-            args: 
+        build:
+            args:
                 user: orion
                 uid: 1000
             context: ./
@@ -13,60 +22,56 @@ services:
         working_dir: /var/www/
         volumes:
             - ./:/var/www
-        networks: 
+        networks:
             - laravel-eti
-    
+
     # nginx
     nginx:
         image: nginx:alpine
         restart: unless-stopped
-        ports: 
+        ports:
             - 8080:80
-        volumes: 
+        volumes:
             - ./:/var/www
             - ./docker/nginx/:/etc/nginx/conf.d/
-        networks: 
+        networks:
             - laravel-eti
 
     # db mysql
     mysql:
         image: mysql:5.7.22
         restart: unless-stopped
-        environment: 
+        environment:
             MYSQL_DATABASE: ${DB_DATABASE}
             MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
             MYSQL_PASSWORD: ${DB_PASSWORD}
             MYSQL_USER: ${DB_USERNAME}
-        volumes: 
-            - ./.docker/mysql/dbdata:/var/lib/mysql
-        ports: 
+        volumes:
+            - mydbfgt:/var/lib/mysql
+        ports:
             - 3306:3306
-        networks: 
+        networks:
             - laravel-eti
 
     # queue
     queue:
-        build: 
-            args: 
+        build:
+            args:
                 user: orion
                 uid: 1000
             context: ./
             dockerfile: Dockerfile
         restart: unless-stopped
         command: "php artisan queue:work"
-        volumes: 
+        volumes:
             - ./:/var/www
-        depends_on: 
+        depends_on:
             - redis
-        networks: 
+        networks:
             - laravel-eti
 
     # redis
     redis:
         image: redis:latest
-        networks: 
+        networks:
             - laravel-eti
-
-networks: 
-    laravel-eti:
-        driver: bridge

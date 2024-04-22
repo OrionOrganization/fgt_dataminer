@@ -14,3 +14,9 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('oportunity') }}'><i class="nav-icon las la-thumbtack"></i> Oportunidades</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('task') }}'><i class="nav-icon las la-tasks"></i> Tarefas</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('product') }}'><i class="nav-icon las la-archive"></i> Produtos</a></li>
+<li class="nav-item d-flex justify-content-center">
+    <div class="groupTitle"><b>DATA MINE</b></div>
+</li>
+<li class='nav-item'><a class='nav-link' href='{{ route('datamine-file') }}'><i class="nav-icon las la-archive"></i> Arquivo</a></li>
+
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('datamine/raw') }}'><i class='nav-icon la la-archive'></i> Datamine Raws</a></li>

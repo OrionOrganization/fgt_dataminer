@@ -45,4 +45,16 @@ return [
     */
     'multiple_guards' => false,
 
+    /*
+    |--------------------------------------------------------------------------
+    | Permissions List
+    |--------------------------------------------------------------------------
+    */
+
+    'permissions_list' => [
+        'acessar_leads',
+        'acessar_contatos',
+        'acessar_empresas',
+        'acessar_oportunidades',
+    ],
 ];

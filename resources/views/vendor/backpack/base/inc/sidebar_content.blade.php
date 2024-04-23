@@ -15,6 +15,7 @@
     </ul>
 </li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('setting') }}'><i class='nav-icon la la-cog'></i> <span>Configurações</span></a></li>
+<li class='nav-item'><a class='nav-link' href={{ '/' . config('horizon.path') }}><i class='nav-icon la la-server'></i> <span>Horizon</span></a></li>
 
 <li class="nav-item d-flex justify-content-center">
     <div class="groupTitle"><b>CRM</b></div>

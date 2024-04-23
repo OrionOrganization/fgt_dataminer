@@ -14,6 +14,8 @@
         <li class='nav-item'><a class='nav-link' href='{{ backpack_url('permission') }}'><i class="nav-icon las la-key"></i> Permissões</a></li>
     </ul>
 </li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('setting') }}'><i class='nav-icon la la-cog'></i> <span>Configurações</span></a></li>
+
 <li class="nav-item d-flex justify-content-center">
     <div class="groupTitle"><b>CRM</b></div>
 </li>

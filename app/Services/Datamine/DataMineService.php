@@ -66,13 +66,13 @@ class DataMineService
      */
     protected function analyzeDatamineRawCpf(string $cpf): void
     {
-        $cpfData = $this->cpfGetInformation($cpf);
-
         $dataMineRaws = $this->dataMineRepository->getDataMineRawsByCpf($cpf);
+        
+        $cpfData = $this->cpfGetInformation($cpf, $dataMineRaws);
 
         $dataValues = $this->entityRawGroupByValues($dataMineRaws);
 
-        $this->dataMineRepository->updateOrCreateDataMineEntityWithValues(
+        $this->dataMineRepository->updateOrCreateDataMineEntityWithValuesCpf(
             $cpfData,
             $dataValues,
             $cpf
@@ -82,16 +82,25 @@ class DataMineService
     }
 
     /**
-     * @param string $cpf
+     * @param string $formatedCpf
+     * @param Collection $dataMineRaws
      * 
      * @return array
      */
-    protected function cpfGetInformation(string $cpf): array
+    protected function cpfGetInformation(string $formatedCpf, Collection $dataMineRaws): array
     {
+        $cpf = DocumentService::getOnlyNumber($formatedCpf);
+
+        $debtorName = $dataMineRaws->first()->nome_devedor;
+
         return [
-            'key' => $cpf,
+            'key' => $formatedCpf,
+            'key_unmask' => $cpf,
             'type_entity' => DataMineEntitiesType::PF(),
-            'type_tax_regime' => CompanyTaxRegime::NONE()
+            'type_tax_regime' => CompanyTaxRegime::NONE(),
+            'extra' => json_encode([
+                'nome_devedor' => $debtorName
+            ])
         ];
     }
 
@@ -103,12 +112,12 @@ class DataMineService
     protected function analyzeDatamineRawCnpj(string $cnpj): void
     {
         $cnpjData = $this->cnpjGetInformation($cnpj);
-
+        
         $dataMineRaws = $this->dataMineRepository->getDataMineRawsByCnpj($cnpj);
 
         $dataValues = $this->entityRawGroupByValues($dataMineRaws);
 
-        $this->dataMineRepository->updateOrCreateDataMineEntityWithValues(
+        $this->dataMineRepository->updateOrCreateDataMineEntityWithValuesCnpj(
             $cnpjData,
             $dataValues,
             $cnpj
@@ -137,8 +146,9 @@ class DataMineService
                 'code_ibge' => $cnpjData['codigo_municipio_ibge'] ?? '',
                 'type_tax_regime' => $taxRegime,
                 'key' => $formatedCnpj,
+                'key_unmask' => $cnpj,
                 'type_entity' => DataMineEntitiesType::PJ(),
-                'address' => $address
+                'address' => json_encode($address)
             ];
         } catch (Exception $e) {
             throw new Exception('Erro ao obter informações públicas do CNPJ');

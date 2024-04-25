@@ -49,7 +49,7 @@ class DatamineEntityCrudController extends CrudController
             'name' => 'key',
             'label' => 'Chave Principal',
         ]);
-        CRUD::column('complete_cpf')->label('CPF Completo');
+        CRUD::column('key_unmask')->label('Dígitos Chave');
 
         CRUD::addColumn([
             'name' => 'type_entity',
@@ -153,6 +153,7 @@ class DatamineEntityCrudController extends CrudController
         ]);
 
         CRUD::column('address')->label('Endereço');
+        CRUD::column('extra');
 
         $this->setupFilters();
     }
@@ -174,12 +175,12 @@ class DatamineEntityCrudController extends CrudController
         $this->crud->addFilter(
             [
                 'type'  => 'text',
-                'name'  => 'complete_cpf',
+                'name'  => 'key_unmask',
                 'label' => 'CPF Completo'
             ],
             false,
             function ($value) {
-                $this->crud->addClause('where', 'complete_cpf', '=', "$value");
+                $this->crud->addClause('where', 'key_unmask', '=', "$value");
             }
         );
 
@@ -231,7 +232,7 @@ class DatamineEntityCrudController extends CrudController
         CRUD::setValidation(DatamineEntityRequest::class);
 
         CRUD::field('key')->label('Chave Principal');
-        CRUD::field('complete_cpf')->label('CPF Completo');
+        CRUD::field('key_unmask')->label('CPF Completo');
         CRUD::addField([
             'name' => 'type_entity',
             'label' => 'Tipo',

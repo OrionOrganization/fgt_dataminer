@@ -1,0 +1,35 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateDatamineCnpjsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('datamine_cnpjs', function (Blueprint $table) {
+            $table->bigInteger('id')->unique();
+            $table->json('json')->nullable();
+
+            $table->timestamps();
+
+            $table->index(['id']);
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('datamine_cnpjs');
+    }
+}

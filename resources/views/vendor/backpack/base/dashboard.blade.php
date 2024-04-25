@@ -122,12 +122,17 @@
                             $id = $task->id ?? '';
                             $status = $task->status ?? '';
                             $name = $task->name ?? '';
-                            $oportunityName = ($task->oportunity) ? $task->oportunity->name : '';
+
+                            if (!$oportunity = $task->oportunity) {
+                                $oportunityName = '';
+                                $nickname = 'sem empresa';
+                            } else {
+                                $oportunityName = $oportunity->name ?? '';
+                                $nickname = optional($oportunity->company)->nickname ?? 'sem empresa';
+                            }
                             $responsibleName = ($task->responsible) ? $task->responsible->name : '';
 
-                            $nickname = optional($oportunity->company)->nickname ?? 'sem empresa';
                             $formatedDate = (!$task->due_date) ? '-' : \Carbon\Carbon::parse($task->due_date)->format('d/m/y');
-
                         @endphp
                         <a
                             href="{{ backpack_url('/task/' . $id . '/show') }}"

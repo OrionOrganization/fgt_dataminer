@@ -16,8 +16,8 @@ class CreateDatamineEntitiesTable extends Migration
         Schema::create('datamine_entities', function (Blueprint $table) {
             $table->id();
             $table->string('key')->nullable();
-            $table->string('key_parcial')->nullable();
-            $table->string('type_entity')->nullable();
+            $table->string('complete_cpf')->nullable();
+            $table->integer('type_entity')->nullable();
             $table->integer('type_tax_regime')->nullable();
             $table->integer('code_ibge')->nullable();
             $table->text('obs')->nullable();
@@ -25,10 +25,10 @@ class CreateDatamineEntitiesTable extends Migration
             $table->json('address')->nullable();
             $table->timestamps();
 
-            $table->unique(['code_ibge']);
-            $table->unique(['type_tax_regime']);
+            $table->index(['code_ibge']);
+            $table->index(['type_tax_regime']);
             $table->unique(['key']);
-            $table->unique(['key_parcial']);
+            $table->index(['complete_cpf']);
         });
     }
 

@@ -31,4 +31,6 @@
 </li>
 <li class='nav-item'><a class='nav-link' href='{{ route('datamine-file') }}'><i class="nav-icon las la-archive"></i> Arquivo</a></li>
 
-<li class='nav-item'><a class='nav-link' href='{{ backpack_url('datamine/raw') }}'><i class='nav-icon la la-archive'></i> Datamine Raws</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('datamine/raw') }}'><i class='nav-icon la la-archive'></i> Dívidas Abertas</a></li>
+
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('datamine/entity') }}'><i class='nav-icon la la-industry'></i> Entidades</a></li>

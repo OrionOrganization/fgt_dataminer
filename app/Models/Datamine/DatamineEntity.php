@@ -5,7 +5,7 @@ namespace App\Models\Datamine;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class DatamineDividaAbertaRaw extends Model
+class DatamineEntity extends Model
 {
     use CrudTrait;
 
@@ -15,9 +15,9 @@ class DatamineDividaAbertaRaw extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'datamine_divida_aberta_raws';
+    protected $table = 'datamine_entities';
     // protected $primaryKey = 'id';
-    public $timestamps = false;
+    // public $timestamps = false;
     protected $guarded = ['id'];
     // protected $fillable = [];
     // protected $hidden = [];
@@ -35,31 +35,21 @@ class DatamineDividaAbertaRaw extends Model
     |--------------------------------------------------------------------------
     */
 
+    public function value()
+    {
+        return $this->belongsTo(DatamineEntityValue::class, 'id', 'id');
+    }
+
+    public function ibge()
+    {
+        return $this->belongsTo(Ibge::class, 'code_ibge', 'code_ibge');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES
     |--------------------------------------------------------------------------
     */
-
-    public function scopeCnpj($query, $cnpj)
-    {
-        return $query->where('cpf_cnpj', $cnpj);
-    }
-
-    public function scopeCpf($query, $cpf)
-    {
-        return $query->where('cpf_cnpj', $cpf);
-    }
-
-    public function scopeJudged($query)
-    {
-        return $query->where('indicador_ajuizado', 'SIM');
-    }
-
-    public function scopeUnjudged($query)
-    {
-        return $query->where('indicador_ajuizado', 'NAO');
-    }
 
     /*
     |--------------------------------------------------------------------------

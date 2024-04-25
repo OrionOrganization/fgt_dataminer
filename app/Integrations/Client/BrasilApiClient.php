@@ -66,17 +66,13 @@ class BrasilApiClient
 
         $url = $baseUrl . $path;
 
-        $headers = [
-            //'authorization' => 'Bearer ' . $this->token
-        ];
-
         switch ($method) {
             case 'GET':
-                return $this->handleResponse($this->http()->withHeaders($headers)->get($url, $body));
+                return $this->handleResponse($this->http()->get($url, $body));
             case 'POST':
-                return $this->handleResponse($this->http()->withHeaders($headers)->asJson()->post($url, $body));
+                return $this->handleResponse($this->http()->asJson()->post($url, $body));
             case 'delete':
-                return $this->handleResponse($this->http()->withHeaders($headers)->delete($url, $body));
+                return $this->handleResponse($this->http()->delete($url, $body));
             default:
                 throw new Exception(
                     'Token não configurado'

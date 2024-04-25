@@ -352,7 +352,7 @@ class DocumentService
      * @param string $value
      * @return \Illuminate\Support\Collection
      */
-    protected static function collectDigits(string $value): Collection
+    public static function collectDigits(string $value): Collection
     {
         return collect(str_split(preg_replace('/\D/', '', $value)));
     }

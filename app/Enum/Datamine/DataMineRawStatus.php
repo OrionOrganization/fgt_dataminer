@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Enum;
+namespace App\Enum\Datamine;
 
 use MyCLabs\Enum\Enum;
 
 /**
- * @method static self PJ()
- * @method static self PF()
+ * @method static self NEW()
+ * @method static self ANALYZED()
  */
-class DataMineEntitiesType extends Enum
+class DataMineRawStatus extends Enum
 {
-    private const PJ = 0;
-    private const PF = 1;
+    private const NEW = 0;
+    private const ANALYZED = 1;
 
     /**
      * Display values for the enum.
@@ -19,8 +19,8 @@ class DataMineEntitiesType extends Enum
     public static function labels(): array
     {
         return [
-            self::PJ => __('PJ'),
-            self::PF => __('PF'),
+            self::NEW => __('Novo'),
+            self::ANALYZED => __('Analisado'),
         ];
     }
 

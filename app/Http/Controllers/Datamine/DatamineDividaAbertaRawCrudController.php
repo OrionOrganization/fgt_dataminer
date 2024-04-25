@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Datamine;
 
+use App\Enum\Datamine\DataMineRawStatus;
+use App\Enum\Datamine\SubscriptionSituationType;
 use App\Http\Requests\Datamine\DatamineDividaAbertaRawRequest;
 use App\Http\Requests\Datamine\DatamineDividaAvertaRawRequest;
 use App\Models\Datamine\DatamineDividaAbertaRaw;
@@ -33,7 +35,7 @@ class DatamineDividaAbertaRawCrudController extends CrudController
     {
         CRUD::setModel(DatamineDividaAbertaRaw::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/datamine/raw');
-        CRUD::setEntityNameStrings('datamine divida aberta raw', 'datamine divida aberta raws');
+        CRUD::setEntityNameStrings('dívida aberta', 'dívidas abertas');
     }
 
     /**
@@ -46,7 +48,7 @@ class DatamineDividaAbertaRawCrudController extends CrudController
     {
         CRUD::addColumn([
             'name' => 'cpf_cnpj',
-            'Label' => 'cpf_cnpj',
+            'label' => 'CPF / CNPJ',
             'type' => 'text'
         ]);
         CRUD::addColumn([
@@ -126,42 +128,112 @@ class DatamineDividaAbertaRawCrudController extends CrudController
         ]);
         CRUD::addColumn([
             'name' => 'file_type',
-            'Label' => 'file_type',
+            'Label' => 'Arquivo Tipo',
             'type' => 'text'
         ]);
         CRUD::addColumn([
             'name' => 'file_year',
-            'Label' => 'file_year',
+            'label' => 'Arquivo Ano',
             'type' => 'text'
         ]);
         CRUD::addColumn([
             'name' => 'file_quarter',
-            'Label' => 'file_quarter',
+            'label' => 'Arquivo Trimestre',
             'type' => 'text'
         ]);
         CRUD::addColumn([
             'name' => 'status',
             'Label' => 'status',
-            'type' => 'text'
+            'type' => 'closure',
+            'function' => function($entry) {
+                if(is_null($entry->status)) return '';
+                return DataMineRawStatus::from($entry->status)->getLabel() ?? '';
+            }
         ]);
 
-        $this->crud->addFilter(
-            [
-                'type'  => 'text',
-                'name'  => 'cpf_cnpj',
-                'label' => 'cpf_cnpj'
-            ],
-            false,
-            function ($value) { // if the filter is active
-                $this->crud->addClause('where', 'cpf_cnpj', '=', "$value");
-            }
-        );
+        $this->setupFilters();
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
          * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
          */
+    }
+
+    protected function setupFilters()
+    {
+        $this->crud->addFilter(
+            [
+                'type'  => 'text',
+                'name'  => 'cpf_cnpj',
+                'label' => 'CPF / CNPJ'
+            ],
+            false,
+            function ($value) {
+                $this->crud->addClause('where', 'cpf_cnpj', '=', "$value");
+            }
+        );
+
+        $this->crud->addFilter(
+            [
+                'name'  => 'status',
+                'type'  => 'dropdown',
+                'label' => 'Status'
+            ],
+            DataMineRawStatus::labels(),
+            function($value) {
+                $this->crud->addClause('where', 'status', $value);
+            }
+        );
+
+        $this->crud->addFilter(
+            [
+                'name'  => 'tipo_pessoa',
+                'type'  => 'dropdown',
+                'label' => 'Tipo Pessoa'
+            ],
+            ['Pessoa jurídica' => 'Pessoa jurídica', 'Pessoa física' => 'Pessoa física'],
+            function($value) {
+                $this->crud->addClause('where', 'tipo_pessoa', $value);
+            }
+        );
+
+        $this->crud->addFilter(
+            [
+                'name'  => 'tipo_situacao_inscricao',
+                'type'  => 'dropdown',
+                'label' => 'Situação Inscrição'
+            ],
+            SubscriptionSituationType::labels(),
+            function($value) {
+                $label = SubscriptionSituationType::from($value)->getLabel();
+                $this->crud->addClause('where', 'tipo_situacao_inscricao', $label);
+            }
+        );
+
+        $this->crud->addFilter(
+            [
+                'type'  => 'text',
+                'name'  => 'nome_devedor',
+                'label' => 'Nome Devedor'
+            ],
+            false,
+            function ($value) {
+                $this->crud->addClause('where', 'nome_devedor', '=', "$value");
+            }
+        );
+
+        $this->crud->addFilter(
+            [
+                'type'  => 'text',
+                'name'  => 'uf_devedor',
+                'label' => 'UF Devedor'
+            ],
+            false,
+            function ($value) {
+                $this->crud->addClause('where', 'uf_devedor', '=', "$value");
+            }
+        );
     }
 
     /**
@@ -192,5 +264,10 @@ class DatamineDividaAbertaRawCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+
+    protected function setupShowOperation()
+    {
+        $this->setupListOperation();
     }
 }

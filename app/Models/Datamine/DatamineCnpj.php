@@ -5,7 +5,7 @@ namespace App\Models\Datamine;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class DatamineEntity extends Model
+class DatamineCnpj extends Model
 {
     use CrudTrait;
 
@@ -15,13 +15,16 @@ class DatamineEntity extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'datamine_entities';
-    // protected $primaryKey = 'id';
-    // public $timestamps = false;
-    protected $guarded = ['id'];
-    // protected $fillable = [];
+    protected $table = 'datamine_cnpjs';
+    protected $primaryKey = 'id';
+    public $timestamps = false;
+    // protected $guarded = ['id'];
+    protected $fillable = ['id', 'json'];
     // protected $hidden = [];
     // protected $dates = [];
+    protected $casts = [
+        'json' => 'json'
+    ];
 
     /*
     |--------------------------------------------------------------------------
@@ -35,31 +38,16 @@ class DatamineEntity extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function datamineRaws()
-    {
-        return $this->hasMany(DatamineDividaAbertaRaw::class, 'cpf_cnpj', 'key');
-    }
-
-    public function value()
-    {
-        return $this->belongsTo(DatamineEntityValue::class, 'id', 'id');
-    }
-
-    public function ibge()
-    {
-        return $this->belongsTo(Ibge::class, 'code_ibge', 'code_ibge');
-    }
-
-    public function datamineCnpj()
-    {
-        return $this->belongsTo(DatamineCnpj::class, 'key_unmask', 'id');
-    }
-
     /*
     |--------------------------------------------------------------------------
     | SCOPES
     |--------------------------------------------------------------------------
     */
+
+    public function scopeCnpj($query, $cnpj)
+    {
+        return $query->where('id', $cnpj);
+    }
 
     /*
     |--------------------------------------------------------------------------

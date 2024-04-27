@@ -2,11 +2,16 @@
 
 namespace App\Services\Datamine;
 
+use App\Enum\CompanyCategory;
 use App\Enum\Datamine\CompanyTaxRegime;
 use App\Enum\Datamine\DataMineEntitiesType;
 use App\Enum\Datamine\SubscriptionSituationType;
 use App\Integrations\Client\BrasilApiClient;
+use App\Models\Company;
+use App\Models\Datamine\DatamineEntity;
+use App\Repositories\Datamine\DataMineCnpjRepository;
 use App\Repositories\Datamine\DataMineRepository;
+use App\Services\Crm\CompanyService;
 use App\Services\DocumentService;
 use Exception;
 use Illuminate\Support\Collection;
@@ -30,12 +35,26 @@ class DataMineService
      */
     protected $brasilApiClient;
 
+    /**
+     * @var \App\Repositories\Datamine\DataMineCnpjRepository
+     */
+    protected $dataMineCnpjRepository;
+
+    /**
+     * @var \App\Services\Crm\CompanyService
+     */
+    protected $companyService;
+
     public function __construct(
         DataMineRepository $dataMineRepository,
-        BrasilApiClient $brasilApiClient
+        BrasilApiClient $brasilApiClient,
+        DataMineCnpjRepository $dataMineCnpjRepository,
+        CompanyService $companyService
     ) {
         $this->dataMineRepository = $dataMineRepository;
         $this->brasilApiClient = $brasilApiClient;
+        $this->dataMineCnpjRepository = $dataMineCnpjRepository;
+        $this->companyService = $companyService;
 
         $this->taxBenefitType = SubscriptionSituationType::TAX_BENEFIT_TYPE()->getLabel();
         $this->inCollectionType = SubscriptionSituationType::IN_COLLECTION_TYPE()->getLabel();
@@ -136,7 +155,7 @@ class DataMineService
         try {
             $cnpj = DocumentService::getOnlyNumber($formatedCnpj);
 
-            $cnpjData = $this->brasilApiClient->getCnpj($cnpj);
+            $cnpjData = $this->cnpjGetInformationArrayData($cnpj);
 
             $taxRegime = $this->getCnpjTaxRegime($cnpjData);
 
@@ -153,6 +172,43 @@ class DataMineService
         } catch (Exception $e) {
             throw new Exception('Erro ao obter informações públicas do CNPJ');
         }
+    }
+
+    /**
+     * @param string $cnpjUnformated
+     * 
+     * @return array
+     */
+    protected function cnpjGetInformationArrayData(string $cnpjUnformated): array
+    {
+        $cnpjData = $this->dataMineCnpjRepository->getDatamineCnpjData($cnpjUnformated);
+        if (!is_null($cnpjData)) return $cnpjData;
+        
+        try {
+            $brasilApiData = $this->brasilApiClient->getCnpj($cnpjUnformated);
+            $cnpjData = $this->newDatamineCnpjByBrasilApi($brasilApiData);
+        } catch (Exception $e) {
+            throw new Exception('Erro ao obter informações públicas do CNPJ externo');
+        }
+
+        return $cnpjData;
+    }
+
+    /**
+     * @param array $brasilApiData
+     * 
+     * @return array
+     */
+    protected function newDatamineCnpjByBrasilApi(array $brasilApiData): array
+    {
+        $cnpjData = $this->dataMineCnpjRepository->mapperBrasilApiToCnpjData($brasilApiData);
+
+        $data = [
+            'id' => $cnpjData['cnpj'],
+            'json' => $cnpjData
+        ];
+
+        return $this->dataMineCnpjRepository->createNewCnpjData($data)->json;
     }
 
     /**
@@ -240,5 +296,41 @@ class DataMineService
             'Logradouro: ' . $cnpjData["logradouro"],
             'UF: ' . $cnpjData["uf"]
         ];
+    }
+
+    /**
+     * @param DatamineEntity $model
+     * 
+     * @return Company|null
+     */
+    public function createCompanyByEntity(DatamineEntity $model): ?Company
+    {
+        if(!$cnpjData = $this->dataMineCnpjRepository->getDatamineCnpjData($model->key_unmask)) {
+            return null;
+        }
+
+        $address = $this->getCnpjAddress($cnpjData);
+
+        $taxRegime = $this->getCnpjTaxRegime($cnpjData);
+
+        $nickname = empty($cnpjData['nome_fantasia'])
+            ? $cnpjData['razao_social']
+            : $cnpjData['nome_fantasia'];
+
+        $companyData = [
+            'address' => json_encode($address),
+            'category' => CompanyCategory::POTENTIAL(),
+            'cnae' => $cnpjData['cnae_fiscal'],
+            'cnpj' => $cnpjData['cnpj'],
+            'description' => 'Empresa criada automaticamente',
+            'email' => $cnpjData['email'],
+            'nickname' => $nickname,
+            'phone' => $cnpjData['ddd_telefone_1'],
+            'social_reason' => $cnpjData['razao_social'],
+            'tax_regime' => $taxRegime,
+            'user_id' => backpack_user()->id
+        ];
+
+        return $this->companyService->createNewCompany($companyData);
     }
 }

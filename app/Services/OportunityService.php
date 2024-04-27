@@ -33,8 +33,10 @@ class OportunityService
         Company $company = null,
         Contact $contact = null
     ): Oportunity {
+        $oportunityName = ($company) ? $company->nickname : 'Nova';
+
         $data = [
-            'name' => 'Oportunidade - ' . $company->nickname,
+            'name' => "Oportunidade - $oportunityName",
             'company_id' => optional($company)->id,
             'contact_id' => optional($contact)->id,
             'status' => OportunityStatus::PROSPECTION(),

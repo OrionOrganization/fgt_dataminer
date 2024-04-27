@@ -55,7 +55,7 @@ class LeadCrudController extends CrudController
     {
         CRUD::column('id');
         CRUD::column('name')->label('Nome');
-        CRUD::column('company_name')->label('Nome Empresa');
+        CRUD::column('company_name')->label('Empresa');
         CRUD::column('phone')->label('Telefone');
         CRUD::column('email');
         CRUD::addColumn([

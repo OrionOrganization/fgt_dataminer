@@ -14,12 +14,12 @@ use MyCLabs\Enum\Enum;
  */
 class SubscriptionSituationType extends Enum
 {
-    protected const TAX_BENEFIT_TYPE = 'TB';
-    protected const IN_COLLECTION_TYPE = 'IC';
-    protected const IN_NEGOCIATION_TYPE = 'IN';
-    protected const GUARANTEE_TYPE = 'GT';
-    protected const SUSPENDED_TYPE = 'ST';
-    protected const OTHERS_TYPE = 'OT';
+    protected const TAX_BENEFIT_TYPE = 'value_type_tax_benefit';
+    protected const IN_COLLECTION_TYPE = 'value_type_in_collection';
+    protected const IN_NEGOCIATION_TYPE = 'value_type_in_negociation';
+    protected const GUARANTEE_TYPE = 'value_type_guarantee';
+    protected const SUSPENDED_TYPE = 'value_type_suspended';
+    protected const OTHERS_TYPE = 'value_type_others';
 
     /**
      * Display values for the enum.

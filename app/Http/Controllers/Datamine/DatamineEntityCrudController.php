@@ -357,6 +357,13 @@ class DatamineEntityCrudController extends CrudController
             }
         ]);
 
+        CRUD::addColumn([
+            'name'  => 'values_details',
+            'label' => 'Valores',
+            'type'  => 'view',
+            'view'  => backpack_view('base.datamine.datamine_details_values'),
+        ]);
+
         CRUD::column('code_ibge')->label('Cód. IBGE');
 
         CRUD::addColumn([
@@ -369,19 +376,19 @@ class DatamineEntityCrudController extends CrudController
             }
         ]);
 
-        CRUD::addColumn([
-            'name'  => 'value',
-            'label' => 'Valores',
-            'type'  => 'view',
-            'view'  => backpack_view('base.datamine.values_table'),
-        ]);
+        // CRUD::addColumn([
+        //     'name'  => 'value',
+        //     'label' => 'Valores',
+        //     'type'  => 'view',
+        //     'view'  => backpack_view('base.datamine.values_table'),
+        // ]);
 
-        CRUD::addColumn([
-            'name'  => 'raws',
-            'label' => 'Dívdas Abertas',
-            'type'  => 'view',
-            'view'  => backpack_view('base.datamine.dividas_raws_table'),
-        ]);
+        // CRUD::addColumn([
+        //     'name'  => 'raws',
+        //     'label' => 'Dívdas Abertas',
+        //     'type'  => 'view',
+        //     'view'  => backpack_view('base.datamine.dividas_raws_table'),
+        // ]);
 
         CRUD::column('obs')->label('Observações');
     }

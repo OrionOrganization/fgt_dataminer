@@ -17,9 +17,9 @@ class DatamineCnpj extends Model
 
     protected $table = 'datamine_cnpjs';
     protected $primaryKey = 'id';
-    public $timestamps = false;
+    public $timestamps = true;
     // protected $guarded = ['id'];
-    protected $fillable = ['id', 'json'];
+    protected $fillable = ['id', 'json', 'created_at', 'updated_at'];
     // protected $hidden = [];
     // protected $dates = [];
     protected $casts = [

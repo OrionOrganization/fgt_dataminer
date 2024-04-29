@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\LeadRequest;
 use App\Models\Lead;
+use App\Services\DocumentService;
 use App\Services\LeadService;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
@@ -54,10 +55,17 @@ class LeadCrudController extends CrudController
     {
         CRUD::column('id');
         CRUD::column('name')->label('Nome');
-        CRUD::column('company_name')->label('Nome Empresa');
+        CRUD::column('company_name')->label('Empresa');
         CRUD::column('phone')->label('Telefone');
         CRUD::column('email');
-        CRUD::column('cnpj')->label('CNPJ');
+        CRUD::addColumn([
+            'name' => 'cnpj',
+            'label' => 'CNPJ',
+            'type' => 'closure',
+            'function' => function($entry) {
+                return DocumentService::formatCnpj($entry->cnpj);
+            }
+        ]);
         CRUD::addColumn([
             'name' => 'created_at',
             'label' => 'Criação',

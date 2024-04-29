@@ -47,8 +47,9 @@ class ProductCrudController extends CrudController
             'type' => 'closure',
             'function' => function($entry) {
                 $conditions = json_decode($entry->condition);
-                $string = '';
+                if (!$conditions) return '';
 
+                $string = '';
                 foreach ($conditions as $item) {
                     $string .= "<span class='bg-primary text-white rounded-pill p-1 m-1 small'>" . $item->value . "</span>";
                 }

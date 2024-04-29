@@ -5,34 +5,34 @@ namespace App\Services;
 use App\Models\Contact;
 use App\Models\Company;
 use App\Models\Lead;
-use App\Repositories\ContactRepository;
-use App\Repositories\CompanyRepository;
+use App\Services\Crm\CompanyService;
+use App\Services\Crm\ContactService;
 
 class LeadService
 {
-    /**
-     * @var \App\Repositories\CompanyRepository
-     */
-    protected $companyRepository;
-
-    /**
-     * @var \App\Repositories\ContactRepository
-     */
-    protected $contactRepository;
-
     /**
      * @var \App\Services\OportunityService
      */
     protected $oportunityService;
 
+    /**
+     * @var \App\Services\Crm\CompanyService
+     */
+    protected $companyService;
+
+    /**
+     * @var \App\Services\Crm\ContactService
+     */
+    protected $contactService;
+
     public function __construct(
-        CompanyRepository $companyRepository,
-        ContactRepository $contactRepository,
-        OportunityService $oportunityService
+        OportunityService $oportunityService,
+        CompanyService $companyService,
+        ContactService $contactService
     ) {
-        $this->companyRepository = $companyRepository;
-        $this->contactRepository = $contactRepository;
         $this->oportunityService = $oportunityService;
+        $this->companyService = $companyService;
+        $this->contactService = $contactService;
     }
 
     /**
@@ -63,7 +63,7 @@ class LeadService
             'user_id' => backpack_user()->id
         ];
 
-        return $this->companyRepository->store($companyData);
+        return $this->companyService->createNewCompany($companyData);
     }
 
     /**
@@ -81,6 +81,6 @@ class LeadService
             'email' => $lead->email
         ];
 
-        return $this->contactRepository->store($data);
+        return $this->contactService->createNewContact($data);
     }
 }

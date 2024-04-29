@@ -61,6 +61,8 @@ Route::group([
 
     Route::crud('/raw', DatamineDividaAbertaRawCrudController::class);
     Route::crud('entity', DatamineEntityCrudController::class);
+    Route::post('entity/recalcule', [DatamineEntityCrudController::class, 'recalculeEntity'])->name('entity-recalcule');
+    Route::post('entity/{model}oportunity/create', [DatamineEntityCrudController::class, 'createOportunity'])->name('entity-create-oportunity');
     Route::crud('entity-value', DatamineEntityValueCrudController::class);
 
     Route::get('file', [ImportFileController::class, 'index'])->name('datamine-file');

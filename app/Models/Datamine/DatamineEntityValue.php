@@ -2,12 +2,14 @@
 
 namespace App\Models\Datamine;
 
+use App\Traits\Crud\HandlesCrudFields;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class DatamineEntityValue extends Model
 {
     use CrudTrait;
+    use HandlesCrudFields;
 
     /*
     |--------------------------------------------------------------------------
@@ -39,6 +41,11 @@ class DatamineEntityValue extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
+
+    public function getFormattedValue($attribute)
+    {
+        return $this->money($this->$attribute);
+    }
 
     /*
     |--------------------------------------------------------------------------

@@ -35,6 +35,11 @@ class DatamineEntity extends Model
     |--------------------------------------------------------------------------
     */
 
+    public function datamineRaws()
+    {
+        return $this->hasMany(DatamineDividaAbertaRaw::class, 'cpf_cnpj', 'key');
+    }
+
     public function value()
     {
         return $this->belongsTo(DatamineEntityValue::class, 'id', 'id');
@@ -43,6 +48,11 @@ class DatamineEntity extends Model
     public function ibge()
     {
         return $this->belongsTo(Ibge::class, 'code_ibge', 'code_ibge');
+    }
+
+    public function datamineCnpj()
+    {
+        return $this->belongsTo(DatamineCnpj::class, 'key_unmask', 'id');
     }
 
     /*

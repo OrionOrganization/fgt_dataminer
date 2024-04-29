@@ -61,6 +61,16 @@ class DatamineDividaAbertaRaw extends Model
         return $query->where('indicador_ajuizado', 'NAO');
     }
 
+    public function scopeOrderByTipoSituacao($query)
+    {
+        return $query->orderBy('tipo_situacao_inscricao');
+    }
+
+    public function scopeOrderByDescValorConsolidado($query)
+    {
+        return $query->orderBy('valor_consolidado', 'DESC');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | ACCESSORS

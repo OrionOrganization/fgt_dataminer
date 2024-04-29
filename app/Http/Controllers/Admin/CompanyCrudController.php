@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Enum\CompanyCategory;
 use App\Enum\CompanyOrigin;
 use App\Enum\CompanySetor;
-use App\Enum\CompanyTaxRegime;
+use App\Enum\Datamine\CompanyTaxRegime;
 use App\Http\Requests\CompanyRequest;
 use App\Models\Company;
+use App\Services\DocumentService;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Illuminate\Http\Request;
@@ -47,10 +48,15 @@ class CompanyCrudController extends CrudController
     {
         CRUD::column('id');
         CRUD::column('nickname')->label('Nome');
-        CRUD::column('description')->label('Descrição');
-        CRUD::column('cnpj')->label('CNPJ');
-        CRUD::column('social_reason')->label('Razão Social');
-        
+        CRUD::addColumn([
+            'name' => 'cnpj',
+            'label' => 'CNPJ',
+            'type' => 'closure',
+            'function' => function($entry) {
+                return DocumentService::formatCnpj($entry->cnpj);
+            }
+        ]);
+
         CRUD::addColumn([
             'name' => 'category',
             'label' => 'Categoria',
@@ -59,6 +65,10 @@ class CompanyCrudController extends CrudController
                 return ($entry->category) ? CompanyCategory::from($entry->category)->getLabel() : '';
             }
         ]);
+        
+        CRUD::column('description')->label('Descrição');
+
+        CRUD::column('social_reason')->label('Razão Social');
 
         CRUD::addColumn([
             'name' => 'origin',
@@ -98,10 +108,19 @@ class CompanyCrudController extends CrudController
             'model'     => 'App\Models\Product',
         ]);
 
+        CRUD::column('email');
         CRUD::column('phone')->label('Telefone');
         CRUD::column('whatsapp');
-        CRUD::column('email');
         CRUD::column('site');
+        CRUD::addColumn([
+            'name' => 'address',
+            'type' => 'closure',
+            'label' => 'Endereço',
+            'function' => function($entry) {
+                $string = str_replace(['"', '[', ']'], '', $entry->address);
+                return $string;
+            }
+        ]);
         CRUD::addColumn([
             'name' => 'tax_regime',
             'label' => 'Regime Tributário',

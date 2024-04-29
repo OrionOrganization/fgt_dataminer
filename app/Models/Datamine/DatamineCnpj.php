@@ -1,15 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Datamine;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Product extends Model
+class DatamineCnpj extends Model
 {
     use CrudTrait;
-    use SoftDeletes;
 
     /*
     |--------------------------------------------------------------------------
@@ -17,13 +15,16 @@ class Product extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'products';
-    // protected $primaryKey = 'id';
-    // public $timestamps = false;
-    protected $guarded = ['id'];
-    // protected $fillable = [];
+    protected $table = 'datamine_cnpjs';
+    protected $primaryKey = 'id';
+    public $timestamps = true;
+    // protected $guarded = ['id'];
+    protected $fillable = ['id', 'json', 'created_at', 'updated_at'];
     // protected $hidden = [];
     // protected $dates = [];
+    protected $casts = [
+        'json' => 'json'
+    ];
 
     /*
     |--------------------------------------------------------------------------
@@ -42,6 +43,11 @@ class Product extends Model
     | SCOPES
     |--------------------------------------------------------------------------
     */
+
+    public function scopeCnpj($query, $cnpj)
+    {
+        return $query->where('id', $cnpj);
+    }
 
     /*
     |--------------------------------------------------------------------------

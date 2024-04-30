@@ -47,6 +47,11 @@ class Company extends Model
         return $this->belongsToMany(Product::class, 'company_products', 'company_id');
     }
 
+    public function oportunities()
+    {
+        return $this->hasMany(Oportunity::class, 'company_id', 'id');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

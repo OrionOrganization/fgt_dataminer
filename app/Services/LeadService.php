@@ -63,7 +63,7 @@ class LeadService
             'user_id' => backpack_user()->id
         ];
 
-        return $this->companyService->createNewCompany($companyData);
+        return $this->companyService->createOrUpdateCompany($companyData);
     }
 
     /**

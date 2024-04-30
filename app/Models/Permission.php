@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Models\Datamine;
+namespace App\Models;
 
-use App\Enum\Datamine\DataMineEntitiesType;
-use Backpack\CRUD\app\Models\Traits\CrudTrait;
-use Illuminate\Database\Eloquent\Model;
+use App\Traits\Models\TranslatedNameTrait;
+use Backpack\PermissionManager\app\Models\Permission as BackpackPermission;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class DatamineEntity extends Model
+class Permission extends BackpackPermission
 {
-    use CrudTrait;
+    use HasFactory, TranslatedNameTrait;
 
     /*
     |--------------------------------------------------------------------------
@@ -16,7 +16,7 @@ class DatamineEntity extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'datamine_entities';
+    protected $table = 'permissions';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -30,36 +30,11 @@ class DatamineEntity extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function isTypePj(): bool
-    {
-        return ($this->type_entity == DataMineEntitiesType::PJ()->getValue());
-    }
-
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
-    public function datamineRaws()
-    {
-        return $this->hasMany(DatamineDividaAbertaRaw::class, 'cpf_cnpj', 'key');
-    }
-
-    public function value()
-    {
-        return $this->belongsTo(DatamineEntityValue::class, 'id', 'id');
-    }
-
-    public function ibge()
-    {
-        return $this->belongsTo(Ibge::class, 'code_ibge', 'code_ibge');
-    }
-
-    public function datamineCnpj()
-    {
-        return $this->belongsTo(DatamineCnpj::class, 'key_unmask', 'id');
-    }
 
     /*
     |--------------------------------------------------------------------------
@@ -78,4 +53,23 @@ class DatamineEntity extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
+
+    /*
+    |--------------------------------------------------------------------------
+    | EXTRA
+    |--------------------------------------------------------------------------
+    */
+
+    public static function getList(): array
+    {
+        $data = [];
+
+        $list = Permission::pluck('name');
+
+        foreach ($list as $item) {
+            $data[$item] = __("permission.$item");
+        }
+
+        return $data;
+    }
 }

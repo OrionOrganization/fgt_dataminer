@@ -2,6 +2,12 @@
 
 namespace App\Providers;
 
+use App\Http\Controllers\Admin\Auth\PermissionCrudController as AuthPermissionCrudController;
+use App\Http\Controllers\Admin\Auth\RoleCrudController as AuthRoleCrudController;
+use App\Http\Controllers\Admin\Auth\UserCrudController as AuthUserCrudController;
+use Backpack\PermissionManager\app\Http\Controllers\PermissionCrudController;
+use Backpack\PermissionManager\app\Http\Controllers\RoleCrudController;
+use Backpack\PermissionManager\app\Http\Controllers\UserCrudController;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +19,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(PermissionCrudController::class, AuthPermissionCrudController::class);
+        $this->app->bind(RoleCrudController::class, AuthRoleCrudController::class);
+        $this->app->bind(UserCrudController::class, AuthUserCrudController::class);
     }
 
     /**

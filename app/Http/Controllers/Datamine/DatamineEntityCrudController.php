@@ -73,7 +73,6 @@ class DatamineEntityCrudController extends CrudController
             'name' => 'key',
             'label' => 'Chave',
         ]);
-        CRUD::column('key_unmask')->label('Dígitos Chave');
 
         CRUD::addColumn([
             'name' => 'type_entity',
@@ -188,18 +187,6 @@ class DatamineEntityCrudController extends CrudController
             false,
             function ($value) {
                 $this->crud->addClause('where', 'key', '=', "$value");
-            }
-        );
-
-        CRUD::addFilter(
-            [
-                'type'  => 'text',
-                'name'  => 'key_unmask',
-                'label' => 'Dígitos Chave'
-            ],
-            false,
-            function ($value) {
-                $this->crud->addClause('where', 'key_unmask', '=', "$value");
             }
         );
 

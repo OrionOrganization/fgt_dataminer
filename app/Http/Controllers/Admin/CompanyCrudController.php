@@ -131,6 +131,20 @@ class CompanyCrudController extends CrudController
         ]);
 
         CRUD::addColumn([
+            'label' => 'Oportunidades',
+            'name' => 'oportunities',
+            'type' => 'closure',
+            'function' => function ($entry) {
+                $oportunities = $entry->oportunities;
+                $html = '';
+                foreach ($oportunities as $oportunity) {
+                    $html .= '<span class="badge badge-primary"><a style="color: white" href="' . route('oportunity.show', ['id' => $oportunity->id]) . '">' . $oportunity->name . '</a></span>';
+                }
+                return $html;
+            },
+        ]);
+
+        CRUD::addColumn([
             'name' => 'created_at',
             'label' => 'Criação',
             'type' => 'datetime'

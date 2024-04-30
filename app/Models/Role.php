@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Models\Datamine;
+namespace App\Models;
 
-use App\Enum\Datamine\DataMineEntitiesType;
-use Backpack\CRUD\app\Models\Traits\CrudTrait;
-use Illuminate\Database\Eloquent\Model;
+use App\Traits\Models\TranslatedNameTrait;
+use Backpack\PermissionManager\app\Models\Role as BackpackRole;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class DatamineEntity extends Model
+class Role extends BackpackRole
 {
-    use CrudTrait;
+    use HasFactory, TranslatedNameTrait;
+
+    public const SUPER_ADMIN = 'super_admin';
 
     /*
     |--------------------------------------------------------------------------
@@ -16,7 +18,7 @@ class DatamineEntity extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'datamine_entities';
+    protected $table = 'roles';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -30,36 +32,11 @@ class DatamineEntity extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function isTypePj(): bool
-    {
-        return ($this->type_entity == DataMineEntitiesType::PJ()->getValue());
-    }
-
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
-    public function datamineRaws()
-    {
-        return $this->hasMany(DatamineDividaAbertaRaw::class, 'cpf_cnpj', 'key');
-    }
-
-    public function value()
-    {
-        return $this->belongsTo(DatamineEntityValue::class, 'id', 'id');
-    }
-
-    public function ibge()
-    {
-        return $this->belongsTo(Ibge::class, 'code_ibge', 'code_ibge');
-    }
-
-    public function datamineCnpj()
-    {
-        return $this->belongsTo(DatamineCnpj::class, 'key_unmask', 'id');
-    }
 
     /*
     |--------------------------------------------------------------------------

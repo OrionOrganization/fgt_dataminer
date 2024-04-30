@@ -30,7 +30,7 @@ return [
             'persistentTable' => true,
 
             // show search bar in the top-right corner?
-            'searchableTable' => true,
+            'searchableTable' => false,
 
             // the time the table will be persisted in minutes
             // after this the table info is cleared from localStorage.
@@ -326,7 +326,7 @@ return [
         // "fr_SN" => "French (Senegal)",
         // "fr_CH" => "French (Switzerland)",
         // "fr_TG" => "French (Togo)",
-        'fr' => 'French',
+        // 'fr' => 'French',
         // "ff_SN" => "Fulah (Senegal)",
         // "ff" => "Fulah",
         // "gl_ES" => "Galician (Spain)",
@@ -372,7 +372,7 @@ return [
         // "ga" => "Irish",
         // "it_IT" => "Italian (Italy)",
         // "it_CH" => "Italian (Switzerland)",
-        'it' => 'Italian',
+        // 'it' => 'Italian',
         // "ja_JP" => "Japanese (Japan)",
         // "ja" => "Japanese",
         // "kea_CV" => "Kabuverdianu (Cape Verde)",
@@ -465,7 +465,7 @@ return [
         // "fa" => "Persian",
         // "pl_PL" => "Polish (Poland)",
         // "pl" => "Polish",
-        // "pt_BR" => "Portuguese (Brazil)",
+        "pt_BR" => "Portuguese (Brazil)",
         // "pt_GW" => "Portuguese (Guinea-Bissau)",
         // "pt_MZ" => "Portuguese (Mozambique)",
         // "pt_PT" => "Portuguese (Portugal)",
@@ -477,7 +477,7 @@ return [
         // "pa" => "Punjabi",
         // "ro_MD" => "Romanian (Moldova)",
         // "ro_RO" => "Romanian (Romania)",
-        'ro' => 'Romanian',
+        // 'ro' => 'Romanian',
         // "rm_CH" => "Romansh (Switzerland)",
         // "rm" => "Romansh",
         // "rof_TZ" => "Rombo (Tanzania)",

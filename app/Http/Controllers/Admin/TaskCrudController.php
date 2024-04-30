@@ -213,7 +213,7 @@ class TaskCrudController extends CrudController
             'label' => 'Oportunidade',
             'attribute' => 'name',
             'entity' => 'oportunity',
-            'allows_null' => false,
+            'allows_null' => true,
         ]);
         CRUD::addField([
             'type' => 'relationship',
@@ -221,7 +221,7 @@ class TaskCrudController extends CrudController
             'label' => 'Responsável',
             'attribute' => 'name',
             'entity' => 'responsible',
-            'allows_null' => false,
+            'allows_null' => true,
         ]);
         CRUD::field('due_date')->label('Data Entrega');
         CRUD::addField([

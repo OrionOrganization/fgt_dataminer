@@ -14,7 +14,7 @@ class CreateDatamineCnpjsTable extends Migration
     public function up()
     {
         Schema::create('datamine_cnpjs', function (Blueprint $table) {
-            $table->bigInteger('id')->unique();
+            $table->bigInteger('id')->unique(); //TODO: bigint(20) unsigned zerofill
             $table->json('json')->nullable();
 
             $table->timestamps();

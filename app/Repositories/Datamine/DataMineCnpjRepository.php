@@ -8,17 +8,17 @@ class DataMineCnpjRepository
 {
     /**
      * @param string $cnpj
-     * 
+     *
      * @return array|null
      */
     public function getDatamineCnpjData(string $cnpj): ?array
     {
-        return DatamineCnpj::cnpj($cnpj)->first()->json ?? null;
+        return optional(DatamineCnpj::cnpj($cnpj)->first())->json ?? null;
     }
 
     /**
      * @param array $data
-     * 
+     *
      * @return DatamineCnpj
      */
     public function createNewCnpjData(array $data): DatamineCnpj
@@ -28,9 +28,9 @@ class DataMineCnpjRepository
 
     /**
      * mapperBrasilApiToCnpjData
-     * 
+     *
      * @param array $brasilApiData
-     * 
+     *
      * @return array
      */
     public function mapperBrasilApiToCnpjData(array $brasilApiData): array

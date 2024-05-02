@@ -77,6 +77,25 @@ class DatamineEntity extends Model
     |--------------------------------------------------------------------------
     */
 
+    public function getEntityNameAttribute(): string
+    {
+        if ($this->isTypePj()) {
+            $cnpjData = optional($this->datamineCnpj)->json;
+            
+            $fantasyName = isset($cnpjData['nome_fantasia']) && $cnpjData['nome_fantasia'] !== '' ? $cnpjData['nome_fantasia'] : null;
+            $socialReason = $cnpjData['razao_social'] ?? null;
+
+            $companyName = $fantasyName ?? $socialReason ?? '-';
+            
+            return $companyName;
+        } else {
+            $personData = $this->extra;
+            $personName = $personData['nome_devedor'] ?? '-';
+
+            return $personName;
+        }
+    }
+
     /*
     |--------------------------------------------------------------------------
     | MUTATORS

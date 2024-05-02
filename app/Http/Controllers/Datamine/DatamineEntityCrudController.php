@@ -15,6 +15,7 @@ use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 /**
  * Class DatamineEntityCrudController
@@ -69,9 +70,19 @@ class DatamineEntityCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('id');
+
+        CRUD::addColumn([
+            'name' => 'entity_name',
+            'label' => 'Nome',
+            'type' => 'closure',
+            'function' => function($entry) {
+                return Str::limit($entry->entity_name, 20);
+            }
+        ]);
+
         CRUD::addColumn([
             'name' => 'key',
-            'label' => 'Chave',
+            'label' => 'CPF/CNPJ',
         ]);
 
         CRUD::addColumn([
@@ -312,12 +323,19 @@ class DatamineEntityCrudController extends CrudController
     protected function setupShowOperation()
     {
         CRUD::column('id');
+
         CRUD::addColumn([
-            'name' => 'key',
-            'label' => 'Chave',
+            'name' => 'entity_name',
+            'label' => 'Nome',
+            'type' => 'text',
         ]);
 
-        CRUD::column('key_unmask')->label('Dígitos Chave');
+        CRUD::addColumn([
+            'name' => 'key',
+            'label' => 'CPF/CNPJ',
+        ]);
+
+        CRUD::column('key_unmask')->label('Dígitos CPF/CNPJ');
 
         CRUD::addColumn([
             'name' => 'type_entity',
@@ -351,7 +369,7 @@ class DatamineEntityCrudController extends CrudController
             'type' => 'closure',
             'label' => 'Endereço',
             'function' => function($entry) {
-                $string = implode(", ", $entry->address ?? []);
+                $string =  implode(", ", $entry->address ?? []);
                 return $string;
             }
         ]);

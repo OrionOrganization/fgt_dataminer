@@ -220,21 +220,9 @@ class DatamineEntityCrudController extends CrudController
 
         CRUD::addFilter(
             [
-                'type'  => 'text',
-                'name'  => 'code_ibge',
-                'label' => 'Cód. IBGE'
-            ],
-            false,
-            function ($value) {
-                $this->crud->addClause('where', 'code_ibge', '=', "$value");
-            }
-        );
-
-        CRUD::addFilter(
-            [
                 'type' => 'select2',
                 'name' => 'ibge_state',
-                'label' => __('Estado IBGE'),
+                'label' => __('Estado'),
             ],
             AddressState::toArray(),
             function ($value) {
@@ -254,7 +242,7 @@ class DatamineEntityCrudController extends CrudController
             [
                 'type' => 'text',
                 'name' => 'ibge_city',
-                'label' => __('Município IBGE'),
+                'label' => __('Município'),
             ],
             AddressState::toArray(),
             function ($value) {
@@ -328,6 +316,7 @@ class DatamineEntityCrudController extends CrudController
             'name' => 'key',
             'label' => 'Chave',
         ]);
+
         CRUD::column('key_unmask')->label('Dígitos Chave');
 
         CRUD::addColumn([
@@ -362,7 +351,7 @@ class DatamineEntityCrudController extends CrudController
             'type' => 'closure',
             'label' => 'Endereço',
             'function' => function($entry) {
-                $string = implode(", ", $entry->address);
+                $string = implode(", ", $entry->address ?? []);
                 return $string;
             }
         ]);

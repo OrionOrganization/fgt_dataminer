@@ -209,7 +209,7 @@ class DatamineEntityCrudController extends CrudController
             [
                 'type'  => 'text',
                 'name'  => 'key',
-                'label' => 'Chave'
+                'label' => 'CPF/CNPJ'
             ],
             false,
             function ($value) {

@@ -14,7 +14,7 @@ class ChangeIdColumnInDatamineCnpjsTable extends Migration
      */
     public function up()
     {
-        DB::statement('ALTER TABLE datamine_cnpjs MODIFY COLUMN id BIGINT(20) UNSIGNED ZEROFILL UNIQUE');
+        // DB::statement('ALTER TABLE datamine_cnpjs MODIFY COLUMN id BIGINT(20) UNSIGNED ZEROFILL UNIQUE');
     }
 
     /**

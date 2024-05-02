@@ -96,6 +96,22 @@ class DatamineEntity extends Model
         }
     }
 
+    public function getAddressCityAttribute(): string
+    {
+        $cnpjData = optional($this->datamineCnpj)->json;
+        $city = (isset($cnpjData['municipio'])) ? $cnpjData['municipio'] : '-';
+
+        return $city;
+    }
+
+    public function getAddressStateAttribute(): string
+    {
+        $cnpjData = optional($this->datamineCnpj)->json;
+        $city = (isset($cnpjData['uf'])) ? $cnpjData['uf'] : '-';
+
+        return $city;
+    }
+
     /*
     |--------------------------------------------------------------------------
     | MUTATORS

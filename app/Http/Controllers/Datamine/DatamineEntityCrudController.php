@@ -108,6 +108,18 @@ class DatamineEntityCrudController extends CrudController
         ]);
 
         CRUD::addColumn([
+            'name' => 'address_city',
+            'label' => 'Município',
+            'type' => 'text'
+        ]);
+
+        CRUD::addColumn([
+            'name' => 'address_state',
+            'label' => 'Estado',
+            'type' => 'text'
+        ]);
+
+        CRUD::addColumn([
             'name' => 'value_all',
             'label' => 'Valor Total',
             'type' => 'closure',
@@ -360,6 +372,18 @@ class DatamineEntityCrudController extends CrudController
             'label' => 'Valores',
             'type'  => 'view',
             'view'  => backpack_view('base.datamine.datamine_details_values'),
+        ]);
+
+        CRUD::addColumn([
+            'name' => 'address_city',
+            'label' => 'Município',
+            'type' => 'text'
+        ]);
+
+        CRUD::addColumn([
+            'name' => 'address_state',
+            'label' => 'Estado',
+            'type' => 'text'
         ]);
 
         CRUD::column('code_ibge')->label('Cód. IBGE');

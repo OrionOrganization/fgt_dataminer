@@ -83,7 +83,7 @@ class TaskCrudController extends CrudController
             'label' => 'Tipo',
             'type' => 'closure',
             'function' => function($entry) {
-                return TaskType::from($entry->type)->getLabel();
+                return (!is_null($entry->type)) ? TaskType::from($entry->type)->getLabel() : '';
             }
         ]);
         CRUD::addColumn([
@@ -91,7 +91,7 @@ class TaskCrudController extends CrudController
             'label' => 'Status',
             'type' => 'closure',
             'function' => function($entry) {
-                return TaskStatus::from($entry->status)->getLabel();
+                return (!is_null($entry->status)) ? TaskStatus::from($entry->status)->getLabel() : '';
             }
         ]);
         CRUD::column('obs')->label('Observação');
@@ -213,7 +213,7 @@ class TaskCrudController extends CrudController
             'label' => 'Oportunidade',
             'attribute' => 'name',
             'entity' => 'oportunity',
-            'allows_null' => false,
+            'allows_null' => true,
         ]);
         CRUD::addField([
             'type' => 'relationship',
@@ -221,7 +221,7 @@ class TaskCrudController extends CrudController
             'label' => 'Responsável',
             'attribute' => 'name',
             'entity' => 'responsible',
-            'allows_null' => false,
+            'allows_null' => true,
         ]);
         CRUD::field('due_date')->label('Data Entrega');
         CRUD::addField([

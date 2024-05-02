@@ -195,7 +195,7 @@ class DataMineService
                 'key' => $formatedCnpj,
                 'key_unmask' => $cnpj,
                 'type_entity' => DataMineEntitiesType::PJ(),
-                'address' => json_encode($address)
+                'address' => $address
             ];
         } catch (Exception $e) {
             throw new Exception('Erro ao obter informações públicas do CNPJ');
@@ -360,6 +360,6 @@ class DataMineService
             'user_id' => backpack_user()->id
         ];
 
-        return $this->companyService->createNewCompany($companyData);
+        return $this->companyService->createOrUpdateCompany($companyData);
     }
 }

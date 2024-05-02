@@ -63,7 +63,7 @@ class LeadCrudController extends CrudController
             'label' => 'CNPJ',
             'type' => 'closure',
             'function' => function($entry) {
-                return DocumentService::formatCnpj($entry->cnpj);
+                return ($entry->cnpj) ? DocumentService::formatCnpj($entry->cnpj) : '';
             }
         ]);
         CRUD::addColumn([

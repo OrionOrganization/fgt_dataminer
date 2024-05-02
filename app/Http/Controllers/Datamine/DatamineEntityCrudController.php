@@ -15,6 +15,7 @@ use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 /**
  * Class DatamineEntityCrudController
@@ -69,18 +70,29 @@ class DatamineEntityCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('id');
+
+        CRUD::addColumn([
+            'name' => 'entity_name',
+            'label' => 'Nome',
+            'type' => 'closure',
+            'function' => function($entry) {
+                return Str::limit($entry->entity_name, 20);
+            }
+        ]);
+
         CRUD::addColumn([
             'name' => 'key',
-            'label' => 'Chave',
+            'label' => 'CPF/CNPJ',
         ]);
-        CRUD::column('key_unmask')->label('Dígitos Chave');
 
         CRUD::addColumn([
             'name' => 'type_entity',
             'label' => 'Tipo',
             'type' => 'closure',
             'function' => function($entry) {
-                return DataMineEntitiesType::from($entry->type_entity)->getLabel();
+                return (!is_null($entry->type_entity))
+                        ? DataMineEntitiesType::from($entry->type_entity)->getLabel()
+                        : '';
             }
         ]);
 
@@ -89,8 +101,22 @@ class DatamineEntityCrudController extends CrudController
             'label' => 'Regime Tributário',
             'type' => 'closure',
             'function' => function($entry) {
-                return CompanyTaxRegime::from($entry->type_tax_regime)->getLabel();
+                return (!is_null($entry->type_tax_regime))
+                        ? CompanyTaxRegime::from($entry->type_tax_regime)->getLabel()
+                        : '';
             }
+        ]);
+
+        CRUD::addColumn([
+            'name' => 'address_city',
+            'label' => 'Município',
+            'type' => 'text'
+        ]);
+
+        CRUD::addColumn([
+            'name' => 'address_state',
+            'label' => 'Estado',
+            'type' => 'text'
         ]);
 
         CRUD::addColumn([
@@ -193,18 +219,6 @@ class DatamineEntityCrudController extends CrudController
 
         CRUD::addFilter(
             [
-                'type'  => 'text',
-                'name'  => 'key_unmask',
-                'label' => 'Dígitos Chave'
-            ],
-            false,
-            function ($value) {
-                $this->crud->addClause('where', 'key_unmask', '=', "$value");
-            }
-        );
-
-        CRUD::addFilter(
-            [
                 'name'  => 'type_entity',
                 'type'  => 'dropdown',
                 'label' => 'Tipo'
@@ -229,21 +243,9 @@ class DatamineEntityCrudController extends CrudController
 
         CRUD::addFilter(
             [
-                'type'  => 'text',
-                'name'  => 'code_ibge',
-                'label' => 'Cód. IBGE'
-            ],
-            false,
-            function ($value) {
-                $this->crud->addClause('where', 'code_ibge', '=', "$value");
-            }
-        );
-
-        CRUD::addFilter(
-            [
                 'type' => 'select2',
                 'name' => 'ibge_state',
-                'label' => __('Estado IBGE'),
+                'label' => __('Estado'),
             ],
             AddressState::toArray(),
             function ($value) {
@@ -263,7 +265,7 @@ class DatamineEntityCrudController extends CrudController
             [
                 'type' => 'text',
                 'name' => 'ibge_city',
-                'label' => __('Município IBGE'),
+                'label' => __('Município'),
             ],
             AddressState::toArray(),
             function ($value) {
@@ -333,11 +335,19 @@ class DatamineEntityCrudController extends CrudController
     protected function setupShowOperation()
     {
         CRUD::column('id');
+
+        CRUD::addColumn([
+            'name' => 'entity_name',
+            'label' => 'Nome',
+            'type' => 'text',
+        ]);
+
         CRUD::addColumn([
             'name' => 'key',
-            'label' => 'Chave',
+            'label' => 'CPF/CNPJ',
         ]);
-        CRUD::column('key_unmask')->label('Dígitos Chave');
+
+        CRUD::column('key_unmask')->label('Dígitos CPF/CNPJ');
 
         CRUD::addColumn([
             'name' => 'type_entity',
@@ -364,6 +374,18 @@ class DatamineEntityCrudController extends CrudController
             'view'  => backpack_view('base.datamine.datamine_details_values'),
         ]);
 
+        CRUD::addColumn([
+            'name' => 'address_city',
+            'label' => 'Município',
+            'type' => 'text'
+        ]);
+
+        CRUD::addColumn([
+            'name' => 'address_state',
+            'label' => 'Estado',
+            'type' => 'text'
+        ]);
+
         CRUD::column('code_ibge')->label('Cód. IBGE');
 
         CRUD::addColumn([
@@ -371,7 +393,7 @@ class DatamineEntityCrudController extends CrudController
             'type' => 'closure',
             'label' => 'Endereço',
             'function' => function($entry) {
-                $string = str_replace(['"', '[', ']'], '', $entry->address);
+                $string =  implode(", ", $entry->address ?? []);
                 return $string;
             }
         ]);

@@ -15,4 +15,15 @@ class CompanyRepository
     {
         return Company::create($data);
     }
+
+    /**
+     * @param array $data
+     * 
+     * @return Company
+     */
+    public function updateOrCreate(array $data): Company
+    {
+        $data['deleted_at'] = null;
+        return Company::withTrashed()->updateOrCreate(['cnpj' => $data['cnpj']], $data);
+    }
 }

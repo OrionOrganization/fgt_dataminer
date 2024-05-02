@@ -25,4 +25,14 @@ class CompanyService
     {
         return $this->companyRepository->store($data);
     }
+
+    /**
+     * @param array $data
+     * 
+     * @return Company
+     */
+    public function createOrUpdateCompany(array $data): Company
+    {
+        return $this->companyRepository->updateOrCreate($data);
+    }
 }

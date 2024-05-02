@@ -108,7 +108,7 @@
             @foreach ($blogs as $blog)
                 <div class="blog-post-container">
                     <a href="{{ url('/blog/' . $blog->id) }}">
-                        <img loading="lazy" class="img-fluid latest-post-img" src="{{ $blog->image }}" alt="img">
+                        <img loading="lazy" class="" src="{{ $blog->image }}" alt="img">
                     </a>
                     <div>
                         <a href="{{ url('/blog/' . $blog->id) }}">

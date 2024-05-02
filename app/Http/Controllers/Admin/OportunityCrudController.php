@@ -85,7 +85,7 @@ class OportunityCrudController extends CrudController
             'name' => 'status',
             'type' => 'closure',
             'function' => function($entry) {
-                return OportunityStatus::from($entry->status)->getLabel();
+                return (!is_null($entry->status)) ? OportunityStatus::from($entry->status)->getLabel() : '';
             }
         ]);
         CRUD::addColumn([
@@ -99,15 +99,16 @@ class OportunityCrudController extends CrudController
         CRUD::column('obs')->label('Observações');
         CRUD::addColumn([
             'label' => 'Tarefas',
-            'type' => 'select_multiple',
             'name' => 'tasks',
-            'entity' => 'tasks',
-            'attribute' => 'name',
-            'model' => 'App\Models\Task',
-            'wrapper' => [
-                'element' => 'span',
-                'class' => 'badge badge-primary',
-            ],
+            'type' => 'closure',
+            'function' => function ($entry) {
+                $tasks = $entry->tasks;
+                $html = '';
+                foreach ($tasks as $task) {
+                    $html .= '<span class="badge badge-primary"><a style="color: white" href="' . route('task.show', ['id' => $task->id]) . '">' . $task->name . '</a></span>';
+                }
+                return $html;
+            },
         ]);
         CRUD::addColumn([
             'name' => 'created_at',

@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
-use Backpack\CRUD\app\Models\Traits\CrudTrait;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Traits\Models\TranslatedNameTrait;
+use Backpack\PermissionManager\app\Models\Role as BackpackRole;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Company extends Model
+class Role extends BackpackRole
 {
-    use CrudTrait;
-    use SoftDeletes;
+    use HasFactory, TranslatedNameTrait;
+
+    public const SUPER_ADMIN = 'super_admin';
 
     /*
     |--------------------------------------------------------------------------
@@ -17,7 +18,7 @@ class Company extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'companies';
+    protected $table = 'roles';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -36,21 +37,6 @@ class Company extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
-    public function responsible()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
-
-    public function products()
-    {
-        return $this->belongsToMany(Product::class, 'company_products', 'company_id');
-    }
-
-    public function oportunities()
-    {
-        return $this->hasMany(Oportunity::class, 'company_id', 'id');
-    }
 
     /*
     |--------------------------------------------------------------------------

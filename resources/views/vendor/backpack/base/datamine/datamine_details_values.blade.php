@@ -5,7 +5,7 @@
 >Detalhar Valores</button>
 
 @php
-    $cnpjData = $entry->datamineCnpj->json ?? null;
+    $cnpjData = optional($entry->datamineCnpj)->json;
 @endphp
 
 @push('after_scripts')
@@ -19,7 +19,7 @@
             </button>
             </div>
             <div class="modal-body">
-                <b>Nome Empresarial: </b> {{$cnpjData['razao_social'] ?? '-'}} <br>
+                <b>Nome Empresarial: </b> {{$cnpjData['razao_social'] ?? $entry->extra['nome_devedor'] ?? '-'}} <br>
                 <b>CPF/CNPJ: </b> {{$entry->key}} <br>
                 <b>Domicílio: </b> {{$cnpjData['municipio'] ?? ''}} - {{$cnpjData['uf'] ?? ''}} <br>
                 <b>Valor Total Dívidas: </b> {{$entry->value->getFormattedValue('value_all')}} <br>

@@ -23,6 +23,9 @@ class DatamineEntity extends Model
     // protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
+    protected $casts = [
+        'extra' => 'json'
+    ];
 
     /*
     |--------------------------------------------------------------------------

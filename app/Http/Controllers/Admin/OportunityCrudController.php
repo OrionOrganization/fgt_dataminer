@@ -85,7 +85,7 @@ class OportunityCrudController extends CrudController
             'name' => 'status',
             'type' => 'closure',
             'function' => function($entry) {
-                return OportunityStatus::from($entry->status)->getLabel();
+                return (!is_null($entry->status)) ? OportunityStatus::from($entry->status)->getLabel() : '';
             }
         ]);
         CRUD::addColumn([

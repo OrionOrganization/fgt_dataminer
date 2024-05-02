@@ -79,7 +79,9 @@ class DatamineEntityCrudController extends CrudController
             'label' => 'Tipo',
             'type' => 'closure',
             'function' => function($entry) {
-                return DataMineEntitiesType::from($entry->type_entity)->getLabel();
+                return (!is_null($entry->type_entity))
+                        ? DataMineEntitiesType::from($entry->type_entity)->getLabel()
+                        : '';
             }
         ]);
 
@@ -88,7 +90,9 @@ class DatamineEntityCrudController extends CrudController
             'label' => 'Regime Tributário',
             'type' => 'closure',
             'function' => function($entry) {
-                return CompanyTaxRegime::from($entry->type_tax_regime)->getLabel();
+                return (!is_null($entry->type_tax_regime))
+                        ? CompanyTaxRegime::from($entry->type_tax_regime)->getLabel()
+                        : '';
             }
         ]);
 
@@ -358,7 +362,7 @@ class DatamineEntityCrudController extends CrudController
             'type' => 'closure',
             'label' => 'Endereço',
             'function' => function($entry) {
-                $string = str_replace(['"', '[', ']'], '', $entry->address);
+                $string = implode(", ", $entry->address);
                 return $string;
             }
         ]);

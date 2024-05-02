@@ -146,8 +146,9 @@ class DatamineDividaAbertaRawCrudController extends CrudController
             'Label' => 'status',
             'type' => 'closure',
             'function' => function($entry) {
-                if(is_null($entry->status)) return '';
-                return DataMineRawStatus::from($entry->status)->getLabel() ?? '';
+                return (!is_null($entry->status))
+                        ? DataMineRawStatus::from($entry->status)->getLabel()
+                        : '';
             }
         ]);
 

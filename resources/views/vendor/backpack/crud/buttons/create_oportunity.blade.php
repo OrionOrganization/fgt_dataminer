@@ -26,29 +26,31 @@
                 "{{ trans('Sim') }}"
             ],
         }).then(function (value) {
-          $.ajax({
-            url: route,
-            type: 'POST',
-            success: function (result) {
-                if(result.success) {
-                    new Noty({
-                        type: 'success',
-                        text: 'Oportunidade criada com sucesso!'
-                    }).show();
-                } else {
-                    new Noty({
-                        type: 'error',
-                        text: 'Ocorreu um erro criar a oportunidade!'
-                    }).show();
-                }
-            },
-            error: function (result) {
-                new Noty({
-                    type: 'error',
-                    text: 'Ocorreu um erro criar a oportunidade!'
-                }).show();
-            }
-          });
+          if(value) {
+            $.ajax({
+              url: route,
+              type: 'POST',
+              success: function (result) {
+                  if(result.success) {
+                      new Noty({
+                          type: 'success',
+                          text: 'Oportunidade criada com sucesso!'
+                      }).show();
+                  } else {
+                      new Noty({
+                          type: 'error',
+                          text: 'Ocorreu um erro criar a oportunidade!'
+                      }).show();
+                  }
+              },
+              error: function (result) {
+                  new Noty({
+                      type: 'error',
+                      text: 'Ocorreu um erro criar a oportunidade!'
+                  }).show();
+              }
+            });
+          }
         });
       }
       }

@@ -111,7 +111,8 @@
                 </div>
 
                 <div>
-                    <button class="btn btn-primary" id="apply-oportunity-filters" style="margin-left: 30px; margin-top: 30px">Aplicar</button>
+                    <button class="btn btn-primary" id="apply-oportunity-filters" style="margin-left: 30px; margin-top: 30px"><i class="las la-filter"></i> Aplicar</button>
+                    <button class="btn btn-danger" id="clear-oportunity-filters" style="margin-top: 30px"><i class="las la-window-close"></i>Limpar</button>
                 </div>
             </div>
         </div>
@@ -202,7 +203,8 @@
                 </div>
 
                 <div>
-                    <button class="btn btn-primary" id="apply-task-filters" style="margin-left: 30px; margin-top: 30px">Aplicar</button>
+                    <button class="btn btn-primary" id="apply-task-filters" style="margin-left: 30px; margin-top: 30px"><i class="las la-filter"></i> Aplicar</button>
+                    <button class="btn btn-danger" id="clear-task-filters" style="margin-top: 30px"><i class="las la-window-close"></i>Limpar</button>
                 </div>
             </div>
         </div>
@@ -415,6 +417,27 @@
             $('#user-oportunity-filter').val(oportunityUserFilterData);
             $('#date-oportunity-filter').val(oportunityDateFilterData);
             $('#order-oportunity-filter').val(oportunityOrderFilterData);
+        });
+
+        function clearFilters(parameters) {
+            let currentUrl = window.location.href;
+            const urlParams = new URLSearchParams(window.location.search);
+
+            parameters.forEach(param => {
+                urlParams.delete(param);
+            });
+
+            currentUrl = window.location.origin + window.location.pathname + '?' + urlParams.toString();
+
+            window.location.href = currentUrl;
+        }
+
+        $('#clear-oportunity-filters').on('click', function() {
+            clearFilters(['oportunity_user_id', 'oportunity_date', 'oportunity_order', 'oportunity_order_direction']);
+        });
+
+        $('#clear-task-filters').on('click', function() {
+            clearFilters(['task_user_id', 'task_date', 'task_order', 'task_order_direction']);
         });
     </script>
 @endpush

@@ -51,7 +51,7 @@ class AdminController extends Controller
 
         $taskStatus = TaskStatus::labels();
 
-        $tasks = $this->taskRepository->getTasksGroupedByStatus();
+        $tasks = $this->taskRepository->getTasksGroupedByStatus($filters);
 
         $users = User::all();
 
@@ -68,7 +68,12 @@ class AdminController extends Controller
         return [
             'oportunity_user' => $requestData['oportunity_user_id'] ?? null,
             'oportunity_date' => $requestData['oportunity_date'] ?? null,
-            'oportunity_order' => $requestData['oportunity_order'] ?? null
+            'oportunity_order' => $requestData['oportunity_order'] ?? null,
+            'oportunity_order_direction' => $requestData['task_order_direction'] ?? null,
+            'task_user' => $requestData['task_user_id'] ?? null,
+            'task_date' => $requestData['task_date'] ?? null,
+            'task_order' => $requestData['task_order'] ?? null,
+            'task_order_direction' => $requestData['task_order_direction'] ?? null
         ];
     }
 

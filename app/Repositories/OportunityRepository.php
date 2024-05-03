@@ -45,8 +45,8 @@ class OportunityRepository
             $query->where('date', $filters['oportunity_date']);
         }
 
-        if (!empty($filters['oportunity_order'])) {
-            $query->orderBy($filters['oportunity_order']);
+        if (!empty($filters['oportunity_order']) && !empty($filters['oportunity_order_direction'])) {
+            $query->orderBy($filters['oportunity_order'], $filters['oportunity_order_direction']);
         }
 
         return $query->get()->groupBy('status');

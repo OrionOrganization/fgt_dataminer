@@ -95,7 +95,12 @@ class OportunityCrudController extends CrudController
             'attribute' => 'name',
             'entity' => 'responsible',
         ]);
-        CRUD::column('date')->label('Data')->type('date');
+        CRUD::addColumn([
+            'name' => 'date',
+            'label' => 'Data',
+            'type' => 'date',
+            'format' => 'L HH:mm'
+        ]);
         CRUD::column('obs')->label('Observações');
         CRUD::addColumn([
             'label' => 'Tarefas',
@@ -113,13 +118,15 @@ class OportunityCrudController extends CrudController
         CRUD::addColumn([
             'name' => 'created_at',
             'label' => 'Criação',
-            'type' => 'datetime'
+            'type' => 'datetime',
+            'format' => 'L HH:mm',
         ]);
 
         CRUD::addColumn([
             'name' => 'updated_at',
             'label' => 'Atualização',
-            'type' => 'datetime'
+            'type' => 'datetime',
+            'format' => 'L HH:mm',
         ]);
 
         $this->setupFilters();

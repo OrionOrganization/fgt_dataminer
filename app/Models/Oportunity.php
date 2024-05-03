@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -68,6 +69,13 @@ class Oportunity extends Model
     | ACCESSORS
     |--------------------------------------------------------------------------
     */
+
+    public function getFormatedDateAtttribute(): string
+    {
+        return ($this->date)
+            ? Carbon::parse($this->date)->format('d/m/y')
+            : '-';
+    }
 
     /*
     |--------------------------------------------------------------------------

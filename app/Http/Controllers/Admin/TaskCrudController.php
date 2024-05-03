@@ -77,7 +77,12 @@ class TaskCrudController extends CrudController
             'attribute' => 'name',
             'entity' => 'responsible',
         ]);
-        CRUD::column('due_date')->type('date')->label('Data');
+        CRUD::addColumn([
+            'name' => 'due_date',
+            'label' => 'Data Entrega',
+            'type' => 'date',
+            'format' => 'L'
+        ]);
         CRUD::addColumn([
             'name' => 'type',
             'label' => 'Tipo',
@@ -98,13 +103,15 @@ class TaskCrudController extends CrudController
         CRUD::addColumn([
             'name' => 'created_at',
             'label' => 'Criação',
-            'type' => 'datetime'
+            'type' => 'datetime',
+            'format' => 'L HH:mm'
         ]);
 
         CRUD::addColumn([
             'name' => 'updated_at',
             'label' => 'Atualização',
-            'type' => 'datetime'
+            'type' => 'datetime',
+            'format' => 'L HH:mm'
         ]);
 
         $this->setupFilters();

@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Task;
+use Illuminate\Support\Collection;
 
 class TaskRepository
 {
@@ -25,5 +26,13 @@ class TaskRepository
     public function update(Task $model, array $data): void
     {
         $model->update($data);
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getTasksGroupedByStatus(): Collection
+    {
+        return Task::with('responsible')->with('oportunity')->get()->groupBy('status');
     }
 }

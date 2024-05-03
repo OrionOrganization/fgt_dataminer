@@ -204,6 +204,8 @@ class DataMineService
                 'type_entity' => DataMineEntitiesType::PJ(),
                 'address' => $address
             ];
+        } catch (PublicInformationFailException $e) {
+            throw $e;
         } catch (Exception $e) {
             throw new Exception('Erro ao obter informações públicas do CNPJ');
         }

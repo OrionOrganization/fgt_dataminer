@@ -27,6 +27,24 @@ class DataMineCnpjRepository
     }
 
     /**
+     * updateOrCreateCnpjData
+     *
+     * @param string key
+     * @param array dataCnpj
+     *
+     * @return DatamineCnpj
+     */
+    public function updateOrCreateCnpjData(
+        string $key,
+        array $dataCnpj
+    ): DatamineCnpj {
+        return DatamineCnpj::updateOrCreate(
+            ['id' => $key],
+            ['json' => $dataCnpj]
+        );
+    }
+
+    /**
      * mapperBrasilApiToCnpjData
      *
      * @param array $brasilApiData

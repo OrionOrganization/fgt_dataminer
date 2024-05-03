@@ -7,6 +7,7 @@ use App\Enum\Datamine\CompanyTaxRegime;
 use App\Enum\Datamine\DataMineEntitiesType;
 use App\Enum\Datamine\DataMineRawStatus;
 use App\Enum\Datamine\SubscriptionSituationType;
+use App\Exceptions\Datamine\PublicInformationFailException;
 use App\Integrations\Client\BrasilApiClient;
 use App\Models\Company;
 use App\Models\Datamine\DatamineDividaAbertaRaw;
@@ -75,9 +76,11 @@ class DataMineService
      *
      * @return void
      */
-    public function loopDataMineRaws()
+    public function loopDataMineRaws(int $status = 0)
     {
-        $query = DatamineDividaAbertaRaw::where('status', DataMineRawStatus::NEW());
+        $statusEnum = DataMineRawStatus::from($status);
+
+        $query = DatamineDividaAbertaRaw::where('status', $statusEnum);
 
         $query->chunkById(1, function ($rows) {
             $row = $rows->first();
@@ -85,6 +88,10 @@ class DataMineService
             try {
                 $this->handleMessageLog('debug', __FUNCTION__, "Analisando linha Id atual: '{$row->id}' CPF/CNPJ: '{$row->cpf_cnpj}'");
                 $this->analyzeDatamineRaws($row->cpf_cnpj, $row->nome_devedor);
+            } catch (PublicInformationFailException $e) {
+                $this->handleMessageLog('debug', __FUNCTION__, "Linha Id atual: '{$row->id}' CPF/CNPJ: '{$row->cpf_cnpj}' ERRO: PublicInformationFailException. " . $e->getMessage());
+
+                $row->update(['status' => DataMineRawStatus::ERROR_GET_PUBLIC_INFORMATION()]);
             } catch (Exception $e) {
                 $this->handleMessageLog('error', __FUNCTION__, "Linha Id atual: '{$row->id}' CPF/CNPJ: '{$row->cpf_cnpj}'" . $e->getMessage());
                 $row->update(['status' => DataMineRawStatus::ERROR_ANALYZED()]);
@@ -190,13 +197,15 @@ class DataMineService
             $address = $this->getCnpjAddress($cnpjData);
 
             return [
-                'code_ibge' => $cnpjData['codigo_municipio_ibge'] ?? '',
+                'code_ibge' => $cnpjData['codigo_municipio_ibge'] ?? null,
                 'type_tax_regime' => $taxRegime,
                 'key' => $formatedCnpj,
                 'key_unmask' => $cnpj,
                 'type_entity' => DataMineEntitiesType::PJ(),
                 'address' => $address
             ];
+        } catch (PublicInformationFailException $e) {
+            throw $e;
         } catch (Exception $e) {
             throw new Exception('Erro ao obter informações públicas do CNPJ');
         }
@@ -214,10 +223,11 @@ class DataMineService
 
         try {
             $brasilApiData = $this->brasilApiClient->getCnpj($cnpjUnformated);
-            $cnpjData = $this->newDatamineCnpjByBrasilApi($brasilApiData);
         } catch (Exception $e) {
-            throw new Exception('Erro ao obter informações públicas do CNPJ externo');
+            throw new PublicInformationFailException('Erro ao obter informações públicas do CNPJ externo');
         }
+
+        $cnpjData = $this->newDatamineCnpjByBrasilApi($cnpjUnformated, $brasilApiData);
 
         return $cnpjData;
     }
@@ -227,16 +237,15 @@ class DataMineService
      *
      * @return array
      */
-    protected function newDatamineCnpjByBrasilApi(array $brasilApiData): array
+    protected function newDatamineCnpjByBrasilApi(string $cnpjUnformated, array $brasilApiData): array
     {
-        $cnpjData = $this->dataMineCnpjRepository->mapperBrasilApiToCnpjData($brasilApiData);
+        if (!$cnpjData = $this->dataMineCnpjRepository->mapperBrasilApiToCnpjData($brasilApiData)) {
+            throw new Exception('Erro ao obter informações públicas do CNPJ externo mapper');
+        }
 
-        $data = [
-            'id' => $cnpjData['cnpj'],
-            'json' => $cnpjData
-        ];
+        $model = $this->dataMineCnpjRepository->updateOrCreateCnpjData($cnpjUnformated, $cnpjData);
 
-        return $this->dataMineCnpjRepository->createNewCnpjData($data)->json;
+        return $model->json;
     }
 
     /**

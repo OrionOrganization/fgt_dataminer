@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Http\Controllers\Admin\AdminController as AdminAdminController;
 use App\Http\Controllers\Admin\Auth\PermissionCrudController as AuthPermissionCrudController;
 use App\Http\Controllers\Admin\Auth\RoleCrudController as AuthRoleCrudController;
 use App\Http\Controllers\Admin\Auth\UserCrudController as AuthUserCrudController;
+use Backpack\CRUD\app\Http\Controllers\AdminController;
 use Backpack\PermissionManager\app\Http\Controllers\PermissionCrudController;
 use Backpack\PermissionManager\app\Http\Controllers\RoleCrudController;
 use Backpack\PermissionManager\app\Http\Controllers\UserCrudController;
@@ -22,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(PermissionCrudController::class, AuthPermissionCrudController::class);
         $this->app->bind(RoleCrudController::class, AuthRoleCrudController::class);
         $this->app->bind(UserCrudController::class, AuthUserCrudController::class);
+        $this->app->bind(AdminController::class, AdminAdminController::class);
     }
 
     /**

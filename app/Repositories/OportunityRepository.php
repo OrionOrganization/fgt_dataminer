@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Oportunity;
+use Illuminate\Support\Collection;
 
 class OportunityRepository
 {
@@ -25,5 +26,29 @@ class OportunityRepository
     public function update(Oportunity $model, array $data): void
     {
         $model->update($data);
+    }
+
+    /**
+     * @param array $filters
+     * 
+     * @return Collection
+     */
+    public function getOportunitiesGroupedByStatus(array $filters): Collection
+    {
+        $query = Oportunity::with('company');
+
+        if (!empty($filters['oportunity_user'])) {
+            $query->where('user_id', $filters['oportunity_user']);
+        }
+
+        if (!empty($filters['oportunity_date'])) {
+            $query->where('date', $filters['oportunity_date']);
+        }
+
+        if (!empty($filters['oportunity_order'])) {
+            $query->orderBy($filters['oportunity_order']);
+        }
+
+        return $query->get()->groupBy('status');
     }
 }

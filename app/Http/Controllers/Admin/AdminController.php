@@ -43,9 +43,9 @@ class AdminController extends Controller
      */
     public function dashboard(Request $request)
     {   
-        $oportunitiesStatus = OportunityStatus::labels();
-
         $filters = $this->getFilters($request->all());
+
+        $oportunitiesStatus = OportunityStatus::labels();
 
         $oportunities = $this->oportunityRepository->getOportunitiesGroupedByStatus($filters);
 
@@ -69,7 +69,7 @@ class AdminController extends Controller
             'oportunity_user' => $requestData['oportunity_user_id'] ?? null,
             'oportunity_date' => $requestData['oportunity_date'] ?? null,
             'oportunity_order' => $requestData['oportunity_order'] ?? null,
-            'oportunity_order_direction' => $requestData['task_order_direction'] ?? null,
+            'oportunity_order_direction' => $requestData['oportunity_order_direction'] ?? null,
             'task_user' => $requestData['task_user_id'] ?? null,
             'task_date' => $requestData['task_date'] ?? null,
             'task_order' => $requestData['task_order'] ?? null,

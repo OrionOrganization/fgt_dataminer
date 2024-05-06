@@ -57,7 +57,7 @@
             padding-block: 10px;
         }
 
-        #collapseFilters {
+        #collapseFiltersOportunity, #collapseFiltersTask {
             margin-top: 20px;
             padding-left: 0
         }
@@ -69,7 +69,7 @@
     <h1><i class="las la-thumbtack"></i> Oportunidades</h1>
 
     {{-- FILTROS BOTAO --}}
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters">
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFiltersOportunity" aria-expanded="false" aria-controls="collapseFiltersOportunity">
         <i class="las la-filter"></i>
     </button>
 
@@ -79,7 +79,7 @@
     </a>
 
     {{-- FILTROS DIV --}}
-    <div class="collapse" id="collapseFilters">
+    <div class="collapse" id="collapseFiltersOportunity">
         <div class="card card-body">
             <div class="form-group d-flex">
                 <div>
@@ -99,6 +99,7 @@
                 <div>
                     <label for="order-oportunity-filter" style="margin-left: 20px">Ordenar</label>
                     <select class="form-control" id="order-direction-oportunity-filter" style="margin-left: 20px; margin-bottom: 5px">
+                        <option value="">-</option>
                         <option value="DESC">Descrescente</option>
                         <option value="ASC">Crescente</option>
                     </select>
@@ -161,7 +162,7 @@
     <h1 class="mt-5"><i class="las la-tasks"></i> Tarefas</h1>
 
     {{-- FILTROS BOTAO --}}
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFiltersTasks" aria-expanded="false" aria-controls="collapseFiltersTasks">
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFiltersTask" aria-expanded="false" aria-controls="collapseFiltersTask">
         <i class="las la-filter"></i>
     </button>
 
@@ -171,7 +172,7 @@
     </a>
 
     {{-- FILTROS DIV --}}
-    <div class="collapse" id="collapseFiltersTasks">
+    <div class="collapse" id="collapseFiltersTask">
         <div class="card card-body">
             <div class="form-group d-flex">
                 <div>
@@ -191,6 +192,7 @@
                 <div>
                     <label for="order-task-filter" style="margin-left: 20px">Ordenar</label>
                     <select class="form-control" id="order-direction-task-filter" style="margin-left: 20px; margin-bottom: 5px">
+                        <option value="">-</option>
                         <option value="DESC">Descrescente</option>
                         <option value="ASC">Crescente</option>
                     </select>
@@ -261,6 +263,10 @@
 @push('after_scripts')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
+        // ======================================================
+        // KANBAN SCRIPT
+        // ======================================================
+
         const columns = document.querySelectorAll(".column-body");
 
         let columnType = null;
@@ -343,6 +349,10 @@
             return result;
         }
 
+        // ======================================================
+        // FILTERS SCRIPT
+        // ======================================================
+
         function updateOrAddParam(url, paramName, paramValue) {
             var re = new RegExp("([?&])" + paramName + "=.*?(&|$)", "i");
             var separator = url.indexOf('?') !== -1 ? "&" : "?";
@@ -352,71 +362,53 @@
                 } else {
                     return url + separator + paramName + "=" + paramValue;
                 }
+            } else {
+                if (url.match(re)) {
+                    return url.replace(re, '$1').replace(/[&?]$/, '');
+                } else {
+                    return url;
+                }
             }
         }
 
-        $('#apply-oportunity-filters').on('click', function() {
-            let currentUrl = window.location.href;
+        function applyFilters(filterEntity) {
+            return function() {
+                let currentUrl = window.location.href;
 
-            const userFilterData = $('#user-oportunity-filter').val();
-            const dateFilterData = $('#date-oportunity-filter').val();
-            const orderFilterData = $('#order-oportunity-filter').val();
-            const orderDirectionFilterData = $('#order-direction-oportunity-filter').val();
+                const filters = {
+                    'user_id': $(`#user-${filterEntity}-filter`).val(),
+                    'date': $(`#date-${filterEntity}-filter`).val(),
+                    'order': $(`#order-${filterEntity}-filter`).val(),
+                    'order_direction': $(`#order-direction-${filterEntity}-filter`).val()
+                };
 
-            if (userFilterData) {
-                currentUrl = updateOrAddParam(currentUrl, 'oportunity_user_id', userFilterData);
-            }
-            if (dateFilterData) {
-                currentUrl = updateOrAddParam(currentUrl, 'oportunity_date', dateFilterData);
-            }
-            if (orderFilterData) {
-                currentUrl = updateOrAddParam(currentUrl, 'oportunity_order', orderFilterData);
-                currentUrl = updateOrAddParam(currentUrl, 'oportunity_order_direction', orderDirectionFilterData);
-            }
+                for (const paramName in filters) {
+                    if (filters[paramName]) {
+                        currentUrl = updateOrAddParam(currentUrl, `${filterEntity}_${paramName}`, filters[paramName]);
+                    } else {
+                        currentUrl = updateOrAddParam(currentUrl, `${filterEntity}_${paramName}`, null);
+                    }
+                }
 
-            window.location.href = currentUrl;
-        });
+                window.location.href = currentUrl;
+            };
+        }
 
-        $('#apply-task-filters').on('click', function() {
-            let currentUrl = window.location.href;
-
-            const userFilterData = $('#user-task-filter').val();
-            const dateFilterData = $('#date-task-filter').val();
-            const orderFilterData = $('#order-task-filter').val();
-            const orderDirectionFilterData = $('#order-direction-task-filter').val();
-
-            if (userFilterData) {
-                currentUrl = updateOrAddParam(currentUrl, 'task_user_id', userFilterData);
-            }
-            if (dateFilterData) {
-                currentUrl = updateOrAddParam(currentUrl, 'task_date', dateFilterData);
-            }
-            if (orderFilterData) {
-                currentUrl = updateOrAddParam(currentUrl, 'task_order', orderFilterData);
-                currentUrl = updateOrAddParam(currentUrl, 'task_order_direction', orderDirectionFilterData);
-            }
-
-            window.location.href = currentUrl;
-        });
+        $('#apply-oportunity-filters').on('click', applyFilters('oportunity'));
+        $('#apply-task-filters').on('click', applyFilters('task'));
 
         $(document).ready(function() {
             const urlParams = new URLSearchParams(window.location.search);
 
-            const oportunityUserFilterData = urlParams.get('oportunity_user_id');
-            const oportunityDateFilterData = urlParams.get('oportunity_date');
-            const oportunityOrderFilterData = urlParams.get('oportunity_order');
-            const taskUserFilterData = urlParams.get('task_user_id');
-            const taskDateFilterData = urlParams.get('task_date');
-            const taskOrderFilterData = urlParams.get('task_order');
-            const taskOrderDirectionFilterData = urlParams.get('task_order_direction');
+            $('#user-task-filter').val(urlParams.get('task_user_id'));
+            $('#date-task-filter').val(urlParams.get('task_date'));
+            $('#order-task-filter').val(urlParams.get('task_order'));
+            $('#order-direction-task-filter').val(urlParams.get('task_order_direction'));
 
-            $('#user-task-filter').val(taskUserFilterData);
-            $('#date-task-filter').val(taskDateFilterData);
-            $('#order-task-filter').val(taskOrderFilterData);
-
-            $('#user-oportunity-filter').val(oportunityUserFilterData);
-            $('#date-oportunity-filter').val(oportunityDateFilterData);
-            $('#order-oportunity-filter').val(oportunityOrderFilterData);
+            $('#user-oportunity-filter').val(urlParams.get('oportunity_user_id'));
+            $('#date-oportunity-filter').val(urlParams.get('oportunity_date'));
+            $('#order-oportunity-filter').val(urlParams.get('oportunity_order'));
+            $('#order-direction-oportunity-filter').val(urlParams.get('oportunity_order_direction'))
         });
 
         function clearFilters(parameters) {

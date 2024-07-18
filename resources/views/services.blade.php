@@ -46,7 +46,7 @@
             <a href="/" class="header-nav-link">Início</a>
             <a href="/#about-section" class="header-nav-link">Sobre</a>
             <a href="#" class="header-nav-link">Serviços</a>
-            <a href="/#contact-section" class="header-nav-link">Contato</a>
+            {{-- <a href="/#contact-section" class="header-nav-link">Contato</a> --}}
             <a href="/#news-section" class="header-nav-link">Blog</a>
 
             <a href="{{$whatsappUrl}}" target="_blank" class="header-nav-button secondary-button">Conhecer</a>

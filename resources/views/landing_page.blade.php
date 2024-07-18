@@ -27,7 +27,7 @@
         <noscript><link rel="stylesheet" href="styles.css"></noscript>
 
         <!-- Noty -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+        {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css"> --}}
     </head>
     <body>
          <!-- Header -->
@@ -52,7 +52,7 @@
                 <a href="#" class="header-nav-link">Início</a>
                 <a href="#about-section" class="header-nav-link">Sobre</a>
                 <a href="/servicos" class="header-nav-link">Serviços</a>
-                <a href="#contact-section" class="header-nav-link">Contato</a>
+                {{-- <a href="#contact-section" class="header-nav-link">Contato</a> --}}
                 <a href="#news-section" class="header-nav-link">Blog</a>
 
                 <a href="{{$whatsappUrl}}" target="_blank" class="header-nav-button secondary-button">Conhecer</a>
@@ -68,7 +68,6 @@
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#main-slider" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#main-slider" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#main-slider" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active" data-bs-interval="5000">
@@ -180,14 +179,19 @@
             <section id="team-section">
                 <div id="team-container">
                     {{-- Marco --}}
-                    <div class="team-member-card hidden">
-                        <img src="" id="lawyer-1-pic" alt="Foto do CEO da FGT, Marco Desiato" width="250px" height="450px">
-                        <div class="overlay">
-                            <span>
-                                Formado em Engenharia da Computação pela Pontifícia Universidade Católica Campinas/SP.
-                                MBA em gestão estratégica na FGV, MBA em Gestão em Ohio,
-                                MBA em Design Think pela Inova-Campinas.
-                            </span>
+                    <div class="team-member-card hidden mt-3">
+                        <div class="team-member-card-container">
+                            <img src="" id="lawyer-1-pic" alt="Foto do CEO da FGT, Marco Desiato">
+                            <div class="lawyer-info">
+                                <ul>
+                                    <li><i class="las la-angle-double-right mt-2"></i> Empresário</li>
+                                    <li><i class="las la-angle-double-right mt-2"></i> Consultor de empresas</li>
+                                    <li><i class="las la-angle-double-right mt-2"></i> Eng. da Computação - PUCCAMP</li>
+                                    <li><i class="las la-angle-double-right mt-2"></i> MBA em gestão estratégica - FGV</li>
+                                    <li><i class="las la-angle-double-right mt-2"></i> MBA em Gestão em Ohio - FGV</li>
+                                    <li><i class="las la-angle-double-right mt-2"></i> MBA em Design Think - INOVA BS</li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="bottom-div">
                             <h2>Marco Desiato</h2>
@@ -197,52 +201,23 @@
                     </div>
 
                     {{-- Everton --}}
-                    <div class="team-member-card hidden">
-                        <img src="" id="lawyer-2-pic" alt="Foto do CRO da FGT, Everton Alves">
-                        <div class="overlay">
-                            <span>
-                                Pós graduando em Direito Tributário e Processual Tributário pela Faculdade Alphaville (FAVI)
-                                Bacharel em Direito pela Universidade São Francisco de Campinas/SP (USF)
-                            </span>
+                    <div class="team-member-card hidden mt-3">
+                        <div class="team-member-card-container">
+                            <img src="" id="lawyer-2-pic" alt="Foto do CRO da FGT, Everton Alves">
+                            <div class="lawyer-info">
+                                <ul>
+                                    <li><i class="las la-angle-double-right"></i> Pós graduando em Direito Tributário e Processual Tributário - Faculdade Alphaville (FAVI)</li>
+                                    <li><i class="las la-angle-double-right"></i> Direito - USF</li>
+                                </ul>
+                                <p class="text-light text-center align-self-center">
+                                   
+                                </p>
+                            </div>
                         </div>
                         <div class="bottom-div">
                             <h2>Everton Alves</h2>
                             <hr class="divisor">
                             <small>Diretor de Receita - CRO</small>
-                        </div>
-                    </div>
-
-                    {{-- Fernanda --}}
-                    <div class="team-member-card hidden">
-                        <img src="" id="lawyer-3-pic" alt="Foto da CTO da FGT, Fernanda Guidotti">
-                        <div class="overlay">
-                            <span>
-                                Doutoranda em Matemática Computacional pela Universidade de São Paulo (USP),
-                                Msc em Matemática Computacional pela Universidade de São Paulo (USP) e
-                                Graduada em Processamento de Dados pela Faculdade de Tecnologia do Estado de São Paulo de Taquaritinga/SP (FATEC).
-                            </span>
-                        </div>
-                        <div class="bottom-div">
-                            <h2>Fernanda Guidotti</h2>
-                            <hr class="divisor">
-                            <small>Diretora de Tecnologia - CTO</small>
-                        </div>
-                    </div>
-
-                    {{-- Victor --}}
-                    <div class="team-member-card hidden">
-                        <img src="" id="lawyer-4-pic" alt="Foto do CLO da FGT, Victor Dallacosta">
-                        <div class="overlay">
-                            <span>
-                                Mestrando em Direito Tributário pela Pontifícia Universidade Católica de São Paulo (PUC-SP)
-                                Pós-graduado em Direito Tributário e Processo Tributário pela Pontifícia Universidade Católica de São Paulo (PUC-SP).
-                                Bacharel em Direito pela Universidade Presbiteriana Mackenzie de Campinas/SP.
-                            </span>
-                        </div>
-                        <div class="bottom-div">
-                            <h2>Victor Dallacosta</h2>
-                            <hr class="divisor">
-                            <small>Diretor Jurídico - CLO</small>
                         </div>
                     </div>
                 </div>

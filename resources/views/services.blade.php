@@ -1,6 +1,6 @@
 @php
     $whatsappUrl = 'https://contate.me/forosgt';    
-    $whatsappNumber = '(19) 97127-6718';
+    $whatsappNumber = '(19) 97121-6718';
     $instagramUrl = 'https://www.instagram.com/forosgt/';
     $linkedinUrl = 'https://www.linkedin.com/company/forosgestaotributaria';
     $email = 'contato@forosgt.com.br';
@@ -46,7 +46,7 @@
             <a href="/" class="header-nav-link">Início</a>
             <a href="/#about-section" class="header-nav-link">Sobre</a>
             <a href="#" class="header-nav-link">Serviços</a>
-            <a href="/#contact-section" class="header-nav-link">Contato</a>
+            {{-- <a href="/#contact-section" class="header-nav-link">Contato</a> --}}
             <a href="/#news-section" class="header-nav-link">Blog</a>
 
             <a href="{{$whatsappUrl}}" target="_blank" class="header-nav-button secondary-button">Conhecer</a>

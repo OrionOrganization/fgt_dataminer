@@ -1,6 +1,6 @@
 @php
     $whatsappUrl = 'https://contate.me/forosgt';
-    $whatsappNumber = '(19) 97127-6718';
+    $whatsappNumber = '(19) 97121-6718';
     $instagramUrl = 'https://www.instagram.com/forosgt/';
     $linkedinUrl = 'https://www.linkedin.com/company/forosgestaotributaria';
     $email = 'contato@forosgt.com.br';

@@ -322,8 +322,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-block: 50px;
 }
 
 #history-section small {
@@ -352,7 +351,7 @@
 #team-section #team-container {
     width: 100%;
     height: auto;
-    padding: 30px 70px;
+    padding: 10px 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -363,46 +362,42 @@
     background-color: var(--blue-color);
     position: relative;
     cursor: default;
-    width: 22%;
+    width: 49%;
+    height: 400px;
 }
 
-#team-section #team-container .team-member-card img {
-    width: 100%;
-    height: 80%;
-    display: block;
-}
-
-#team-section #team-container .overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 50%;
-    background-color: var(--blue-color);
-    color: var(--light-color);
-    opacity: 0;
-    transition: opacity 0.8s ease, height 0.8s ease;
+#team-section #team-container .team-member-card .team-member-card-container {
     display: flex;
-    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+#team-section #team-container .team-member-card .team-member-card-container img {
+    width: 50% !important;
+    object-fit: cover;
+}
+
+.lawyer-info {
+    width: 50%;
+    padding: 10px;
+    align-self: center;
+    display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    cursor: default;
-    font-size: 15px;
-    padding: 0 10px;
 }
 
-#team-section #team-container .team-member-card:hover .overlay {
-    opacity: 0.8;
-    height: 100%;
-    transition-delay: 0.1s;
+.lawyer-info ul {
+    list-style: none;
+    font-size: 15px;
+    padding: 0;
+    color: var(--light-color);
 }
 
 #team-section #team-container .team-member-card .bottom-div {
     position: absolute;
-    bottom: -30px;
-    width: 90%;
-    height: 100px;
+    bottom: -40px;
+    width: 80%;
+    height: 80px;
     background-color: var(--main-color);
     color: var(--light-color);
     z-index: 1;
@@ -975,8 +970,12 @@ RESPONSIVIDADE
     }
 
     /* TEAM */
+    #team-section #team-container {
+        padding: 10px;
+    }
+
     #team-section #team-container .team-member-card {
-        width: 35em;
+        width: 100% !important;
         margin-bottom: 40px;
     }
 
@@ -994,6 +993,15 @@ RESPONSIVIDADE
         justify-content: space-around;
         align-items: flex-start;
         padding-left: 5%;
+    }
+
+    /* SERVICES */
+    #services-container {
+        display: flex;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center;
+        gap: 10px;
     }
 }
   
